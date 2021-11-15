@@ -1,0 +1,6 @@
+[submodule "SMB"]
+	path = SMB
+	url = https://github.com/sandialabs/SMB
+[submodule "osu_noncontig_mem"]
+	path = osu_noncontig_mem
+	url = https://github.com/yqin/osu-micro-benchmarks
