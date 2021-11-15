@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<html>
+
+<head>
+    <style>
+        .tab {
+            overflow: hidden;
+            border: 1px solid #ccc;
+            background-color: #f1f1f1;
+        }
+
+
+        .tab button {
+            background-color: inherit;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+        }
+
+        .tabcontent {
+            display: none;
+            padding: 6px 12px;
+            border: 0px solid #ccc;
+            border-top: none;
+        }
+
+        .maintabcontent {
+            display: none;
+            padding: 6px 12px;
+            border: 0px solid #ccc;
+            border-top: none;
+        }
+
+        div.dataPanel {
+            min-width: 1024px;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+
+        input:checked+.slider {
+            background-color: #2196F3;
+        }
+
+        input:focus+.slider {
+            box-shadow: 0 0 1px #2196F3;
+        }
+
+        input:checked+.slider:before {
+            -webkit-transform: translateX(26px);
+            -ms-transform: translateX(26px);
+            transform: translateX(26px);
+        }
+
+        /* Rounded sliders */
+        .slider.round {
+            border-radius: 34px;
+        }
+
+        .slider.round:before {
+            border-radius: 50%;
+        }
+
+        /* Style the button that is used to open and close the collapsible content */
+        .collapsible {
+            background-color: #eee;
+            color: #444;
+            cursor: pointer;
+            padding: 18px;
+            width: 75%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 15px;
+        }
+
+        /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+        .active,
+        .collapsible:hover {
+            background-color: #ccc;
+        }
+
+        /* Style the collapsible content. Note: hidden by default */
+        .collapsible_content {
+            padding: 0 0px;
+            display: none;
+            overflow: hidden;
+            width: 75%;
+            background-color: #f1f1f1;
+            font-size: 12px;
+            overflow: scroll;
+        }
+
+        .container {
+            width: 90%;
+            height: 90%;
+            margin: auto;
+            padding: 10px;
+        }
+
+        .left-half {
+            width: 45%;
+            float: left;
+            overflow: auto;
+            padding-bottom: 25px;
+            align-content: center;
+        }
+
+        .right-half {
+            width: 45%;
+            float: right;
+            overflow: auto;
+            padding-bottom: 25px;
+            align-content: center;
+        }
+
+        .left {
+            width: auto;
+            float: left;
+            overflow: auto;
+            padding-bottom: 25px;
+        }
+
+        .right {
+            margin-left: 15%;
+            overflow: auto;
+            font-size: 12px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h1>Latency: {{.Latency}} {{.LatencyUnit}} - Bandwidth: {{.Bandwidth}} {{.BandwidthUnit}} - Overlap: {{.Overlap}} %</h1>
+    </div>
+
+    <div class="tab">
+        <button class="tabmainlinks" id="main_button" onclick="openMainTab(event, 'Main')">Main</button>
+        <button class="tabmainlinks" onclick="openMainTab(event, 'All_data')">All data</button>
+        <button class="tabmainlinks" onclick="openMainTab(event, 'Compare')">Compare</button>
+    </div>
+
+    <section class="container">
+        <div id="Main" class="maintabcontent">
+            <div class="left">
+                <div class="tab">
+                    {{getListMainResults .OSUData .OverlapData}}
+                </div>
+            </div>
+            <div class="right">
+                {{getResultMainDetails .OSUData .OverlapDetails .Overlap .ScratchPath}}
+            </div>
+        </div>
+
+        <div id="All_data" class="maintabcontent">
+            <div class="left">
+                <div class="tab">
+                    {{getListResults .OSUData .OverlapData}}
+                </div>
+            </div>
+            <div class="right">
+                {{getResultDetails .OSUData .OverlapData .ScratchPath}}
+            </div>
+        </div>
+
+        <div id="Compare" class="maintabcontent">
+            <div class="left-half">
+                {{displaySelection .OSUData .OverlapData "left"}}
+                {{getCompBenchmarkDetailsLeft .OSUData .OverlapData .ScratchPath}}
+            </div>
+            <div class="right-half">
+                {{displaySelection .OSUData .OverlapData "right"}}
+                {{getCompBenchmarkDetailsRight .OSUData .OverlapData .ScratchPath}}
+            </div>
+        </div>
+    </section>
+    <script>
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+
+            // Get all elements with class="tabcontent" and hide them
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+
+            // Show the current tab, and add an "active" class to the button that opened the tab
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+        function openMainTab(evt, tabName) {
+            // Declare all variables
+            var i, tabcontent, tablinks;
+
+            // Get all elements with class="tabcontent" and hide them
+            tabcontent = document.getElementsByClassName("maintabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+
+            // Get all elements with class="tablinks" and remove the class "active"
+            tablinks = document.getElementsByClassName("tabmainlinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+
+            // Show the current tab, and add an "active" class to the button that opened the tab
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        function updateLeftSelectionForComp() {
+            var subbenchmark = document.getElementById("select_for_comp_left").value;
+            tabcontent = document.getElementsByClassName("compdataleft");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            var benchID = subbenchmark + "_comp_data_left";
+            document.getElementById(benchID).style.display = "block";
+        }
+
+        function updateRightSelectionForComp(zone, selection) {
+            var subbenchmark = document.getElementById("select_for_comp_right").value;
+            tabcontent = document.getElementsByClassName("compdataright");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            var benchID = subbenchmark + "_comp_data_right";
+            document.getElementById(benchID).style.display = "block";
+        }
+
+        // Open the default elements by faking clicks
+        mainElt = document.getElementById("main_button");
+        mainElt.click();
+        bandwidthElt = document.getElementById("osu_bw_button");
+        bandwidthElt.click();
+
+        // Hide the data of the comparison tab by default
+        tabcontent = document.getElementsByClassName("compdataleft");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tabcontent = document.getElementsByClassName("compdataright");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+    </script>
+</body>
+
+</html>

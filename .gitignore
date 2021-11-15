@@ -1,0 +1,70 @@
+# Prerequisites
+*.d
+
+# Object files
+*.o
+*.ko
+*.obj
+*.elf
+
+# Linker output
+*.ilk
+*.map
+*.exp
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Libraries
+*.lib
+*.a
+*.la
+*.lo
+
+# Shared objects (inc. Windows DLLs)
+*.dll
+*.so
+*.so.*
+*.dylib
+
+# Executables
+*.exe
+*.out
+*.app
+*.i*86
+*.x86_64
+*.hex
+
+# Debug files
+*.dSYM/
+*.su
+*.idb
+*.pdb
+
+# Kernel Module Compile Results
+*.cmd
+.tmp_versions/
+modules.order
+Module.symvers
+Mkfile.old
+dkms.conf
+
+# Generated binaries
+tools/cmd/openhpca_setup/openhpca_setup
+tools/cmd/openhpca_run/openhpca_run
+tools/cmd/webui/webui
+src/overlap/overlap_iallreduce
+src/overlap/overlap_ialltoall
+src/overlap/overlap_ialltoallv
+src/overlap/overlap_ibarrier
+src/overlap/overlap_ibcast
+src/overlap/overlap_igather
+src/overlap/overlap_igatherv
+src/overlap/overlap_iallgather
+src/overlap/overlap_iallgatherv
+src/overlap/overlap_ireduce
+
+
+# Generated logs
+*.log
