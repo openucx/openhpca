@@ -136,3 +136,17 @@ preferred web browser on your local machine by using the following URL:
 ```
 http://127.0.0.1:8080
 ```
+
+# Project gorvenance
+
+## Versioning
+
+The version of the OpenHPCA software follows the X.Y.Z scheme.
+
+The addition of any new metrics reported to users necessitates to increment X.
+The addition of any new feature without any new metrics necessitates to increase Y.
+Bug fixes to the existing code necessitates to increase Z.
+
+## Release process
+
+Once the group agrees on initiating the release process, a first release candidate (RC) is created. If no issue related to the upcoming release is open between two group virtual meetings, the release can be finalized. Otherwise, pull requests are reviewed during the virtual meetings and a new RC created and made public at the end of each meeting.
