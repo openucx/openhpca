@@ -21,8 +21,8 @@ import (
 
 	osuresults "github.com/gvallee/go_osu/pkg/results"
 	"github.com/gvallee/go_util/pkg/util"
-	"github.com/gvallee/openhpca/tools/internal/pkg/score"
 	"github.com/gvallee/validation_tool/pkg/label"
+	"github.com/openucx/openhpca/tools/internal/pkg/score"
 )
 
 type Data struct {

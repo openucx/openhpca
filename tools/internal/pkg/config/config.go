@@ -19,10 +19,10 @@ import (
 	"github.com/gvallee/go_osu/pkg/osu"
 	"github.com/gvallee/go_util/pkg/util"
 	"github.com/gvallee/go_workspace/pkg/workspace"
-	"github.com/gvallee/openhpca/tools/internal/pkg/download"
-	"github.com/gvallee/openhpca/tools/internal/pkg/overlap"
-	"github.com/gvallee/openhpca/tools/internal/pkg/smb"
-	openhpcautil "github.com/gvallee/openhpca/tools/internal/pkg/util"
+	"github.com/openucx/openhpca/tools/internal/pkg/download"
+	"github.com/openucx/openhpca/tools/internal/pkg/overlap"
+	"github.com/openucx/openhpca/tools/internal/pkg/smb"
+	openhpcautil "github.com/openucx/openhpca/tools/internal/pkg/util"
 )
 
 const (

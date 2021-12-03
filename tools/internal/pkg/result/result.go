@@ -12,9 +12,9 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/gvallee/openhpca/tools/internal/pkg/analyser"
-	"github.com/gvallee/openhpca/tools/internal/pkg/overlap"
-	"github.com/gvallee/openhpca/tools/internal/pkg/score"
+	"github.com/openucx/openhpca/tools/internal/pkg/analyser"
+	"github.com/openucx/openhpca/tools/internal/pkg/overlap"
+	"github.com/openucx/openhpca/tools/internal/pkg/score"
 )
 
 const (
