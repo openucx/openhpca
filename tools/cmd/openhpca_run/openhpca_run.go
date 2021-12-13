@@ -19,10 +19,10 @@ import (
 	"github.com/gvallee/go_hpc_jobmgr/pkg/implem"
 	"github.com/gvallee/go_software_build/pkg/app"
 	"github.com/gvallee/go_util/pkg/util"
-	"github.com/gvallee/openhpca/tools/internal/pkg/config"
-	"github.com/gvallee/openhpca/tools/internal/pkg/result"
 	"github.com/gvallee/validation_tool/pkg/experiments"
 	"github.com/gvallee/validation_tool/pkg/platform"
+	"github.com/openucx/openhpca/tools/internal/pkg/config"
+	"github.com/openucx/openhpca/tools/internal/pkg/result"
 )
 
 func getRunDir(cfg *config.Data) string {

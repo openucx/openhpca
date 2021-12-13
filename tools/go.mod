@@ -1,4 +1,4 @@
-module github.com/gvallee/openhpca/tools
+module github.com/openucx/openhpca/tools
 
 go 1.14
 

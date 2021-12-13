@@ -16,9 +16,9 @@ import (
 	"text/template"
 
 	"github.com/gvallee/go_util/pkg/util"
-	"github.com/gvallee/openhpca/tools/internal/pkg/analyser"
-	"github.com/gvallee/openhpca/tools/internal/pkg/config"
-	"github.com/gvallee/openhpca/tools/internal/pkg/result"
+	"github.com/openucx/openhpca/tools/internal/pkg/analyser"
+	"github.com/openucx/openhpca/tools/internal/pkg/config"
+	"github.com/openucx/openhpca/tools/internal/pkg/result"
 )
 
 const (

@@ -19,7 +19,7 @@ import (
 	"github.com/gvallee/go_software_build/pkg/builder"
 	fileutil "github.com/gvallee/go_util/pkg/util"
 	"github.com/gvallee/go_workspace/pkg/workspace"
-	"github.com/gvallee/openhpca/tools/internal/pkg/util"
+	"github.com/openucx/openhpca/tools/internal/pkg/util"
 )
 
 const (

@@ -11,8 +11,8 @@ import (
 
 	"github.com/gvallee/go_benchmark/pkg/benchmark"
 	"github.com/gvallee/go_osu/pkg/osu"
-	"github.com/gvallee/openhpca/tools/internal/pkg/overlap"
-	"github.com/gvallee/openhpca/tools/internal/pkg/smb"
+	"github.com/openucx/openhpca/tools/internal/pkg/overlap"
+	"github.com/openucx/openhpca/tools/internal/pkg/smb"
 )
 
 // Compile makes sure all the required software is properly installed and compiled
