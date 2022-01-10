@@ -137,7 +137,7 @@ preferred web browser on your local machine by using the following URL:
 http://127.0.0.1:8080
 ```
 
-# Project gorvenance
+# Project governance
 
 ## Versioning
 
