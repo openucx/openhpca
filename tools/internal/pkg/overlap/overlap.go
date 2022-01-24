@@ -55,6 +55,9 @@ const (
 	overlapIgathervBinName    = "overlap_igatherv"
 )
 
+var RequiredBenchmarks = []string{overlapIallreduceID, overlapIreduceID, overlapIallgatherID, overlapIallgathervID,
+	overlapIalltoallID, overlapIalltoallvID, overlapIbcastID, overlapIgatherID, overlapIgathervID}
+
 // ParseCfg is the function to invoke to parse lines from the main configuration files
 // that are specific to the overlap suite
 func ParseCfg(cfg *benchmark.Config, basedir string, srcDir string, key string, value string) {
