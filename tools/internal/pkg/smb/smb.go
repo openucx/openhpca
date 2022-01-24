@@ -33,6 +33,8 @@ const (
 	defaultMsgSize = 8
 )
 
+var RequiredBenchmarks = []string{mpiOverheadID}
+
 // Config represents the configuration of SMB
 type Config struct {
 	URL string

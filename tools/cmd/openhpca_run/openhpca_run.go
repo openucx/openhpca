@@ -16,11 +16,14 @@ import (
 	"path/filepath"
 	"runtime"
 
+	"github.com/gvallee/go_benchmark/pkg/benchmark"
 	"github.com/gvallee/go_hpc_jobmgr/pkg/implem"
 	"github.com/gvallee/go_software_build/pkg/app"
 	"github.com/gvallee/go_util/pkg/util"
 	"github.com/gvallee/openhpca/tools/internal/pkg/config"
+	"github.com/gvallee/openhpca/tools/internal/pkg/overlap"
 	"github.com/gvallee/openhpca/tools/internal/pkg/result"
+	"github.com/gvallee/openhpca/tools/internal/pkg/smb"
 	"github.com/gvallee/validation_tool/pkg/experiments"
 	"github.com/gvallee/validation_tool/pkg/platform"
 )
@@ -69,6 +72,7 @@ func main() {
 	nActiveJobsFlag := flag.Int("max-running-jobs", 5, "The maximum of active running job at any given time (other jobs are queued and executed upon completion of running jobs)")
 	ppnFlag := flag.Int("ppn", 1, "Number of MPI ranks per node (default: 1)")
 	nNodesFlag := flag.Int("num-nodes", 1, "Number of nodes to use (default: 1)")
+	longRunFlag := flag.Bool("long", false, "Run all supported tests, including tests not used to create the final metrics")
 
 	flag.Parse()
 
@@ -94,6 +98,7 @@ func main() {
 	cfg := new(config.Data)
 	cfg.Basedir = basedir
 	cfg.BinName = filename
+	cfg.LongRun = *longRunFlag
 
 	// Load the configuration
 	err := cfg.Load()
@@ -143,7 +148,65 @@ func main() {
 	exps.Platform.MaxNumNodes = *nNodesFlag
 	exps.MaxExecTime = "1:00:00"
 
-	for benchmarkName, installedBenchmark := range cfg.InstalledBenchmarks {
+	// Depending on the execution mode, we want to run either all the installed benchmarks
+	// or only those that are required to compute the final metrics.
+	var benchmarksToRun map[string]*benchmark.Install
+	if !cfg.LongRun {
+		// We only keep the installed benchmarks that are part of the list of benchmarks required to generate the final metrics
+		benchmarksToRun = make(map[string]*benchmark.Install)
+
+		var osuBenchmarksToRun []app.Info
+		installedOSUSubBenchmarks := cfg.InstalledBenchmarks["osu"]
+		for _, name := range config.OSURequiredBenchmarks {
+			for _, app := range installedOSUSubBenchmarks.SubBenchmarks {
+				if app.Name == name {
+					osuBenchmarksToRun = append(osuBenchmarksToRun, app)
+					break
+				}
+			}
+		}
+		benchmarksToRun["osu"] = new(benchmark.Install)
+		benchmarksToRun["osu"].SubBenchmarks = osuBenchmarksToRun
+
+		var smbBenchmarksToRun []app.Info
+		installedSMBSubBenchmarks := cfg.InstalledBenchmarks["smb"]
+		for _, name := range smb.RequiredBenchmarks {
+			for _, app := range installedSMBSubBenchmarks.SubBenchmarks {
+				if app.Name == name {
+					smbBenchmarksToRun = append(smbBenchmarksToRun, app)
+					break
+				}
+			}
+		}
+		benchmarksToRun["smb"] = new(benchmark.Install)
+		benchmarksToRun["smb"].SubBenchmarks = smbBenchmarksToRun
+
+		var overlapBenchmarksToRun []app.Info
+		installOverlapSubBenchmarks := cfg.InstalledBenchmarks["overlap"]
+		for _, name := range overlap.RequiredBenchmarks {
+			for _, app := range installOverlapSubBenchmarks.SubBenchmarks {
+				if app.Name == name {
+					overlapBenchmarksToRun = append(overlapBenchmarksToRun, app)
+					break
+				}
+			}
+		}
+		benchmarksToRun["overlap"] = new(benchmark.Install)
+		benchmarksToRun["overlap"].SubBenchmarks = overlapBenchmarksToRun
+	} else {
+		benchmarksToRun = cfg.InstalledBenchmarks
+	}
+
+	if *verbose {
+		log.Printf("%d benchmarks being executed:\n", len(benchmarksToRun))
+		for benchmarkName, installedBenchmark := range benchmarksToRun {
+			for _, app := range installedBenchmark.SubBenchmarks {
+				log.Printf(" - %s: %s\n", benchmarkName, app.Name)
+			}
+		}
+	}
+
+	for benchmarkName, installedBenchmark := range benchmarksToRun {
 		for _, subBenchmark := range installedBenchmark.SubBenchmarks {
 			e := new(experiments.Experiment)
 			e.App = new(app.Info)

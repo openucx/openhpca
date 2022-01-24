@@ -39,6 +39,8 @@ const (
 	OpenHPCASrcDir = "src"
 )
 
+var OSURequiredBenchmarks = []string{osu.LatencyID, osu.BWID}
+
 // SlurmCfg represents the Slurm configuration requested by the user through a configuration file
 type SlurmCfg struct {
 	Partition string
@@ -62,6 +64,9 @@ type AppsCfg struct {
 // Data represents the configuration of the file, mainly based
 // on what is in the configuration file
 type Data struct {
+	// LongRun specifies that the long execution mode has been requested
+	LongRun bool
+
 	// Basedir is the base directory where the code is
 	Basedir string
 
