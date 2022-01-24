@@ -205,7 +205,6 @@ func main() {
 			}
 		}
 	}
-	os.Exit(42)
 
 	for benchmarkName, installedBenchmark := range benchmarksToRun {
 		for _, subBenchmark := range installedBenchmark.SubBenchmarks {
