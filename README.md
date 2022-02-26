@@ -39,7 +39,7 @@ to setting it up:
 OpenHPCA relies on a workspace so before installing OpenHPCA for the first
 time, users
 are required to define the configuration of the workspace. A new workspace can
-be specified by creating the `~/.openhpca/workspace.conf` file. only one
+be specified by creating the `~/.openhpca/workspace.conf` file. Only one
 workspace is supported at any given time at the moment, multiple workspaces
 can only be currently used by creating a symlink to the target configuration
 file that needs to be used at a given time. Future versions of the suite will

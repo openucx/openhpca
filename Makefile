@@ -16,7 +16,7 @@ endif
 check:
 
 init:
-	./tools/cmd/openhpca_setup/openhpca_setup
+	cd ./tools/cmd/openhpca_setup && $(GOCMD) run openhpca_setup.go	
 
 install: check update tools init
 
