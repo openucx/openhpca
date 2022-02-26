@@ -1,0 +1,377 @@
+2022/02/26 14:54:27 -> Parsing the OpenHPCA configuration file...
+2022/02/26 14:54:27 -> Parsing the workspace configuration file /global/home/users/bwilliams/.openhpca/workspace.conf
+2022/02/26 14:54:27 Detecting OSU installation...
+2022/02/26 14:54:27 -> Checking if allgather is installed...
+2022/02/26 14:54:27 	/global/home/users/bwilliams/openhpca/build/install/OSU/libexec/osu-micro-benchmarks/mpi/collective/osu_allgather exists
+2022/02/26 14:54:27 -> Checking if iallgather is installed...
+2022/02/26 14:54:27 	/global/home/users/bwilliams/openhpca/build/install/OSU/libexec/osu-micro-benchmarks/mpi/collective/osu_iallgather exists
+2022/02/26 14:54:27 -> Checking if allreduce is installed...
+2022/02/26 14:54:27 	/global/home/users/bwilliams/openhpca/build/install/OSU/libexec/osu-micro-benchmarks/mpi/collective/osu_allreduce exists
+2022/02/26 14:54:27 -> Checking if iallreduce is installed...
+2022/02/26 14:54:27 	/global/home/users/bwilliams/openhpca/build/install/OSU/libexec/osu-micro-benchmarks/mpi/collective/osu_iallreduce exists
+2022/02/26 14:54:27 -> Checking if ireduce is installed...
+2022/02/26 14:54:27 	/global/home/users/bwilliams/openhpca/build/install/OSU/libexec/osu-micro-benchmarks/mpi/collective/osu_ireduce exists
+2022/02/26 14:54:27 -> Checking if alltoallw is installed...
+2022/02/26 14:54:27 	/global/home/users/bwilliams/openhpca/build/install/OSU/libexec/osu-micro-benchmarks/mpi/collective/osu_alltoallw does not exist
+2022/02/26 14:54:27 -> Checking if gather is installed...
+2022/02/26 14:54:27 	/global/home/users/bwilliams/openhpca/build/install/OSU/libexec/osu-micro-benchmarks/mpi/collective/osu_gather exists
+2022/02/26 14:54:27 -> Checking if bw is installed...
+2022/02/26 14:54:27 	/global/home/users/bwilliams/openhpca/build/install/OSU/libexec/osu-micro-benchmarks/mpi/pt2pt/osu_bw exists
+2022/02/26 14:54:27 -> Checking if alltoallv is installed...
+2022/02/26 14:54:27 	/global/home/users/bwilliams/openhpca/build/install/OSU/libexec/osu-micro-benchmarks/mpi/collective/osu_alltoallv exists
+2022/02/26 14:54:27 -> Checking if ibarrier is installed...
+2022/02/26 14:54:27 	/global/home/users/bwilliams/openhpca/build/install/OSU/libexec/osu-micro-benchmarks/mpi/collective/osu_ibarrier exists
+2022/02/26 14:54:27 -> Checking if bcast is installed...
+2022/02/26 14:54:27 	/global/home/users/bwilliams/openhpca/build/install/OSU/libexec/osu-micro-benchmarks/mpi/collective/osu_bcast exists
+2022/02/26 14:54:27 -> Checking if igather is installed...
+2022/02/26 14:54:27 	/global/home/users/bwilliams/openhpca/build/install/OSU/libexec/osu-micro-benchmarks/mpi/collective/osu_igather exists
+2022/02/26 14:54:27 -> Checking if scatter is installed...
+2022/02/26 14:54:27 	/global/home/users/bwilliams/openhpca/build/install/OSU/libexec/osu-micro-benchmarks/mpi/collective/osu_scatter exists
+2022/02/26 14:54:27 -> Checking if latency is installed...
+2022/02/26 14:54:27 	/global/home/users/bwilliams/openhpca/build/install/OSU/libexec/osu-micro-benchmarks/mpi/pt2pt/osu_latency exists
+2022/02/26 14:54:27 -> Checking if alltoall is installed...
+2022/02/26 14:54:27 	/global/home/users/bwilliams/openhpca/build/install/OSU/libexec/osu-micro-benchmarks/mpi/collective/osu_alltoall exists
+2022/02/26 14:54:27 -> Checking if ialltoall is installed...
+2022/02/26 14:54:27 	/global/home/users/bwilliams/openhpca/build/install/OSU/libexec/osu-micro-benchmarks/mpi/collective/osu_ialltoall exists
+2022/02/26 14:54:27 -> Checking if allgatherv is installed...
+2022/02/26 14:54:27 	/global/home/users/bwilliams/openhpca/build/install/OSU/libexec/osu-micro-benchmarks/mpi/collective/osu_allgatherv exists
+2022/02/26 14:54:27 -> Checking if iallgatherv is installed...
+2022/02/26 14:54:27 	/global/home/users/bwilliams/openhpca/build/install/OSU/libexec/osu-micro-benchmarks/mpi/collective/osu_iallgatherv exists
+2022/02/26 14:54:27 -> Checking if ialltoallw is installed...
+2022/02/26 14:54:27 	/global/home/users/bwilliams/openhpca/build/install/OSU/libexec/osu-micro-benchmarks/mpi/collective/osu_ialltoallw exists
+2022/02/26 14:54:27 -> Checking if igatherv is installed...
+2022/02/26 14:54:27 	/global/home/users/bwilliams/openhpca/build/install/OSU/libexec/osu-micro-benchmarks/mpi/collective/osu_igatherv exists
+2022/02/26 14:54:27 -> Checking if ialltoallv is installed...
+2022/02/26 14:54:27 	/global/home/users/bwilliams/openhpca/build/install/OSU/libexec/osu-micro-benchmarks/mpi/collective/osu_ialltoallv exists
+2022/02/26 14:54:27 -> Checking if barrier is installed...
+2022/02/26 14:54:27 	/global/home/users/bwilliams/openhpca/build/install/OSU/libexec/osu-micro-benchmarks/mpi/collective/osu_barrier exists
+2022/02/26 14:54:27 -> Checking if ibcast is installed...
+2022/02/26 14:54:27 	/global/home/users/bwilliams/openhpca/build/install/OSU/libexec/osu-micro-benchmarks/mpi/collective/osu_ibcast exists
+2022/02/26 14:54:27 -> Checking if gatherv is installed...
+2022/02/26 14:54:27 	/global/home/users/bwilliams/openhpca/build/install/OSU/libexec/osu-micro-benchmarks/mpi/collective/osu_gatherv exists
+2022/02/26 14:54:27 -> Checking if ireduce_scatter is installed...
+2022/02/26 14:54:27 	/global/home/users/bwilliams/openhpca/build/install/OSU/libexec/osu-micro-benchmarks/mpi/collective/osu_ireduce_scatter does not exist
+2022/02/26 14:54:27 -> Checking if iscatter is installed...
+2022/02/26 14:54:27 	/global/home/users/bwilliams/openhpca/build/install/OSU/libexec/osu-micro-benchmarks/mpi/collective/osu_iscatter exists
+2022/02/26 14:54:27 -> Checking if reduce is installed...
+2022/02/26 14:54:27 	/global/home/users/bwilliams/openhpca/build/install/OSU/libexec/osu-micro-benchmarks/mpi/collective/osu_reduce exists
+2022/02/26 14:54:27 -> Checking if reduce_scatter is installed...
+2022/02/26 14:54:27 	/global/home/users/bwilliams/openhpca/build/install/OSU/libexec/osu-micro-benchmarks/mpi/collective/osu_reduce_scatter exists
+2022/02/26 14:54:27 -> Checking if scatterv is installed...
+2022/02/26 14:54:27 	/global/home/users/bwilliams/openhpca/build/install/OSU/libexec/osu-micro-benchmarks/mpi/collective/osu_scatter exists
+2022/02/26 14:54:27 -> Checking if iscatterv is installed...
+2022/02/26 14:54:27 	/global/home/users/bwilliams/openhpca/build/install/OSU/libexec/osu-micro-benchmarks/mpi/collective/osu_iscatter exists
+2022/02/26 14:54:27 -> Checking if scatter is installed...
+2022/02/26 14:54:27 	/global/home/users/bwilliams/openhpca/build/install/osu_noncontig_mem/libexec/osu-micro-benchmarks/mpi/collective/osu_scatter does not exist
+2022/02/26 14:54:27 -> Checking if bw is installed...
+2022/02/26 14:54:27 	/global/home/users/bwilliams/openhpca/build/install/osu_noncontig_mem/libexec/osu-micro-benchmarks/mpi/pt2pt/osu_bw does not exist
+2022/02/26 14:54:27 -> Checking if allgatherv is installed...
+2022/02/26 14:54:27 	/global/home/users/bwilliams/openhpca/build/install/osu_noncontig_mem/libexec/osu-micro-benchmarks/mpi/collective/osu_allgatherv does not exist
+2022/02/26 14:54:27 -> Checking if allreduce is installed...
+2022/02/26 14:54:27 	/global/home/users/bwilliams/openhpca/build/install/osu_noncontig_mem/libexec/osu-micro-benchmarks/mpi/collective/osu_allreduce does not exist
+2022/02/26 14:54:27 -> Checking if ialltoallw is installed...
+2022/02/26 14:54:27 	/global/home/users/bwilliams/openhpca/build/install/osu_noncontig_mem/libexec/osu-micro-benchmarks/mpi/collective/osu_ialltoallw does not exist
+2022/02/26 14:54:27 -> Checking if barrier is installed...
+2022/02/26 14:54:27 	/global/home/users/bwilliams/openhpca/build/install/osu_noncontig_mem/libexec/osu-micro-benchmarks/mpi/collective/osu_barrier does not exist
+2022/02/26 14:54:27 -> Checking if ibcast is installed...
+2022/02/26 14:54:27 	/global/home/users/bwilliams/openhpca/build/install/osu_noncontig_mem/libexec/osu-micro-benchmarks/mpi/collective/osu_ibcast does not exist
+2022/02/26 14:54:27 -> Checking if ialltoallv is installed...
+2022/02/26 14:54:27 	/global/home/users/bwilliams/openhpca/build/install/osu_noncontig_mem/libexec/osu-micro-benchmarks/mpi/collective/osu_ialltoallv does not exist
+2022/02/26 14:54:27 -> Checking if gather is installed...
+2022/02/26 14:54:27 	/global/home/users/bwilliams/openhpca/build/install/osu_noncontig_mem/libexec/osu-micro-benchmarks/mpi/collective/osu_gather does not exist
+2022/02/26 14:54:27 -> Checking if ialltoall is installed...
+2022/02/26 14:54:27 	/global/home/users/bwilliams/openhpca/build/install/osu_noncontig_mem/libexec/osu-micro-benchmarks/mpi/collective/osu_ialltoall does not exist
+2022/02/26 14:54:27 -> Checking if iscatterv is installed...
+2022/02/26 14:54:27 	/global/home/users/bwilliams/openhpca/build/install/osu_noncontig_mem/libexec/osu-micro-benchmarks/mpi/collective/osu_iscatter does not exist
+2022/02/26 14:54:27 -> Checking if iallgatherv is installed...
+2022/02/26 14:54:27 	/global/home/users/bwilliams/openhpca/build/install/osu_noncontig_mem/libexec/osu-micro-benchmarks/mpi/collective/osu_iallgatherv does not exist
+2022/02/26 14:54:27 -> Checking if alltoall is installed...
+2022/02/26 14:54:27 	/global/home/users/bwilliams/openhpca/build/install/osu_noncontig_mem/libexec/osu-micro-benchmarks/mpi/collective/osu_alltoall does not exist
+2022/02/26 14:54:27 -> Checking if alltoallw is installed...
+2022/02/26 14:54:27 	/global/home/users/bwilliams/openhpca/build/install/osu_noncontig_mem/libexec/osu-micro-benchmarks/mpi/collective/osu_alltoallw does not exist
+2022/02/26 14:54:27 -> Checking if reduce is installed...
+2022/02/26 14:54:27 	/global/home/users/bwilliams/openhpca/build/install/osu_noncontig_mem/libexec/osu-micro-benchmarks/mpi/collective/osu_reduce does not exist
+2022/02/26 14:54:27 -> Checking if iscatter is installed...
+2022/02/26 14:54:27 	/global/home/users/bwilliams/openhpca/build/install/osu_noncontig_mem/libexec/osu-micro-benchmarks/mpi/collective/osu_iscatter does not exist
+2022/02/26 14:54:27 -> Checking if scatterv is installed...
+2022/02/26 14:54:27 	/global/home/users/bwilliams/openhpca/build/install/osu_noncontig_mem/libexec/osu-micro-benchmarks/mpi/collective/osu_scatter does not exist
+2022/02/26 14:54:27 -> Checking if gatherv is installed...
+2022/02/26 14:54:27 	/global/home/users/bwilliams/openhpca/build/install/osu_noncontig_mem/libexec/osu-micro-benchmarks/mpi/collective/osu_gatherv does not exist
+2022/02/26 14:54:27 -> Checking if igather is installed...
+2022/02/26 14:54:27 	/global/home/users/bwilliams/openhpca/build/install/osu_noncontig_mem/libexec/osu-micro-benchmarks/mpi/collective/osu_igather does not exist
+2022/02/26 14:54:27 -> Checking if reduce_scatter is installed...
+2022/02/26 14:54:27 	/global/home/users/bwilliams/openhpca/build/install/osu_noncontig_mem/libexec/osu-micro-benchmarks/mpi/collective/osu_reduce_scatter does not exist
+2022/02/26 14:54:27 -> Checking if allgather is installed...
+2022/02/26 14:54:27 	/global/home/users/bwilliams/openhpca/build/install/osu_noncontig_mem/libexec/osu-micro-benchmarks/mpi/collective/osu_allgather does not exist
+2022/02/26 14:54:27 -> Checking if iallgather is installed...
+2022/02/26 14:54:27 	/global/home/users/bwilliams/openhpca/build/install/osu_noncontig_mem/libexec/osu-micro-benchmarks/mpi/collective/osu_iallgather does not exist
+2022/02/26 14:54:27 -> Checking if alltoallv is installed...
+2022/02/26 14:54:27 	/global/home/users/bwilliams/openhpca/build/install/osu_noncontig_mem/libexec/osu-micro-benchmarks/mpi/collective/osu_alltoallv does not exist
+2022/02/26 14:54:27 -> Checking if ibarrier is installed...
+2022/02/26 14:54:27 	/global/home/users/bwilliams/openhpca/build/install/osu_noncontig_mem/libexec/osu-micro-benchmarks/mpi/collective/osu_ibarrier does not exist
+2022/02/26 14:54:27 -> Checking if bcast is installed...
+2022/02/26 14:54:27 	/global/home/users/bwilliams/openhpca/build/install/osu_noncontig_mem/libexec/osu-micro-benchmarks/mpi/collective/osu_bcast does not exist
+2022/02/26 14:54:27 -> Checking if iallreduce is installed...
+2022/02/26 14:54:27 	/global/home/users/bwilliams/openhpca/build/install/osu_noncontig_mem/libexec/osu-micro-benchmarks/mpi/collective/osu_iallreduce does not exist
+2022/02/26 14:54:27 -> Checking if igatherv is installed...
+2022/02/26 14:54:27 	/global/home/users/bwilliams/openhpca/build/install/osu_noncontig_mem/libexec/osu-micro-benchmarks/mpi/collective/osu_igatherv does not exist
+2022/02/26 14:54:27 -> Checking if ireduce is installed...
+2022/02/26 14:54:27 	/global/home/users/bwilliams/openhpca/build/install/osu_noncontig_mem/libexec/osu-micro-benchmarks/mpi/collective/osu_ireduce does not exist
+2022/02/26 14:54:27 -> Checking if ireduce_scatter is installed...
+2022/02/26 14:54:27 	/global/home/users/bwilliams/openhpca/build/install/osu_noncontig_mem/libexec/osu-micro-benchmarks/mpi/collective/osu_ireduce_scatter does not exist
+2022/02/26 14:54:27 -> Checking if latency is installed...
+2022/02/26 14:54:27 	/global/home/users/bwilliams/openhpca/build/install/osu_noncontig_mem/libexec/osu-micro-benchmarks/mpi/pt2pt/osu_latency does not exist
+2022/02/26 14:54:27 Detecting SMB installation...
+2022/02/26 14:54:27 -> Checking if mpi_overhead is installed...
+2022/02/26 14:54:27 	/global/home/users/bwilliams/openhpca/build/install/mpi_overhead/mpi_overhead/mpi_overhead exists
+2022/02/26 14:54:27 -> Checking if msgrate is installed...
+2022/02/26 14:54:27 	 does not exist
+2022/02/26 14:54:27 -> Checking if rma_mt_mpi is installed...
+2022/02/26 14:54:27 	/global/home/users/bwilliams/openhpca/build/install/rma_mt_mpi/rma_mt_mpi/msgrate exists
+2022/02/26 14:54:27 Detecting overlap installation...
+2022/02/26 14:54:27 -> Checking if overlap_igatherv is installed...
+2022/02/26 14:54:27 	/global/home/users/bwilliams/openhpca/build/install/overlap/overlap/overlap_igatherv exists
+2022/02/26 14:54:27 -> Checking if overlap_iallgather is installed...
+2022/02/26 14:54:27 	/global/home/users/bwilliams/openhpca/build/install/overlap/overlap/overlap_iallgather exists
+2022/02/26 14:54:27 -> Checking if overlap_iallgatherv is installed...
+2022/02/26 14:54:27 	/global/home/users/bwilliams/openhpca/build/install/overlap/overlap/overlap_iallgatherv exists
+2022/02/26 14:54:27 -> Checking if overlap_iallreduce is installed...
+2022/02/26 14:54:27 	/global/home/users/bwilliams/openhpca/build/install/overlap/overlap/overlap_iallreduce exists
+2022/02/26 14:54:27 -> Checking if overlap_ireduce is installed...
+2022/02/26 14:54:27 	/global/home/users/bwilliams/openhpca/build/install/overlap/overlap/overlap_ireduce exists
+2022/02/26 14:54:27 -> Checking if overlap_ialltoall is installed...
+2022/02/26 14:54:27 	/global/home/users/bwilliams/openhpca/build/install/overlap/overlap/overlap_ialltoall exists
+2022/02/26 14:54:27 -> Checking if overlap_ibarrier is installed...
+2022/02/26 14:54:27 	/global/home/users/bwilliams/openhpca/build/install/overlap/overlap/overlap_ibarrier exists
+2022/02/26 14:54:27 -> Checking if overlap_ibcast is installed...
+2022/02/26 14:54:27 	/global/home/users/bwilliams/openhpca/build/install/overlap/overlap/overlap_ibcast exists
+2022/02/26 14:54:27 -> Checking if overlap_ialltoallv is installed...
+2022/02/26 14:54:27 	/global/home/users/bwilliams/openhpca/build/install/overlap/overlap/overlap_ialltoallv exists
+2022/02/26 14:54:27 -> Checking if overlap_igather is installed...
+2022/02/26 14:54:27 	/global/home/users/bwilliams/openhpca/build/install/overlap/overlap/overlap_igather exists
+2022/02/26 14:54:27 3 benchmarks being executed:
+2022/02/26 14:54:27  - osu: latency
+2022/02/26 14:54:27  - osu: bw
+2022/02/26 14:54:27  - smb: mpi_overhead
+2022/02/26 14:54:27  - overlap: overlap_iallreduce
+2022/02/26 14:54:27  - overlap: overlap_ireduce
+2022/02/26 14:54:27  - overlap: overlap_iallgather
+2022/02/26 14:54:27  - overlap: overlap_iallgatherv
+2022/02/26 14:54:27  - overlap: overlap_ialltoall
+2022/02/26 14:54:27  - overlap: overlap_ialltoallv
+2022/02/26 14:54:27  - overlap: overlap_ibcast
+2022/02/26 14:54:27  - overlap: overlap_igather
+2022/02/26 14:54:27  - overlap: overlap_igatherv
+2022/02/26 14:54:27 12 experiments to run
+runtime: adding 1 to work group2022/02/26 14:54:27 1 experiments are pending
+2022/02/26 14:54:27 no build environment defined, not trying to build application
+2022/02/26 14:54:27 -> Running /global/home/users/bwilliams/ompi_x86/build/bin/ompi_info --version from 
+2022/02/26 14:54:27 Launching experiment 0 from /global/home/users/bwilliams/openhpca/build/run using 
+2022/02/26 14:54:27 batch script ready: /global/home/users/bwilliams/openhpca/build/run/sbatch-220226145427-4411e2643cd6f00db1f6ba851a5e4399a7427825bbc0624a76d10df3.sh
+2022/02/26 14:54:27 -> Running /usr/bin/sbatch /global/home/users/bwilliams/openhpca/build/run/sbatch-220226145427-4411e2643cd6f00db1f6ba851a5e4399a7427825bbc0624a76d10df3.sh from /global/home/users/bwilliams/openhpca/build/run
+2022/02/26 14:54:27 4 experiments are pending
+2022/02/26 14:54:27 no build environment defined, not trying to build application
+2022/02/26 14:54:27 -> Running /global/home/users/bwilliams/ompi_x86/build/bin/ompi_info --version from 
+2022/02/26 14:54:27 Launching experiment 1 from /global/home/users/bwilliams/openhpca/build/run using 
+2022/02/26 14:54:27 batch script ready: /global/home/users/bwilliams/openhpca/build/run/sbatch-220226145427-6fe934b9e58d1c1d6608931e24b9ba50cdc267ac82be507a6298195e.sh
+2022/02/26 14:54:27 -> Running /usr/bin/sbatch /global/home/users/bwilliams/openhpca/build/run/sbatch-220226145427-6fe934b9e58d1c1d6608931e24b9ba50cdc267ac82be507a6298195e.sh from /global/home/users/bwilliams/openhpca/build/run
+2022/02/26 14:54:27 8 experiments are pending
+2022/02/26 14:54:27 no build environment defined, not trying to build application
+2022/02/26 14:54:27 -> Running /global/home/users/bwilliams/ompi_x86/build/bin/ompi_info --version from 
+2022/02/26 14:54:27 Launching experiment 2 from /global/home/users/bwilliams/openhpca/build/run using 
+2022/02/26 14:54:27 batch script ready: /global/home/users/bwilliams/openhpca/build/run/sbatch-220226145427-f19b68df31f6679e42668ee3f7c2ef326fa026c8ec7061986bca77ac.sh
+2022/02/26 14:54:27 -> Running /usr/bin/sbatch /global/home/users/bwilliams/openhpca/build/run/sbatch-220226145427-f19b68df31f6679e42668ee3f7c2ef326fa026c8ec7061986bca77ac.sh from /global/home/users/bwilliams/openhpca/build/run
+2022/02/26 14:54:27 -> Running /usr/bin/squeue -j 357325 --format=%t from 
+2022/02/26 14:54:27 -> Running /usr/bin/squeue -j 357326 --format=%t from 
+2022/02/26 14:54:27 9 experiments are pending
+2022/02/26 14:54:27 no build environment defined, not trying to build application
+2022/02/26 14:54:27 -> Running /global/home/users/bwilliams/ompi_x86/build/bin/ompi_info --version from 
+2022/02/26 14:54:27 Launching experiment 3 from /global/home/users/bwilliams/openhpca/build/run using 
+2022/02/26 14:54:27 -> Running /usr/bin/squeue -j 357327 --format=%t from 
+2022/02/26 14:54:27 batch script ready: /global/home/users/bwilliams/openhpca/build/run/sbatch-220226145427-06ebccbba8e0da31e15f23adbfc6bb8e75b7a6c37165be7c14d2bb0d.sh
+2022/02/26 14:54:27 -> Running /usr/bin/sbatch /global/home/users/bwilliams/openhpca/build/run/sbatch-220226145427-06ebccbba8e0da31e15f23adbfc6bb8e75b7a6c37165be7c14d2bb0d.sh from /global/home/users/bwilliams/openhpca/build/run
+2022/02/26 14:54:27 -> Running /usr/bin/squeue -j 0 --format=%t from 
+2022/02/26 14:54:27 8 experiments are pending
+2022/02/26 14:54:27 no build environment defined, not trying to build application
+2022/02/26 14:54:27 -> Running /global/home/users/bwilliams/ompi_x86/build/bin/ompi_info --version from 
+2022/02/26 14:54:27 Launching experiment 4 from /global/home/users/bwilliams/openhpca/build/run using 
+2022/02/26 14:54:27 batch script ready: /global/home/users/bwilliams/openhpca/build/run/sbatch-220226145427-1adee0bcfab1b206a48d38b599bc1aa0650a1d730b48bc98d5f4c73e.sh
+2022/02/26 14:54:27 -> Running /usr/bin/sbatch /global/home/users/bwilliams/openhpca/build/run/sbatch-220226145427-1adee0bcfab1b206a48d38b599bc1aa0650a1d730b48bc98d5f4c73e.sh from /global/home/users/bwilliams/openhpca/build/run
+2022/02/26 14:54:27 5 experiments are running
+2022/02/26 14:54:27 -> Running /usr/bin/squeue -j 357325 --format=%t from 
+2022/02/26 14:54:27 -> Running /usr/bin/squeue -j 357326 --format=%t from 
+2022/02/26 14:54:27 -> Running /usr/bin/squeue -j 357327 --format=%t from 
+2022/02/26 14:54:27 -> Running /usr/bin/squeue -j 357328 --format=%t from 
+2022/02/26 14:54:27 -> Running /usr/bin/squeue -j 357329 --format=%t from 
+2022/02/26 14:54:27 5 experiments are running
+2022/02/26 14:54:27 -> Running /usr/bin/squeue -j 357325 --format=%t from 
+2022/02/26 14:54:27 -> Running /usr/bin/squeue -j 357326 --format=%t from 
+2022/02/26 14:54:27 -> Running /usr/bin/squeue -j 357327 --format=%t from 
+2022/02/26 14:54:27 -> Running /usr/bin/squeue -j 357328 --format=%t from 
+2022/02/26 14:54:27 -> Running /usr/bin/squeue -j 357329 --format=%t from 
+2022/02/26 14:54:27 5 experiments are running
+2022/02/26 14:54:27 -> Running /usr/bin/squeue -j 357325 --format=%t from 
+2022/02/26 14:54:27 -> Running /usr/bin/squeue -j 357326 --format=%t from 
+2022/02/26 14:54:27 -> Running /usr/bin/squeue -j 357327 --format=%t from 
+2022/02/26 14:54:27 -> Running /usr/bin/squeue -j 357328 --format=%t from 
+2022/02/26 14:54:27 -> Running /usr/bin/squeue -j 357329 --format=%t from 
+2022/02/26 14:54:27 5 experiments are running
+2022/02/26 14:54:27 -> Running /usr/bin/squeue -j 357325 --format=%t from 
+2022/02/26 14:54:27 -> Running /usr/bin/squeue -j 357326 --format=%t from 
+2022/02/26 14:54:27 -> Running /usr/bin/squeue -j 357327 --format=%t from 
+2022/02/26 14:54:27 -> Running /usr/bin/squeue -j 357328 --format=%t from 
+2022/02/26 14:54:27 -> Running /usr/bin/squeue -j 357329 --format=%t from 
+2022/02/26 14:54:27 5 experiments are running
+2022/02/26 14:54:27 -> Running /usr/bin/squeue -j 357325 --format=%t from 
+2022/02/26 14:54:27 -> Running /usr/bin/squeue -j 357326 --format=%t from 
+2022/02/26 14:54:27 -> Running /usr/bin/squeue -j 357327 --format=%t from 
+2022/02/26 14:54:27 -> Running /usr/bin/squeue -j 357328 --format=%t from 
+2022/02/26 14:54:27 -> Running /usr/bin/squeue -j 357329 --format=%t from 
+2022/02/26 14:55:27 7 experiments are pending
+2022/02/26 14:55:27 5 experiments are running
+2022/02/26 14:55:27 -> Running /usr/bin/squeue -j 357325 --format=%t from 
+2022/02/26 14:55:27 -> Running /usr/bin/sacct -j 357325 --format=state from 
+2022/02/26 14:55:27 Experiment 0 has completed; 7 pending, 5 running
+2022/02/26 14:55:27 -> Running /usr/bin/squeue -j 357326 --format=%t from 
+2022/02/26 14:55:27 -> Running /usr/bin/sacct -j 357326 --format=state from 
+2022/02/26 14:55:27 Experiment 1 has completed; 7 pending, 4 running
+2022/02/26 14:55:27 -> Running /usr/bin/squeue -j 357327 --format=%t from 
+2022/02/26 14:55:27 -> Running /usr/bin/sacct -j 357327 --format=state from 
+2022/02/26 14:55:28 Experiment 2 has completed; 7 pending, 3 running
+2022/02/26 14:55:28 -> Running /usr/bin/squeue -j 357328 --format=%t from 
+2022/02/26 14:55:28 -> Running /usr/bin/sacct -j 357328 --format=state from 
+2022/02/26 14:55:28 Experiment 3 has completed; 7 pending, 2 running
+2022/02/26 14:55:28 -> Running /usr/bin/squeue -j 357329 --format=%t from 
+2022/02/26 14:55:28 -> Running /usr/bin/sacct -j 357329 --format=state from 
+2022/02/26 14:55:28 Experiment 4 has completed; 7 pending, 1 running
+2022/02/26 14:56:28 7 experiments are pending
+2022/02/26 14:56:28 no build environment defined, not trying to build application
+2022/02/26 14:56:28 -> Running /global/home/users/bwilliams/ompi_x86/build/bin/ompi_info --version from 
+2022/02/26 14:56:28 Launching experiment 5 from /global/home/users/bwilliams/openhpca/build/run using 
+2022/02/26 14:56:28 batch script ready: /global/home/users/bwilliams/openhpca/build/run/sbatch-220226145628-56de42347248e7d3241a46d1c8b2e5417b5173a354a36a83b59db8a6.sh
+2022/02/26 14:56:28 -> Running /usr/bin/sbatch /global/home/users/bwilliams/openhpca/build/run/sbatch-220226145628-56de42347248e7d3241a46d1c8b2e5417b5173a354a36a83b59db8a6.sh from /global/home/users/bwilliams/openhpca/build/run
+2022/02/26 14:56:28 6 experiments are pending
+2022/02/26 14:56:28 no build environment defined, not trying to build application
+2022/02/26 14:56:28 -> Running /global/home/users/bwilliams/ompi_x86/build/bin/ompi_info --version from 
+2022/02/26 14:56:28 Launching experiment 6 from /global/home/users/bwilliams/openhpca/build/run using 
+2022/02/26 14:56:28 batch script ready: /global/home/users/bwilliams/openhpca/build/run/sbatch-220226145628-8b46b8dbd89e2de1489ad8cb95802234e6400ba8d2680569565f1187.sh
+2022/02/26 14:56:28 -> Running /usr/bin/sbatch /global/home/users/bwilliams/openhpca/build/run/sbatch-220226145628-8b46b8dbd89e2de1489ad8cb95802234e6400ba8d2680569565f1187.sh from /global/home/users/bwilliams/openhpca/build/run
+2022/02/26 14:56:28 5 experiments are pending
+2022/02/26 14:56:28 no build environment defined, not trying to build application
+2022/02/26 14:56:28 -> Running /global/home/users/bwilliams/ompi_x86/build/bin/ompi_info --version from 
+2022/02/26 14:56:28 Launching experiment 7 from /global/home/users/bwilliams/openhpca/build/run using 
+2022/02/26 14:56:28 batch script ready: /global/home/users/bwilliams/openhpca/build/run/sbatch-220226145628-ba62626c0f6f371ee0338616ef487d67067165974a1ade1e00adbc88.sh
+2022/02/26 14:56:28 -> Running /usr/bin/sbatch /global/home/users/bwilliams/openhpca/build/run/sbatch-220226145628-ba62626c0f6f371ee0338616ef487d67067165974a1ade1e00adbc88.sh from /global/home/users/bwilliams/openhpca/build/run
+2022/02/26 14:56:28 4 experiments are pending
+2022/02/26 14:56:28 no build environment defined, not trying to build application
+2022/02/26 14:56:28 -> Running /global/home/users/bwilliams/ompi_x86/build/bin/ompi_info --version from 
+2022/02/26 14:56:28 Launching experiment 8 from /global/home/users/bwilliams/openhpca/build/run using 
+2022/02/26 14:56:28 batch script ready: /global/home/users/bwilliams/openhpca/build/run/sbatch-220226145628-7213453f7bbc7f127b90ce92bbe4a457141b4227b4696f637bc20008.sh
+2022/02/26 14:56:28 -> Running /usr/bin/sbatch /global/home/users/bwilliams/openhpca/build/run/sbatch-220226145628-7213453f7bbc7f127b90ce92bbe4a457141b4227b4696f637bc20008.sh from /global/home/users/bwilliams/openhpca/build/run
+2022/02/26 14:56:28 3 experiments are pending
+2022/02/26 14:56:28 no build environment defined, not trying to build application
+2022/02/26 14:56:28 -> Running /global/home/users/bwilliams/ompi_x86/build/bin/ompi_info --version from 
+2022/02/26 14:56:28 Launching experiment 9 from /global/home/users/bwilliams/openhpca/build/run using 
+2022/02/26 14:56:28 batch script ready: /global/home/users/bwilliams/openhpca/build/run/sbatch-220226145628-b0590d8f3d9d07d5f825f4f00081055a677562f46b6525c4d5823b70.sh
+2022/02/26 14:56:28 -> Running /usr/bin/sbatch /global/home/users/bwilliams/openhpca/build/run/sbatch-220226145628-b0590d8f3d9d07d5f825f4f00081055a677562f46b6525c4d5823b70.sh from /global/home/users/bwilliams/openhpca/build/run
+2022/02/26 14:56:28 5 experiments are running
+2022/02/26 14:56:28 -> Running /usr/bin/squeue -j 357330 --format=%t from 
+2022/02/26 14:56:28 -> Running /usr/bin/squeue -j 357331 --format=%t from 
+2022/02/26 14:56:28 -> Running /usr/bin/squeue -j 357332 --format=%t from 
+2022/02/26 14:56:28 -> Running /usr/bin/squeue -j 357333 --format=%t from 
+2022/02/26 14:56:28 -> Running /usr/bin/squeue -j 357334 --format=%t from 
+2022/02/26 14:56:28 5 experiments are running
+2022/02/26 14:56:28 -> Running /usr/bin/squeue -j 357330 --format=%t from 
+2022/02/26 14:56:28 -> Running /usr/bin/squeue -j 357331 --format=%t from 
+2022/02/26 14:56:28 -> Running /usr/bin/squeue -j 357332 --format=%t from 
+2022/02/26 14:56:28 -> Running /usr/bin/squeue -j 357333 --format=%t from 
+2022/02/26 14:56:28 -> Running /usr/bin/squeue -j 357334 --format=%t from 
+2022/02/26 14:56:28 5 experiments are running
+2022/02/26 14:56:28 -> Running /usr/bin/squeue -j 357330 --format=%t from 
+2022/02/26 14:56:28 -> Running /usr/bin/squeue -j 357331 --format=%t from 
+2022/02/26 14:56:28 -> Running /usr/bin/squeue -j 357332 --format=%t from 
+2022/02/26 14:56:28 -> Running /usr/bin/squeue -j 357333 --format=%t from 
+2022/02/26 14:56:28 -> Running /usr/bin/squeue -j 357334 --format=%t from 
+2022/02/26 14:56:28 5 experiments are running
+2022/02/26 14:56:28 -> Running /usr/bin/squeue -j 357330 --format=%t from 
+2022/02/26 14:56:28 -> Running /usr/bin/squeue -j 357331 --format=%t from 
+2022/02/26 14:56:28 -> Running /usr/bin/squeue -j 357332 --format=%t from 
+2022/02/26 14:56:28 -> Running /usr/bin/squeue -j 357333 --format=%t from 
+2022/02/26 14:56:28 -> Running /usr/bin/squeue -j 357334 --format=%t from 
+2022/02/26 14:56:28 5 experiments are running
+2022/02/26 14:56:28 -> Running /usr/bin/squeue -j 357330 --format=%t from 
+2022/02/26 14:56:28 -> Running /usr/bin/squeue -j 357331 --format=%t from 
+2022/02/26 14:56:28 -> Running /usr/bin/squeue -j 357332 --format=%t from 
+2022/02/26 14:56:28 -> Running /usr/bin/squeue -j 357333 --format=%t from 
+2022/02/26 14:56:28 -> Running /usr/bin/squeue -j 357334 --format=%t from 
+2022/02/26 14:57:28 2 experiments are pending
+2022/02/26 14:57:28 5 experiments are running
+2022/02/26 14:57:28 -> Running /usr/bin/squeue -j 357330 --format=%t from 
+2022/02/26 14:57:28 -> Running /usr/bin/sacct -j 357330 --format=state from 
+2022/02/26 14:57:28 Experiment 5 has completed; 2 pending, 5 running
+2022/02/26 14:57:28 -> Running /usr/bin/squeue -j 357331 --format=%t from 
+2022/02/26 14:57:28 -> Running /usr/bin/sacct -j 357331 --format=state from 
+2022/02/26 14:57:28 Experiment 6 has completed; 2 pending, 4 running
+2022/02/26 14:57:28 -> Running /usr/bin/squeue -j 357332 --format=%t from 
+2022/02/26 14:57:28 -> Running /usr/bin/sacct -j 357332 --format=state from 
+2022/02/26 14:57:28 Experiment 7 has completed; 2 pending, 3 running
+2022/02/26 14:57:28 -> Running /usr/bin/squeue -j 357333 --format=%t from 
+2022/02/26 14:57:28 -> Running /usr/bin/sacct -j 357333 --format=state from 
+2022/02/26 14:57:28 Experiment 8 has completed; 2 pending, 2 running
+2022/02/26 14:57:28 -> Running /usr/bin/squeue -j 357334 --format=%t from 
+2022/02/26 14:57:28 -> Running /usr/bin/sacct -j 357334 --format=state from 
+2022/02/26 14:57:29 Experiment 9 has completed; 2 pending, 1 running
+2022/02/26 14:58:29 2 experiments are pending
+2022/02/26 14:58:29 no build environment defined, not trying to build application
+2022/02/26 14:58:29 -> Running /global/home/users/bwilliams/ompi_x86/build/bin/ompi_info --version from 
+2022/02/26 14:58:29 Launching experiment 10 from /global/home/users/bwilliams/openhpca/build/run using 
+2022/02/26 14:58:29 batch script ready: /global/home/users/bwilliams/openhpca/build/run/sbatch-220226145829-2f9b1c9a65d9aba27f45b08c1af210cd248f19d09f5bf0e31a6d9276.sh
+2022/02/26 14:58:29 -> Running /usr/bin/sbatch /global/home/users/bwilliams/openhpca/build/run/sbatch-220226145829-2f9b1c9a65d9aba27f45b08c1af210cd248f19d09f5bf0e31a6d9276.sh from /global/home/users/bwilliams/openhpca/build/run
+2022/02/26 14:58:29 1 experiments are pending
+2022/02/26 14:58:29 no build environment defined, not trying to build application
+2022/02/26 14:58:29 -> Running /global/home/users/bwilliams/ompi_x86/build/bin/ompi_info --version from 
+2022/02/26 14:58:29 Launching experiment 11 from /global/home/users/bwilliams/openhpca/build/run using 
+2022/02/26 14:58:29 batch script ready: /global/home/users/bwilliams/openhpca/build/run/sbatch-220226145829-fd74a2bc446b1a08724c879b8357e2d976139aa8e3d9cf08644b714d.sh
+2022/02/26 14:58:29 -> Running /usr/bin/sbatch /global/home/users/bwilliams/openhpca/build/run/sbatch-220226145829-fd74a2bc446b1a08724c879b8357e2d976139aa8e3d9cf08644b714d.sh from /global/home/users/bwilliams/openhpca/build/run
+2022/02/26 14:58:29 2 experiments are running
+2022/02/26 14:58:29 -> Running /usr/bin/squeue -j 357335 --format=%t from 
+2022/02/26 14:58:29 -> Running /usr/bin/squeue -j 357336 --format=%t from 
+2022/02/26 14:58:29 2 experiments are running
+2022/02/26 14:58:29 -> Running /usr/bin/squeue -j 357335 --format=%t from 
+2022/02/26 14:58:29 -> Running /usr/bin/squeue -j 357336 --format=%t from 
+2022/02/26 14:59:27 -> Running /usr/bin/squeue -j 357325 --format=%t from 
+2022/02/26 14:59:27 -> Running /usr/bin/sacct -j 357325 --format=state from 
+2022/02/26 14:59:27 -> Running /usr/bin/squeue -j 357326 --format=%t from 
+2022/02/26 14:59:27 -> Running /usr/bin/sacct -j 357326 --format=state from 
+2022/02/26 14:59:27 -> Running /usr/bin/squeue -j 357327 --format=%t from 
+2022/02/26 14:59:27 -> Running /usr/bin/sacct -j 357327 --format=state from 
+2022/02/26 14:59:27 -> Running /usr/bin/squeue -j 357328 --format=%t from 
+2022/02/26 14:59:27 -> Running /usr/bin/sacct -j 357328 --format=state from 
+2022/02/26 14:59:27 -> Running /usr/bin/squeue -j 357329 --format=%t from 
+2022/02/26 14:59:27 -> Running /usr/bin/sacct -j 357329 --format=state from 
+2022/02/26 14:59:27 -> Running /usr/bin/squeue -j 357330 --format=%t from 
+2022/02/26 14:59:27 -> Running /usr/bin/sacct -j 357330 --format=state from 
+2022/02/26 14:59:27 -> Running /usr/bin/squeue -j 357331 --format=%t from 
+2022/02/26 14:59:27 -> Running /usr/bin/sacct -j 357331 --format=state from 
+2022/02/26 14:59:27 -> Running /usr/bin/squeue -j 357332 --format=%t from 
+2022/02/26 14:59:28 -> Running /usr/bin/sacct -j 357332 --format=state from 
+2022/02/26 14:59:28 -> Running /usr/bin/squeue -j 357333 --format=%t from 
+2022/02/26 14:59:28 -> Running /usr/bin/sacct -j 357333 --format=state from 
+2022/02/26 14:59:28 -> Running /usr/bin/squeue -j 357334 --format=%t from 
+2022/02/26 14:59:28 -> Running /usr/bin/sacct -j 357334 --format=state from 
+2022/02/26 14:59:28 -> Running /usr/bin/squeue -j 357335 --format=%t from 
+2022/02/26 14:59:28 -> Running /usr/bin/sacct -j 357335 --format=state from 
+2022/02/26 14:59:28 -> Running /usr/bin/squeue -j 357336 --format=%t from 
+2022/02/26 14:59:28 -> Running /usr/bin/sacct -j 357336 --format=state from 
+2022/02/26 14:59:29 0 experiments are pending
+2022/02/26 14:59:29 2 experiments are running
+2022/02/26 14:59:29 -> Running /usr/bin/squeue -j 357335 --format=%t from 
+2022/02/26 14:59:29 -> Running /usr/bin/sacct -j 357335 --format=state from 
+2022/02/26 14:59:29 Experiment 10 has completed; 0 pending, 2 running
+2022/02/26 14:59:29 -> Running /usr/bin/squeue -j 357336 --format=%t from 
+2022/02/26 14:59:29 -> Running /usr/bin/sacct -j 357336 --format=state from 
+2022/02/26 14:59:29 Experiment 11 has completed; 0 pending, 1 running
+2022/02/26 15:00:29 -> Running /usr/bin/squeue -j 357336 --format=%t from 
+2022/02/26 15:00:29 -> Running /usr/bin/sacct -j 357336 --format=state from 
+Runtime: all jobs completed, terminating...2022/02/26 15:00:29 -> Job successfully executed
+ERROR: unable to display results: content of /global/home/users/bwilliams/openhpca/build/run/f19b68df31f6679e42668ee3f7c2ef326fa026c8ec7061986bca77ac-220226145427-openmpi4.1.1.out is not compliant with SMB mpi_overhead format (6 lines instead of 4)

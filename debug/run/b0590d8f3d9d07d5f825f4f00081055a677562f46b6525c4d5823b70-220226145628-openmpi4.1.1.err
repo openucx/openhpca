@@ -1,0 +1,102 @@
+[thor011:395070:0:395070]        rndv.c:459  Assertion `status == UCS_OK' failed
+[thor010:764893:0:764893] Caught signal 11 (Segmentation fault: address not mapped to object at address (nil))
+
+/global/home/users/bwilliams/ucx_x86/src/ucp/rndv/rndv.c: [ ucp_rndv_progress_rma_zcopy_common() ]
+      ...
+      456 
+      457     if (req->send.mdesc == NULL) {
+      458         status = ucp_send_request_add_reg_lane(req, lane);
+==>   459         ucs_assert_always(status == UCS_OK);
+      460     }
+      461 
+      462     rsc_index = ucp_ep_get_rsc_index(ep, lane);
+
+==== backtrace (tid: 395070) ====
+ 0 0x0000000000068860 ucp_rndv_progress_rma_zcopy_common()  /global/home/users/bwilliams/ucx_x86/src/ucp/rndv/rndv.c:459
+ 1 0x0000000000068860 ucp_rndv_progress_rma_zcopy_common()  /global/home/users/bwilliams/ucx_x86/src/ucp/rndv/rndv.c:491
+ 2 0x0000000000069bf9 ucp_request_try_send()  /global/home/users/bwilliams/ucx_x86/src/ucp/core/ucp_request.inl:302
+ 3 0x0000000000069bf9 ucp_request_send()  /global/home/users/bwilliams/ucx_x86/src/ucp/core/ucp_request.inl:327
+ 4 0x0000000000069bf9 ucp_rndv_req_send_rma_get()  /global/home/users/bwilliams/ucx_x86/src/ucp/rndv/rndv.c:826
+ 5 0x000000000006cac6 ucp_rndv_receive()  /global/home/users/bwilliams/ucx_x86/src/ucp/rndv/rndv.c:1397
+ 6 0x0000000000088039 ucp_tag_rndv_process_rts()  /global/home/users/bwilliams/ucx_x86/src/ucp/tag/tag_rndv.c:49
+ 7 0x0000000000047650 uct_iface_invoke_am()  /global/home/users/bwilliams/ucx_x86/src/uct/base/uct_iface.h:769
+ 8 0x0000000000047650 uct_rc_mlx5_iface_common_am_handler()  /global/home/users/bwilliams/ucx_x86/src/uct/ib/rc/accel/rc_mlx5.inl:421
+ 9 0x0000000000047650 uct_rc_mlx5_iface_common_poll_rx()  /global/home/users/bwilliams/ucx_x86/src/uct/ib/rc/accel/rc_mlx5.inl:1443
+10 0x0000000000047650 uct_rc_mlx5_iface_progress()  /global/home/users/bwilliams/ucx_x86/src/uct/ib/rc/accel/rc_mlx5_iface.c:173
+11 0x0000000000047650 uct_rc_mlx5_iface_progress_cyclic()  /global/home/users/bwilliams/ucx_x86/src/uct/ib/rc/accel/rc_mlx5_iface.c:183
+12 0x0000000000041d0a ucs_callbackq_dispatch()  /global/home/users/bwilliams/ucx_x86/src/ucs/datastruct/callbackq.h:211
+13 0x0000000000041d0a uct_worker_progress()  /global/home/users/bwilliams/ucx_x86/src/uct/api/uct.h:2592
+14 0x0000000000041d0a ucp_worker_progress()  /global/home/users/bwilliams/ucx_x86/src/ucp/core/ucp_worker.c:2455
+15 0x000000000002ad9c opal_progress()  ???:0
+16 0x000000000004ea55 ompi_request_default_wait()  ???:0
+17 0x00000000000912c2 MPI_Wait()  ???:0
+18 0x0000000000407558 get_coll_config_info()  overlap_ibcast.c:0
+19 0x0000000000407fea time_driven_loop()  ???:0
+20 0x000000000040a215 main()  ???:0
+21 0x0000000000023493 __libc_start_main()  ???:0
+22 0x0000000000400f7e _start()  ???:0
+=================================
+[thor011:395070] *** Process received signal ***
+[thor011:395070] Signal: Aborted (6)
+[thor011:395070] Signal code:  (-6)
+[thor011:395070] [ 0] /lib64/libpthread.so.0(+0x12c20)[0x14ff0aaaac20]
+[thor011:395070] [ 1] /lib64/libc.so.6(gsignal+0x10f)[0x14ff0a70a37f]
+[thor011:395070] [ 2] /lib64/libc.so.6(abort+0x127)[0x14ff0a6f4db5]
+[thor011:395070] [ 3] /global/home/users/bwilliams/ucx_x86/build/lib/libucs.so.0(+0x5d5b5)[0x14fefd6fb5b5]
+[thor011:395070] [ 4] /global/home/users/bwilliams/ucx_x86/build/lib/libucs.so.0(ucs_fatal_error_format+0xd6)[0x14fefd6fb696]
+[thor011:395070] [ 5] /global/home/users/bwilliams/ucx_x86/build/lib/libucp.so.0(+0x68860)[0x14fefdcec860]
+[thor011:395070] [ 6] /global/home/users/bwilliams/ucx_x86/build/lib/libucp.so.0(+0x69bf9)[0x14fefdcedbf9]
+[thor011:395070] [ 7] /global/home/users/bwilliams/ucx_x86/build/lib/libucp.so.0(ucp_rndv_receive+0x1b6)[0x14fefdcf0ac6]
+[thor011:395070] [ 8] /global/home/users/bwilliams/ucx_x86/build/lib/libucp.so.0(ucp_tag_rndv_process_rts+0x1b9)[0x14fefdd0c039]
+[thor011:395070] [ 9] /global/home/users/bwilliams/ucx_x86/build/lib/ucx/libuct_ib.so.0(+0x47650)[0x14fefd20d650]
+[thor011:395070] [10] /global/home/users/bwilliams/ucx_x86/build/lib/libucp.so.0(ucp_worker_progress+0x7a)[0x14fefdcc5d0a]
+[thor011:395070] [11] /global/home/users/bwilliams/ompi_x86/build/lib/libopen-pal.so.40(opal_progress+0x2c)[0x14ff09f98d9c]
+[thor011:395070] [12] /global/home/users/bwilliams/ompi_x86/build/lib/libmpi.so.40(ompi_request_default_wait+0x105)[0x14ff0ad06a55]
+[thor011:395070] [13] /global/home/users/bwilliams/ompi_x86/build/lib/libmpi.so.40(PMPI_Wait+0x52)[0x14ff0ad492c2]
+[thor011:395070] [14] /global/home/users/bwilliams/openhpca/build/install/overlap/overlap/overlap_ibcast[0x407558]
+[thor011:395070] [15] /global/home/users/bwilliams/openhpca/build/install/overlap/overlap/overlap_ibcast[0x407fea]
+[thor011:395070] [16] /global/home/users/bwilliams/openhpca/build/install/overlap/overlap/overlap_ibcast[0x40a215]
+[thor011:395070] [17] /lib64/libc.so.6(__libc_start_main+0xf3)[0x14ff0a6f6493]
+[thor011:395070] [18] /global/home/users/bwilliams/openhpca/build/install/overlap/overlap/overlap_ibcast[0x400f7e]
+[thor011:395070] *** End of error message ***
+==== backtrace (tid: 764893) ====
+ 0 0x0000000000012c20 .annobin_sigaction.c()  sigaction.c:0
+ 1 0x0000000000047783 uct_rc_iface_lookup_ep()  /global/home/users/bwilliams/ucx_x86/src/uct/ib/rc/base/rc_iface.h:421
+ 2 0x0000000000047783 uct_rc_mlx5_iface_poll_tx()  /global/home/users/bwilliams/ucx_x86/src/uct/ib/rc/accel/rc_mlx5_iface.c:152
+ 3 0x0000000000047783 uct_rc_mlx5_iface_progress()  /global/home/users/bwilliams/ucx_x86/src/uct/ib/rc/accel/rc_mlx5_iface.c:178
+ 4 0x0000000000047783 uct_rc_mlx5_iface_progress_cyclic()  /global/home/users/bwilliams/ucx_x86/src/uct/ib/rc/accel/rc_mlx5_iface.c:183
+ 5 0x0000000000041d0a ucs_callbackq_dispatch()  /global/home/users/bwilliams/ucx_x86/src/ucs/datastruct/callbackq.h:211
+ 6 0x0000000000041d0a uct_worker_progress()  /global/home/users/bwilliams/ucx_x86/src/uct/api/uct.h:2592
+ 7 0x0000000000041d0a ucp_worker_progress()  /global/home/users/bwilliams/ucx_x86/src/ucp/core/ucp_worker.c:2455
+ 8 0x000000000002ad9c opal_progress()  ???:0
+ 9 0x000000000004ea55 ompi_request_default_wait()  ???:0
+10 0x00000000000912c2 MPI_Wait()  ???:0
+11 0x0000000000407558 get_coll_config_info()  overlap_ibcast.c:0
+12 0x0000000000407fea time_driven_loop()  ???:0
+13 0x000000000040a215 main()  ???:0
+14 0x0000000000023493 __libc_start_main()  ???:0
+15 0x0000000000400f7e _start()  ???:0
+=================================
+[thor010:764893] *** Process received signal ***
+[thor010:764893] Signal: Segmentation fault (11)
+[thor010:764893] Signal code:  (-6)
+[thor010:764893] Failing at address: 0x276e000babdd
+[thor010:764893] [ 0] /lib64/libpthread.so.0(+0x12c20)[0x152b47d1dc20]
+[thor010:764893] [ 1] /global/home/users/bwilliams/ucx_x86/build/lib/ucx/libuct_ib.so.0(+0x47783)[0x152b36454783]
+[thor010:764893] [ 2] /global/home/users/bwilliams/ucx_x86/build/lib/libucp.so.0(ucp_worker_progress+0x7a)[0x152b36f0cd0a]
+[thor010:764893] [ 3] /global/home/users/bwilliams/ompi_x86/build/lib/libopen-pal.so.40(opal_progress+0x2c)[0x152b4720bd9c]
+[thor010:764893] [ 4] /global/home/users/bwilliams/ompi_x86/build/lib/libmpi.so.40(ompi_request_default_wait+0x105)[0x152b47f79a55]
+[thor010:764893] [ 5] /global/home/users/bwilliams/ompi_x86/build/lib/libmpi.so.40(PMPI_Wait+0x52)[0x152b47fbc2c2]
+[thor010:764893] [ 6] /global/home/users/bwilliams/openhpca/build/install/overlap/overlap/overlap_ibcast[0x407558]
+[thor010:764893] [ 7] /global/home/users/bwilliams/openhpca/build/install/overlap/overlap/overlap_ibcast[0x407fea]
+[thor010:764893] [ 8] /global/home/users/bwilliams/openhpca/build/install/overlap/overlap/overlap_ibcast[0x40a215]
+[thor010:764893] [ 9] /lib64/libc.so.6(__libc_start_main+0xf3)[0x152b47969493]
+[thor010:764893] [10] /global/home/users/bwilliams/openhpca/build/install/overlap/overlap/overlap_ibcast[0x400f7e]
+[thor010:764893] *** End of error message ***
+--------------------------------------------------------------------------
+Primary job  terminated normally, but 1 process returned
+a non-zero exit code. Per user-direction, the job has been aborted.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+mpirun noticed that process rank 2 with PID 395070 on node thor011 exited on signal 6 (Aborted).
+--------------------------------------------------------------------------

@@ -1,0 +1,221 @@
+[thor008:200483:0:200483]        rndv.c:1945 Assertion `status == UCS_OK' failed
+[thor007:30482:0:30482]        rndv.c:1945 Assertion `status == UCS_OK' failed
+[thor006:320755:0:320755]        rndv.c:1945 Assertion `status == UCS_OK' failed
+[thor005:848244:0:848244]        rndv.c:1945 Assertion `status == UCS_OK' failed
+
+/global/home/users/bwilliams/ucx_x86/src/ucp/rndv/rndv.c: [ ucp_rndv_rtr_handler() ]
+      ...
+     1942          ep_config->am.mem_type_zcopy_thresh[sreq->send.mem_type]))
+     1943     {
+     1944         status = ucp_request_send_buffer_reg_lane(sreq, ucp_ep_get_am_lane(ep), 0);
+==>  1945         ucs_assert_always(status == UCS_OK);
+     1946 
+     1947         ucp_request_send_state_reset(sreq, ucp_rndv_am_zcopy_completion,
+     1948                                      UCP_REQUEST_SEND_PROTO_ZCOPY_AM);
+
+==== backtrace (tid: 320755) ====
+ 0 0x0000000000072b12 ucp_rndv_rtr_handler()  /global/home/users/bwilliams/ucx_x86/src/ucp/rndv/rndv.c:1945
+ 1 0x0000000000072b12 ucp_request_send_buffer_reg_lane()  /global/home/users/bwilliams/ucx_x86/src/ucp/core/ucp_request.inl:526
+ 2 0x0000000000072b12 ucp_rndv_rtr_handler()  /global/home/users/bwilliams/ucx_x86/src/ucp/rndv/rndv.c:1944
+ 3 0x0000000000047650 uct_iface_invoke_am()  /global/home/users/bwilliams/ucx_x86/src/uct/base/uct_iface.h:769
+ 4 0x0000000000047650 uct_rc_mlx5_iface_common_am_handler()  /global/home/users/bwilliams/ucx_x86/src/uct/ib/rc/accel/rc_mlx5.inl:421
+ 5 0x0000000000047650 uct_rc_mlx5_iface_common_poll_rx()  /global/home/users/bwilliams/ucx_x86/src/uct/ib/rc/accel/rc_mlx5.inl:1443
+ 6 0x0000000000047650 uct_rc_mlx5_iface_progress()  /global/home/users/bwilliams/ucx_x86/src/uct/ib/rc/accel/rc_mlx5_iface.c:173
+ 7 0x0000000000047650 uct_rc_mlx5_iface_progress_cyclic()  /global/home/users/bwilliams/ucx_x86/src/uct/ib/rc/accel/rc_mlx5_iface.c:183
+ 8 0x0000000000041d0a ucs_callbackq_dispatch()  /global/home/users/bwilliams/ucx_x86/src/ucs/datastruct/callbackq.h:211
+ 9 0x0000000000041d0a uct_worker_progress()  /global/home/users/bwilliams/ucx_x86/src/uct/api/uct.h:2592
+10 0x0000000000041d0a ucp_worker_progress()  /global/home/users/bwilliams/ucx_x86/src/ucp/core/ucp_worker.c:2455
+11 0x0000000000003fd8 mca_pml_ucx_recv()  ???:0
+12 0x00000000000b19dc ompi_coll_base_barrier_intra_basic_linear()  ???:0
+13 0x0000000000066ee8 MPI_Barrier()  ???:0
+14 0x0000000000407942 get_coll_config_info()  overlap_ialltoallv.c:0
+15 0x0000000000408652 time_driven_loop()  ???:0
+16 0x000000000040ac8b main()  ???:0
+17 0x0000000000023493 __libc_start_main()  ???:0
+18 0x0000000000400f7e _start()  ???:0
+=================================
+[thor006:320755] *** Process received signal ***
+[thor006:320755] Signal: Aborted (6)
+[thor006:320755] Signal code:  (-6)
+[thor006:320755] [ 0] /lib64/libpthread.so.0(+0x12c20)[0x14fccd3e2c20]
+[thor006:320755] [ 1] /lib64/libc.so.6(gsignal+0x10f)[0x14fccd04237f]
+[thor006:320755] [ 2] /lib64/libc.so.6(abort+0x127)[0x14fccd02cdb5]
+[thor006:320755] [ 3] /global/home/users/bwilliams/ucx_x86/build/lib/libucs.so.0(+0x5d5b5)[0x14fcc00c25b5]
+[thor006:320755] [ 4] /global/home/users/bwilliams/ucx_x86/build/lib/libucs.so.0(ucs_fatal_error_format+0xd6)[0x14fcc00c2696]
+[thor006:320755] [ 5] /global/home/users/bwilliams/ucx_x86/build/lib/libucp.so.0(ucp_rndv_rtr_handler+0x832)[0x14fcc06bdb12]
+[thor006:320755] [ 6] /global/home/users/bwilliams/ucx_x86/build/lib/ucx/libuct_ib.so.0(+0x47650)[0x14fcbbb6f650]
+[thor006:320755] [ 7] /global/home/users/bwilliams/ucx_x86/build/lib/libucp.so.0(ucp_worker_progress+0x7a)[0x14fcc068cd0a]
+[thor006:320755] [ 8] /global/home/users/bwilliams/ompi_x86/build/lib/openmpi/mca_pml_ucx.so(mca_pml_ucx_recv+0x128)[0x14fcc0b56fd8]
+[thor006:320755] [ 9] /global/home/users/bwilliams/ompi_x86/build/lib/libmpi.so.40(ompi_coll_base_barrier_intra_basic_linear+0x7c)[0x14fccd6a19dc]
+[thor006:320755] [10] /global/home/users/bwilliams/ompi_x86/build/lib/libmpi.so.40(MPI_Barrier+0xa8)[0x14fccd656ee8]
+[thor006:320755] [11] /global/home/users/bwilliams/openhpca/build/install/overlap/overlap/overlap_ialltoallv[0x407942]
+[thor006:320755] [12] /global/home/users/bwilliams/openhpca/build/install/overlap/overlap/overlap_ialltoallv[0x408652]
+[thor006:320755] [13] /global/home/users/bwilliams/openhpca/build/install/overlap/overlap/overlap_ialltoallv[0x40ac8b]
+[thor006:320755] [14] /lib64/libc.so.6(__libc_start_main+0xf3)[0x14fccd02e493]
+[thor006:320755] [15] /global/home/users/bwilliams/openhpca/build/install/overlap/overlap/overlap_ialltoallv[0x400f7e]
+[thor006:320755] *** End of error message ***
+--------------------------------------------------------------------------
+Primary job  terminated normally, but 1 process returned
+a non-zero exit code. Per user-direction, the job has been aborted.
+--------------------------------------------------------------------------
+
+/global/home/users/bwilliams/ucx_x86/src/ucp/rndv/rndv.c: [ ucp_rndv_rtr_handler() ]
+      ...
+     1942          ep_config->am.mem_type_zcopy_thresh[sreq->send.mem_type]))
+     1943     {
+     1944         status = ucp_request_send_buffer_reg_lane(sreq, ucp_ep_get_am_lane(ep), 0);
+==>  1945         ucs_assert_always(status == UCS_OK);
+     1946 
+     1947         ucp_request_send_state_reset(sreq, ucp_rndv_am_zcopy_completion,
+     1948                                      UCP_REQUEST_SEND_PROTO_ZCOPY_AM);
+
+==== backtrace (tid: 848244) ====
+ 0 0x0000000000072b12 ucp_rndv_rtr_handler()  /global/home/users/bwilliams/ucx_x86/src/ucp/rndv/rndv.c:1945
+ 1 0x0000000000072b12 ucp_request_send_buffer_reg_lane()  /global/home/users/bwilliams/ucx_x86/src/ucp/core/ucp_request.inl:526
+ 2 0x0000000000072b12 ucp_rndv_rtr_handler()  /global/home/users/bwilliams/ucx_x86/src/ucp/rndv/rndv.c:1944
+ 3 0x0000000000047650 uct_iface_invoke_am()  /global/home/users/bwilliams/ucx_x86/src/uct/base/uct_iface.h:769
+ 4 0x0000000000047650 uct_rc_mlx5_iface_common_am_handler()  /global/home/users/bwilliams/ucx_x86/src/uct/ib/rc/accel/rc_mlx5.inl:421
+ 5 0x0000000000047650 uct_rc_mlx5_iface_common_poll_rx()  /global/home/users/bwilliams/ucx_x86/src/uct/ib/rc/accel/rc_mlx5.inl:1443
+ 6 0x0000000000047650 uct_rc_mlx5_iface_progress()  /global/home/users/bwilliams/ucx_x86/src/uct/ib/rc/accel/rc_mlx5_iface.c:173
+ 7 0x0000000000047650 uct_rc_mlx5_iface_progress_cyclic()  /global/home/users/bwilliams/ucx_x86/src/uct/ib/rc/accel/rc_mlx5_iface.c:183
+ 8 0x0000000000041d0a ucs_callbackq_dispatch()  /global/home/users/bwilliams/ucx_x86/src/ucs/datastruct/callbackq.h:211
+ 9 0x0000000000041d0a uct_worker_progress()  /global/home/users/bwilliams/ucx_x86/src/uct/api/uct.h:2592
+10 0x0000000000041d0a ucp_worker_progress()  /global/home/users/bwilliams/ucx_x86/src/ucp/core/ucp_worker.c:2455
+11 0x000000000002ad9c opal_progress()  ???:0
+12 0x000000000004eebd ompi_request_default_wait_all()  ???:0
+13 0x00000000000b1b67 ompi_coll_base_barrier_intra_basic_linear()  ???:0
+14 0x0000000000066ee8 MPI_Barrier()  ???:0
+15 0x0000000000407942 get_coll_config_info()  overlap_ialltoallv.c:0
+16 0x0000000000408652 time_driven_loop()  ???:0
+17 0x000000000040ac8b main()  ???:0
+18 0x0000000000023493 __libc_start_main()  ???:0
+19 0x0000000000400f7e _start()  ???:0
+=================================
+[thor005:848244] *** Process received signal ***
+[thor005:848244] Signal: Aborted (6)
+[thor005:848244] Signal code:  (-6)
+[thor005:848244] [ 0] /lib64/libpthread.so.0(+0x12c20)[0x14f660986c20]
+[thor005:848244] [ 1] /lib64/libc.so.6(gsignal+0x10f)[0x14f6605e637f]
+[thor005:848244] [ 2] /lib64/libc.so.6(abort+0x127)[0x14f6605d0db5]
+[thor005:848244] [ 3] /global/home/users/bwilliams/ucx_x86/build/lib/libucs.so.0(+0x5d5b5)[0x14f64f56f5b5]
+[thor005:848244] [ 4] /global/home/users/bwilliams/ucx_x86/build/lib/libucs.so.0(ucs_fatal_error_format+0xd6)[0x14f64f56f696]
+[thor005:848244] [ 5] /global/home/users/bwilliams/ucx_x86/build/lib/libucp.so.0(ucp_rndv_rtr_handler+0x832)[0x14f64fb6ab12]
+[thor005:848244] [ 6] /global/home/users/bwilliams/ucx_x86/build/lib/ucx/libuct_ib.so.0(+0x47650)[0x14f64f081650]
+[thor005:848244] [ 7] /global/home/users/bwilliams/ucx_x86/build/lib/libucp.so.0(ucp_worker_progress+0x7a)[0x14f64fb39d0a]
+[thor005:848244] [ 8] /global/home/users/bwilliams/ompi_x86/build/lib/libopen-pal.so.40(opal_progress+0x2c)[0x14f65fe74d9c]
+[thor005:848244] [ 9] /global/home/users/bwilliams/ompi_x86/build/lib/libmpi.so.40(ompi_request_default_wait_all+0xcd)[0x14f660be2ebd]
+[thor005:848244] [10] /global/home/users/bwilliams/ompi_x86/build/lib/libmpi.so.40(ompi_coll_base_barrier_intra_basic_linear+0x207)[0x14f660c45b67]
+[thor005:848244] [11] /global/home/users/bwilliams/ompi_x86/build/lib/libmpi.so.40(MPI_Barrier+0xa8)[0x14f660bfaee8]
+[thor005:848244] [12] /global/home/users/bwilliams/openhpca/build/install/overlap/overlap/overlap_ialltoallv[0x407942]
+[thor005:848244] [13] /global/home/users/bwilliams/openhpca/build/install/overlap/overlap/overlap_ialltoallv[0x408652]
+[thor005:848244] [14] /global/home/user
+/global/home/users/bwilliams/ucx_x86/src/ucp/rndv/rndv.c: [ ucp_rndv_rtr_handler() ]
+      ...
+
+/global/home/users/bwilliams/ucx_x86/src/ucp/rndv/rndv.c: [ ucp_rndv_rtr_handler() ]
+      ...
+s/bwilliams/openhpca/build/install/overlap/overlap/overlap_ialltoallv[0x40ac8b]
+[thor005:848244] [15] /lib64/libc.so.6(__libc_start_main+0xf3)[0x14f6605d2493]
+[thor005:848244] [16] /global/home/users/bwilliams/openhpca/build/install/overlap/overlap/overlap_ialltoallv[0x400f7e]
+[thor005:848244] *** End of error message ***
+     1942          ep_config->am.mem_type_zcopy_thresh[sreq->send.mem_type]))
+     1943     {
+     1944         status = ucp_request_send_buffer_reg_lane(sreq, ucp_ep_get_am_lane(ep), 0);
+==>  1945         ucs_assert_always(status == UCS_OK);
+     1946 
+     1947         ucp_request_send_state_reset(sreq, ucp_rndv_am_zcopy_completion,
+     1948                                      UCP_REQUEST_SEND_PROTO_ZCOPY_AM);
+
+     1942          ep_config->am.mem_type_zcopy_thresh[sreq->send.mem_type]))
+     1943     {
+     1944         status = ucp_request_send_buffer_reg_lane(sreq, ucp_ep_get_am_lane(ep), 0);
+==>  1945         ucs_assert_always(status == UCS_OK);
+     1946 
+     1947         ucp_request_send_state_reset(sreq, ucp_rndv_am_zcopy_completion,
+     1948                                      UCP_REQUEST_SEND_PROTO_ZCOPY_AM);
+
+==== backtrace (tid:  30482) ====
+ 0 0x0000000000072b12 ucp_rndv_rtr_handler()  /global/home/users/bwilliams/ucx_x86/src/ucp/rndv/rndv.c:1945
+ 1 0x0000000000072b12 ucp_request_send_buffer_reg_lane()  /global/home/users/bwilliams/ucx_x86/src/ucp/core/ucp_request.inl:526
+ 2 0x0000000000072b12 ucp_rndv_rtr_handler()  /global/home/users/bwilliams/ucx_x86/src/ucp/rndv/rndv.c:1944
+ 3 0x0000000000047650 uct_iface_invoke_am()  /global/home/users/bwilliams/ucx_x86/src/uct/base/uct_iface.h:769
+ 4 0x0000000000047650 uct_rc_mlx5_iface_common_am_handler()  /global/home/users/bwilliams/ucx_x86/src/uct/ib/rc/accel/rc_mlx5.inl:421
+ 5 0x0000000000047650 uct_rc_mlx5_iface_common_poll_rx()  /global/home/users/bwilliams/ucx_x86/src/uct/ib/rc/accel/rc_mlx5.inl:1443
+ 6 0x0000000000047650 uct_rc_mlx5_iface_progress()  /global/home/users/bwilliams/ucx_x86/src/uct/ib/rc/accel/rc_mlx5_iface.c:173
+ 7 0x0000000000047650 uct_rc_mlx5_iface_progress_cyclic()  /global/home/users/bwilliams/ucx_x86/src/uct/ib/rc/accel/rc_mlx5_iface.c:183
+ 8 0x0000000000041d0a ucs_callbackq_dispatch()  /global/home/users/bwilliams/ucx_x86/src/ucs/datastruct/callbackq.h:211
+ 9 0x0000000000041d0a uct_worker_progress()  /global/home/users/bwilliams/ucx_x86/src/uct/api/uct.h:2592
+10 0x0000000000041d0a ucp_worker_progress()  /global/home/users/bwilliams/ucx_x86/src/ucp/core/ucp_worker.c:2455
+11 0x0000000000003fd8 mca_pml_ucx_recv()  ???:0
+12 0x00000000000b19dc ompi_coll_base_barrier_intra_basic_linear()  ???:0
+13 0x0000000000066ee8 MPI_Barrier()  ???:0
+14 0x0000000000407942 get_coll_config_info()  overlap_ialltoallv.c:0
+15 0x0000000000408652 time_driven_loop()  ???:0
+16 0x000000000040ac8b main()  ???:0
+17 0x0000000000023493 __libc_start_main()  ???:0
+18 0x0000000000400f7e _start()  ???:0
+=================================
+==== backtrace (tid: 200483) ====
+ 0 0x0000000000072b12 ucp_rndv_rtr_handler()  /global/home/users/bwilliams/ucx_x86/src/ucp/rndv/rndv.c:1945
+ 1 0x0000000000072b12 ucp_request_send_buffer_reg_lane()  /global/home/users/bwilliams/ucx_x86/src/ucp/core/ucp_request.inl:526
+ 2 0x0000000000072b12 ucp_rndv_rtr_handler()  /global/home/users/bwilliams/ucx_x86/src/ucp/rndv/rndv.c:1944
+ 3 0x0000000000047650 uct_iface_invoke_am()  /global/home/users/bwilliams/ucx_x86/src/uct/base/uct_iface.h:769
+ 4 0x0000000000047650 uct_rc_mlx5_iface_common_am_handler()  /global/home/users/bwilliams/ucx_x86/src/uct/ib/rc/accel/rc_mlx5.inl:421
+ 5 0x0000000000047650 uct_rc_mlx5_iface_common_poll_rx()  /global/home/users/bwilliams/ucx_x86/src/uct/ib/rc/accel/rc_mlx5.inl:1443
+ 6 0x0000000000047650 uct_rc_mlx5_iface_progress()  /global/home/users/bwilliams/ucx_x86/src/uct/ib/rc/accel/rc_mlx5_iface.c:173
+ 7 0x0000000000047650 uct_rc_mlx5_iface_progress_cyclic()  /global/home/users/bwilliams/ucx_x86/src/uct/ib/rc/accel/rc_mlx5_iface.c:183
+ 8 0x0000000000041d0a ucs_callbackq_dispatch()  /global/home/users/bwilliams/ucx_x86/src/ucs/datastruct/callbackq.h:211
+ 9 0x0000000000041d0a uct_worker_progress()  /global/home/users/bwilliams/ucx_x86/src/uct/api/uct.h:2592
+10 0x0000000000041d0a ucp_worker_progress()  /global/home/users/bwilliams/ucx_x86/src/ucp/core/ucp_worker.c:2455
+11 0x0000000000003fd8 mca_pml_ucx_recv()  ???:0
+12 0x00000000000b19dc ompi_coll_base_barrier_intra_basic_linear()  ???:0
+13 0x0000000000066ee8 MPI_Barrier()  ???:0
+14 0x0000000000407942 get_coll_config_info()  overlap_ialltoallv.c:0
+[thor007:30482] *** Process received signal ***
+15 0x0000000000408652 time_driven_loop()  ???:0
+16 0x000000000040ac8b main()  ???:0
+17 0x0000000000023493 __libc_start_main()  ???:0
+18 0x0000000000400f7e _start()  ???:0
+=================================
+[thor007:30482] Signal: Aborted (6)
+[thor007:30482] Signal code:  (-6)
+[thor008:200483] *** Process received signal ***
+[thor008:200483] Signal: Aborted (6)
+[thor008:200483] Signal code:  (-6)
+[thor007:30482] [ 0] [thor008:200483] [ 0] /lib64/libpthread.so.0(+0x12c20)[0x15451c1f0c20]
+[thor007:30482] [ 1] /lib64/libc.so.6(gsignal+0x10f)[0x15451be5037f]
+[thor007:30482] [ 2] /lib64/libpthread.so.0(+0x12c20)[0x14a1970e7c20]
+[thor008:200483] [ 1] /lib64/libc.so.6(abort+0x127)[0x15451be3adb5]
+[thor007:30482] [ 3] /lib64/libc.so.6(gsignal+0x10f)[0x14a196d4737f]
+[thor008:200483] [ 2] /global/home/users/bwilliams/ucx_x86/build/lib/libucs.so.0(+0x5d5b5)[0x15450ad4b5b5]
+[thor007:30482] [ 4] /lib64/libc.so.6(abort+0x127)[0x14a196d31db5]
+[thor008:200483] [ 3] /global/home/users/bwilliams/ucx_x86/build/lib/libucs.so.0(ucs_fatal_error_format+0xd6)[0x15450ad4b696]
+[thor007:30482] [ 5] /global/home/users/bwilliams/ucx_x86/build/lib/libucp.so.0(ucp_rndv_rtr_handler+0x832)[0x15450b346b12]
+[thor007:30482] /global/home/users/bwilliams/ucx_x86/build/lib/libucs.so.0(+0x5d5b5)[0x14a189cf85b5]
+[thor008:200483] [ 4] [ 6] /global/home/users/bwilliams/ucx_x86/build/lib/ucx/libuct_ib.so.0(+0x47650)[0x15450a85d650]
+[thor007:30482] [ 7] /global/home/users/bwilliams/ucx_x86/build/lib/libucp.so.0(ucp_worker_progress+0x7a)[0x15450b315d0a]
+[thor007:30482] [ 8] /global/home/users/bwilliams/ucx_x86/build/lib/libucs.so.0(ucs_fatal_error_format+0xd6)[0x14a189cf8696]
+[thor008:200483] [ 5] /global/home/users/bwilliams/ucx_x86/build/lib/libucp.so.0(ucp_rndv_rtr_handler+0x832)[0x14a18a2f3b12]
+[thor008:200483] /global/home/users/bwilliams/ompi_x86/build/lib/openmpi/mca_pml_ucx.so(mca_pml_ucx_recv+0x128)[0x15450b7dffd8]
+[thor007:30482] [ 9] [ 6] /global/home/users/bwilliams/ucx_x86/build/lib/ucx/libuct_ib.so.0(+0x47650)[0x14a18980a650]
+[thor008:200483] [ 7] /global/home/users/bwilliams/ucx_x86/build/lib/libucp.so.0(ucp_worker_progress+0x7a)[0x14a18a2c2d0a]
+/global/home/users/bwilliams/ompi_x86/build/lib/libmpi.so.40(ompi_coll_base_barrier_intra_basic_linear+0x7c)[0x15451c4af9dc]
+[thor007:30482] [10] [thor008:200483] [ 8] /global/home/users/bwilliams/ompi_x86/build/lib/openmpi/mca_pml_ucx.so(mca_pml_ucx_recv+0x128)[0x14a18a78cfd8]
+[thor008:200483] [ 9] /global/home/users/bwilliams/ompi_x86/build/lib/libmpi.so.40(MPI_Barrier+0xa8)[0x15451c464ee8]
+[thor007:30482] [11] /global/home/users/bwilliams/openhpca/build/install/overlap/overlap/overlap_ialltoallv[0x407942]
+[thor007:30482] /global/home/users/bwilliams/ompi_x86/build/lib/libmpi.so.40(ompi_coll_base_barrier_intra_basic_linear+0x7c)[0x14a1973a69dc]
+[thor008:200483] [10] [12] /global/home/users/bwilliams/openhpca/build/install/overlap/overlap/overlap_ialltoallv[0x408652]
+[thor007:30482] [13] /global/home/users/bwilliams/openhpca/build/install/overlap/overlap/overlap_ialltoallv[0x40ac8b]
+[thor007:30482] [14] /global/home/users/bwilliams/ompi_x86/build/lib/libmpi.so.40(MPI_Barrier+0xa8)[0x14a19735bee8]
+[thor008:200483] [11] /global/home/users/bwilliams/openhpca/build/install/overlap/overlap/overlap_ialltoallv[0x407942]
+[thor008:200483] /lib64/libc.so.6(__libc_start_main+0xf3)[0x15451be3c493]
+[thor007:30482] [15] /global/home/users/bwilliams/openhpca/build/install/overlap/overlap/overlap_ialltoallv[0x400f7e]
+[thor007:30482] *** End of error message ***
+[12] /global/home/users/bwilliams/openhpca/build/install/overlap/overlap/overlap_ialltoallv[0x408652]
+[thor008:200483] [13] /global/home/users/bwilliams/openhpca/build/install/overlap/overlap/overlap_ialltoallv[0x40ac8b]
+[thor008:200483] [14] /lib64/libc.so.6(__libc_start_main+0xf3)[0x14a196d33493]
+[thor008:200483] [15] /global/home/users/bwilliams/openhpca/build/install/overlap/overlap/overlap_ialltoallv[0x400f7e]
+[thor008:200483] *** End of error message ***
+--------------------------------------------------------------------------
+mpirun noticed that process rank 1 with PID 320755 on node thor006 exited on signal 6 (Aborted).
+--------------------------------------------------------------------------

@@ -1,0 +1,71 @@
+[thor004:3050954:0:3050954] Caught signal 11 (Segmentation fault: invalid permissions for mapped object at address 0x1548d09de010)
+[thor003:3405043:0:3405043] Caught signal 11 (Segmentation fault: invalid permissions for mapped object at address 0x14e67695b000)
+==== backtrace (tid:3050954) ====
+ 0 0x0000000000012c20 .annobin_sigaction.c()  sigaction.c:0
+ 1 0x00000000001606d3 __memmove_avx_unaligned_erms()  :0
+ 2 0x0000000000042340 overlap_copy_content_same_ddt()  opal_datatype_copy.c:0
+ 3 0x0000000000063288 ompi_datatype_sndrcv()  ???:0
+ 4 0x0000000000007681 NBC_Start()  ???:0
+ 5 0x000000000000fcca ompi_coll_libnbc_ialltoall()  ???:0
+ 6 0x00000000000657bf PMPI_Ialltoall()  ???:0
+ 7 0x000000000040757b get_coll_config_info()  overlap_ialltoall.c:0
+ 8 0x00000000004080a6 time_driven_loop()  ???:0
+ 9 0x000000000040a3be main()  ???:0
+10 0x0000000000023493 __libc_start_main()  ???:0
+11 0x0000000000400f7e _start()  ???:0
+=================================
+[thor004:3050954] *** Process received signal ***
+[thor004:3050954] Signal: Segmentation fault (11)
+[thor004:3050954] Signal code:  (-6)
+[thor004:3050954] Failing at address: 0x276e002e8dca
+[thor004:3050954] [ 0] /lib64/libpthread.so.0(+0x12c20)[0x1548e76a2c20]
+[thor004:3050954] [ 1] /lib64/libc.so.6(+0x1606d3)[0x1548e742b6d3]
+[thor004:3050954] [ 2] /global/home/users/bwilliams/ompi_x86/build/lib/libopen-pal.so.40(+0x42340)[0x1548e6ba8340]
+[thor004:3050954] [ 3] /global/home/users/bwilliams/ompi_x86/build/lib/libmpi.so.40(ompi_datatype_sndrcv+0x4f8)[0x1548e7913288]
+[thor004:3050954] [ 4] /global/home/users/bwilliams/ompi_x86/build/lib/openmpi/mca_coll_libnbc.so(NBC_Start+0xe1)[0x1548d80df681]
+[thor004:3050954] [ 5] /global/home/users/bwilliams/ompi_x86/build/lib/openmpi/mca_coll_libnbc.so(ompi_coll_libnbc_ialltoall+0x2a)[0x1548d80e7cca]
+[thor004:3050954] [ 6] /global/home/users/bwilliams/ompi_x86/build/lib/libmpi.so.40(MPI_Ialltoall+0x13f)[0x1548e79157bf]
+[thor004:3050954] [ 7] /global/home/users/bwilliams/openhpca/build/install/overlap/overlap/overlap_ialltoall[0x40757b]
+[thor004:3050954] [ 8] /global/home/users/bwilliams/openhpca/build/install/overlap/overlap/overlap_ialltoall[0x4080a6]
+[thor004:3050954] [ 9] /global/home/users/bwilliams/openhpca/build/install/overlap/overlap/overlap_ialltoall[0x40a3be]
+[thor004:3050954] [10] /lib64/libc.so.6(__libc_start_main+0xf3)[0x1548e72ee493]
+[thor004:3050954] [11] /global/home/users/bwilliams/openhpca/build/install/overlap/overlap/overlap_ialltoall[0x400f7e]
+[thor004:3050954] *** End of error message ***
+==== backtrace (tid:3405043) ====
+ 0 0x0000000000012c20 .annobin_sigaction.c()  sigaction.c:0
+ 1 0x00000000001606d3 __memmove_avx_unaligned_erms()  :0
+ 2 0x0000000000042340 overlap_copy_content_same_ddt()  opal_datatype_copy.c:0
+ 3 0x0000000000063288 ompi_datatype_sndrcv()  ???:0
+ 4 0x0000000000007681 NBC_Start()  ???:0
+ 5 0x000000000000fcca ompi_coll_libnbc_ialltoall()  ???:0
+ 6 0x00000000000657bf PMPI_Ialltoall()  ???:0
+ 7 0x000000000040757b get_coll_config_info()  overlap_ialltoall.c:0
+ 8 0x00000000004080a6 time_driven_loop()  ???:0
+ 9 0x000000000040a3be main()  ???:0
+10 0x0000000000023493 __libc_start_main()  ???:0
+11 0x0000000000400f7e _start()  ???:0
+=================================
+[thor003:3405043] *** Process received signal ***
+[thor003:3405043] Signal: Segmentation fault (11)
+[thor003:3405043] Signal code:  (-6)
+[thor003:3405043] Failing at address: 0x276e0033f4f3
+[thor003:3405043] [ 0] /lib64/libpthread.so.0(+0x12c20)[0x14e68fb32c20]
+[thor003:3405043] [ 1] /lib64/libc.so.6(+0x1606d3)[0x14e68f8bb6d3]
+[thor003:3405043] [ 2] /global/home/users/bwilliams/ompi_x86/build/lib/libopen-pal.so.40(+0x42340)[0x14e68f038340]
+[thor003:3405043] [ 3] /global/home/users/bwilliams/ompi_x86/build/lib/libmpi.so.40(ompi_datatype_sndrcv+0x4f8)[0x14e68fda3288]
+[thor003:3405043] [ 4] /global/home/users/bwilliams/ompi_x86/build/lib/openmpi/mca_coll_libnbc.so(NBC_Start+0xe1)[0x14e67c2e3681]
+[thor003:3405043] [ 5] /global/home/users/bwilliams/ompi_x86/build/lib/openmpi/mca_coll_libnbc.so(ompi_coll_libnbc_ialltoall+0x2a)[0x14e67c2ebcca]
+[thor003:3405043] [ 6] /global/home/users/bwilliams/ompi_x86/build/lib/libmpi.so.40(MPI_Ialltoall+0x13f)[0x14e68fda57bf]
+[thor003:3405043] [ 7] /global/home/users/bwilliams/openhpca/build/install/overlap/overlap/overlap_ialltoall[0x40757b]
+[thor003:3405043] [ 8] /global/home/users/bwilliams/openhpca/build/install/overlap/overlap/overlap_ialltoall[0x4080a6]
+[thor003:3405043] [ 9] /global/home/users/bwilliams/openhpca/build/install/overlap/overlap/overlap_ialltoall[0x40a3be]
+[thor003:3405043] [10] /lib64/libc.so.6(__libc_start_main+0xf3)[0x14e68f77e493]
+[thor003:3405043] [11] /global/home/users/bwilliams/openhpca/build/install/overlap/overlap/overlap_ialltoall[0x400f7e]
+[thor003:3405043] *** End of error message ***
+--------------------------------------------------------------------------
+Primary job  terminated normally, but 1 process returned
+a non-zero exit code. Per user-direction, the job has been aborted.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+mpirun noticed that process rank 3 with PID 3050954 on node thor004 exited on signal 11 (Segmentation fault).
+--------------------------------------------------------------------------
