@@ -99,7 +99,7 @@ To run the benchmarks, the full command line looks like:
 ```
 ./tools/cmd/openhpca_run/openhpca_run -d mlx5_0:1 -p cluster_partition
 ```
-Where `mlx5_0:1` is the device to use for the execution of the device and
+Where `mlx5_0:1` is the device to use for the execution of the benchmarks and
 `cluster_partition` the partition to use, for instance, on a Slurm cluster.
 For a full description of the supported parameters, please execute
 `./tools/cmd/openhpca_run/openhpca_run -h` from the top directory of the
