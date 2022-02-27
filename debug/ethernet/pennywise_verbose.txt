@@ -1,0 +1,691 @@
+2022/02/27 15:25:32 -> Parsing the OpenHPCA configuration file...
+2022/02/27 15:25:32 -> Parsing the workspace configuration file /home/bwilliams/.openhpca/workspace.conf
+2022/02/27 15:25:32 Detecting OSU installation...
+2022/02/27 15:25:32 -> Checking if alltoallw is installed...
+2022/02/27 15:25:32 	/home/bwilliams/openhpca/build/install/OSU/libexec/osu-micro-benchmarks/mpi/collective/osu_alltoallw does not exist
+2022/02/27 15:25:32 -> Checking if ibcast is installed...
+2022/02/27 15:25:32 	/home/bwilliams/openhpca/build/install/OSU/libexec/osu-micro-benchmarks/mpi/collective/osu_ibcast exists
+2022/02/27 15:25:32 -> Checking if reduce is installed...
+2022/02/27 15:25:32 	/home/bwilliams/openhpca/build/install/OSU/libexec/osu-micro-benchmarks/mpi/collective/osu_reduce exists
+2022/02/27 15:25:32 -> Checking if ialltoall is installed...
+2022/02/27 15:25:32 	/home/bwilliams/openhpca/build/install/OSU/libexec/osu-micro-benchmarks/mpi/collective/osu_ialltoall exists
+2022/02/27 15:25:32 -> Checking if barrier is installed...
+2022/02/27 15:25:32 	/home/bwilliams/openhpca/build/install/OSU/libexec/osu-micro-benchmarks/mpi/collective/osu_barrier exists
+2022/02/27 15:25:32 -> Checking if bcast is installed...
+2022/02/27 15:25:32 	/home/bwilliams/openhpca/build/install/OSU/libexec/osu-micro-benchmarks/mpi/collective/osu_bcast exists
+2022/02/27 15:25:32 -> Checking if gather is installed...
+2022/02/27 15:25:32 	/home/bwilliams/openhpca/build/install/OSU/libexec/osu-micro-benchmarks/mpi/collective/osu_gather exists
+2022/02/27 15:25:32 -> Checking if igather is installed...
+2022/02/27 15:25:32 	/home/bwilliams/openhpca/build/install/OSU/libexec/osu-micro-benchmarks/mpi/collective/osu_igather exists
+2022/02/27 15:25:32 -> Checking if ialltoallw is installed...
+2022/02/27 15:25:32 	/home/bwilliams/openhpca/build/install/OSU/libexec/osu-micro-benchmarks/mpi/collective/osu_ialltoallw exists
+2022/02/27 15:25:32 -> Checking if ibarrier is installed...
+2022/02/27 15:25:32 	/home/bwilliams/openhpca/build/install/OSU/libexec/osu-micro-benchmarks/mpi/collective/osu_ibarrier exists
+2022/02/27 15:25:32 -> Checking if scatter is installed...
+2022/02/27 15:25:32 	/home/bwilliams/openhpca/build/install/OSU/libexec/osu-micro-benchmarks/mpi/collective/osu_scatter exists
+2022/02/27 15:25:32 -> Checking if iscatter is installed...
+2022/02/27 15:25:32 	/home/bwilliams/openhpca/build/install/OSU/libexec/osu-micro-benchmarks/mpi/collective/osu_iscatter exists
+2022/02/27 15:25:32 -> Checking if allreduce is installed...
+2022/02/27 15:25:32 	/home/bwilliams/openhpca/build/install/OSU/libexec/osu-micro-benchmarks/mpi/collective/osu_allreduce exists
+2022/02/27 15:25:32 -> Checking if iallgatherv is installed...
+2022/02/27 15:25:32 	/home/bwilliams/openhpca/build/install/OSU/libexec/osu-micro-benchmarks/mpi/collective/osu_iallgatherv exists
+2022/02/27 15:25:32 -> Checking if iallreduce is installed...
+2022/02/27 15:25:32 	/home/bwilliams/openhpca/build/install/OSU/libexec/osu-micro-benchmarks/mpi/collective/osu_iallreduce exists
+2022/02/27 15:25:32 -> Checking if alltoall is installed...
+2022/02/27 15:25:32 	/home/bwilliams/openhpca/build/install/OSU/libexec/osu-micro-benchmarks/mpi/collective/osu_alltoall exists
+2022/02/27 15:25:32 -> Checking if alltoallv is installed...
+2022/02/27 15:25:32 	/home/bwilliams/openhpca/build/install/OSU/libexec/osu-micro-benchmarks/mpi/collective/osu_alltoallv exists
+2022/02/27 15:25:32 -> Checking if ireduce_scatter is installed...
+2022/02/27 15:25:32 	/home/bwilliams/openhpca/build/install/OSU/libexec/osu-micro-benchmarks/mpi/collective/osu_ireduce_scatter does not exist
+2022/02/27 15:25:32 -> Checking if bw is installed...
+2022/02/27 15:25:32 	/home/bwilliams/openhpca/build/install/OSU/libexec/osu-micro-benchmarks/mpi/pt2pt/osu_bw exists
+2022/02/27 15:25:32 -> Checking if latency is installed...
+2022/02/27 15:25:32 	/home/bwilliams/openhpca/build/install/OSU/libexec/osu-micro-benchmarks/mpi/pt2pt/osu_latency exists
+2022/02/27 15:25:32 -> Checking if iallgather is installed...
+2022/02/27 15:25:32 	/home/bwilliams/openhpca/build/install/OSU/libexec/osu-micro-benchmarks/mpi/collective/osu_iallgather exists
+2022/02/27 15:25:32 -> Checking if ialltoallv is installed...
+2022/02/27 15:25:32 	/home/bwilliams/openhpca/build/install/OSU/libexec/osu-micro-benchmarks/mpi/collective/osu_ialltoallv exists
+2022/02/27 15:25:32 -> Checking if ireduce is installed...
+2022/02/27 15:25:32 	/home/bwilliams/openhpca/build/install/OSU/libexec/osu-micro-benchmarks/mpi/collective/osu_ireduce exists
+2022/02/27 15:25:32 -> Checking if allgather is installed...
+2022/02/27 15:25:32 	/home/bwilliams/openhpca/build/install/OSU/libexec/osu-micro-benchmarks/mpi/collective/osu_allgather exists
+2022/02/27 15:25:32 -> Checking if allgatherv is installed...
+2022/02/27 15:25:32 	/home/bwilliams/openhpca/build/install/OSU/libexec/osu-micro-benchmarks/mpi/collective/osu_allgatherv exists
+2022/02/27 15:25:32 -> Checking if gatherv is installed...
+2022/02/27 15:25:32 	/home/bwilliams/openhpca/build/install/OSU/libexec/osu-micro-benchmarks/mpi/collective/osu_gatherv exists
+2022/02/27 15:25:32 -> Checking if igatherv is installed...
+2022/02/27 15:25:32 	/home/bwilliams/openhpca/build/install/OSU/libexec/osu-micro-benchmarks/mpi/collective/osu_igatherv exists
+2022/02/27 15:25:32 -> Checking if reduce_scatter is installed...
+2022/02/27 15:25:32 	/home/bwilliams/openhpca/build/install/OSU/libexec/osu-micro-benchmarks/mpi/collective/osu_reduce_scatter exists
+2022/02/27 15:25:32 -> Checking if scatterv is installed...
+2022/02/27 15:25:32 	/home/bwilliams/openhpca/build/install/OSU/libexec/osu-micro-benchmarks/mpi/collective/osu_scatter exists
+2022/02/27 15:25:32 -> Checking if iscatterv is installed...
+2022/02/27 15:25:32 	/home/bwilliams/openhpca/build/install/OSU/libexec/osu-micro-benchmarks/mpi/collective/osu_iscatter exists
+2022/02/27 15:25:32 -> Checking if iscatterv is installed...
+2022/02/27 15:25:32 	/home/bwilliams/openhpca/build/install/osu_noncontig_mem/libexec/osu-micro-benchmarks/mpi/collective/osu_iscatter exists
+2022/02/27 15:25:32 -> Checking if allreduce is installed...
+2022/02/27 15:25:32 	/home/bwilliams/openhpca/build/install/osu_noncontig_mem/libexec/osu-micro-benchmarks/mpi/collective/osu_allreduce exists
+2022/02/27 15:25:32 -> Checking if alltoallw is installed...
+2022/02/27 15:25:32 	/home/bwilliams/openhpca/build/install/osu_noncontig_mem/libexec/osu-micro-benchmarks/mpi/collective/osu_alltoallw does not exist
+2022/02/27 15:25:32 -> Checking if ialltoallw is installed...
+2022/02/27 15:25:32 	/home/bwilliams/openhpca/build/install/osu_noncontig_mem/libexec/osu-micro-benchmarks/mpi/collective/osu_ialltoallw exists
+2022/02/27 15:25:32 -> Checking if ibarrier is installed...
+2022/02/27 15:25:32 	/home/bwilliams/openhpca/build/install/osu_noncontig_mem/libexec/osu-micro-benchmarks/mpi/collective/osu_ibarrier exists
+2022/02/27 15:25:32 -> Checking if ialltoall is installed...
+2022/02/27 15:25:32 	/home/bwilliams/openhpca/build/install/osu_noncontig_mem/libexec/osu-micro-benchmarks/mpi/collective/osu_ialltoall exists
+2022/02/27 15:25:32 -> Checking if igather is installed...
+2022/02/27 15:25:32 	/home/bwilliams/openhpca/build/install/osu_noncontig_mem/libexec/osu-micro-benchmarks/mpi/collective/osu_igather exists
+2022/02/27 15:25:32 -> Checking if allgather is installed...
+2022/02/27 15:25:32 	/home/bwilliams/openhpca/build/install/osu_noncontig_mem/libexec/osu-micro-benchmarks/mpi/collective/osu_allgather exists
+2022/02/27 15:25:32 -> Checking if alltoall is installed...
+2022/02/27 15:25:32 	/home/bwilliams/openhpca/build/install/osu_noncontig_mem/libexec/osu-micro-benchmarks/mpi/collective/osu_alltoall exists
+2022/02/27 15:25:32 -> Checking if ibcast is installed...
+2022/02/27 15:25:32 	/home/bwilliams/openhpca/build/install/osu_noncontig_mem/libexec/osu-micro-benchmarks/mpi/collective/osu_ibcast exists
+2022/02/27 15:25:32 -> Checking if reduce is installed...
+2022/02/27 15:25:32 	/home/bwilliams/openhpca/build/install/osu_noncontig_mem/libexec/osu-micro-benchmarks/mpi/collective/osu_reduce exists
+2022/02/27 15:25:32 -> Checking if bw is installed...
+2022/02/27 15:25:32 	/home/bwilliams/openhpca/build/install/osu_noncontig_mem/libexec/osu-micro-benchmarks/mpi/pt2pt/osu_bw exists
+2022/02/27 15:25:32 -> Checking if iallgatherv is installed...
+2022/02/27 15:25:32 	/home/bwilliams/openhpca/build/install/osu_noncontig_mem/libexec/osu-micro-benchmarks/mpi/collective/osu_iallgatherv exists
+2022/02/27 15:25:32 -> Checking if alltoallv is installed...
+2022/02/27 15:25:32 	/home/bwilliams/openhpca/build/install/osu_noncontig_mem/libexec/osu-micro-benchmarks/mpi/collective/osu_alltoallv exists
+2022/02/27 15:25:32 -> Checking if barrier is installed...
+2022/02/27 15:25:32 	/home/bwilliams/openhpca/build/install/osu_noncontig_mem/libexec/osu-micro-benchmarks/mpi/collective/osu_barrier exists
+2022/02/27 15:25:32 -> Checking if gatherv is installed...
+2022/02/27 15:25:32 	/home/bwilliams/openhpca/build/install/osu_noncontig_mem/libexec/osu-micro-benchmarks/mpi/collective/osu_gatherv exists
+2022/02/27 15:25:32 -> Checking if ireduce is installed...
+2022/02/27 15:25:32 	/home/bwilliams/openhpca/build/install/osu_noncontig_mem/libexec/osu-micro-benchmarks/mpi/collective/osu_ireduce exists
+2022/02/27 15:25:32 -> Checking if iallgather is installed...
+2022/02/27 15:25:32 	/home/bwilliams/openhpca/build/install/osu_noncontig_mem/libexec/osu-micro-benchmarks/mpi/collective/osu_iallgather exists
+2022/02/27 15:25:32 -> Checking if iallreduce is installed...
+2022/02/27 15:25:32 	/home/bwilliams/openhpca/build/install/osu_noncontig_mem/libexec/osu-micro-benchmarks/mpi/collective/osu_iallreduce exists
+2022/02/27 15:25:32 -> Checking if igatherv is installed...
+2022/02/27 15:25:32 	/home/bwilliams/openhpca/build/install/osu_noncontig_mem/libexec/osu-micro-benchmarks/mpi/collective/osu_igatherv exists
+2022/02/27 15:25:32 -> Checking if reduce_scatter is installed...
+2022/02/27 15:25:32 	/home/bwilliams/openhpca/build/install/osu_noncontig_mem/libexec/osu-micro-benchmarks/mpi/collective/osu_reduce_scatter exists
+2022/02/27 15:25:32 -> Checking if allgatherv is installed...
+2022/02/27 15:25:32 	/home/bwilliams/openhpca/build/install/osu_noncontig_mem/libexec/osu-micro-benchmarks/mpi/collective/osu_allgatherv exists
+2022/02/27 15:25:32 -> Checking if ialltoallv is installed...
+2022/02/27 15:25:32 	/home/bwilliams/openhpca/build/install/osu_noncontig_mem/libexec/osu-micro-benchmarks/mpi/collective/osu_ialltoallv exists
+2022/02/27 15:25:32 -> Checking if iscatter is installed...
+2022/02/27 15:25:32 	/home/bwilliams/openhpca/build/install/osu_noncontig_mem/libexec/osu-micro-benchmarks/mpi/collective/osu_iscatter exists
+2022/02/27 15:25:32 -> Checking if scatterv is installed...
+2022/02/27 15:25:32 	/home/bwilliams/openhpca/build/install/osu_noncontig_mem/libexec/osu-micro-benchmarks/mpi/collective/osu_scatter exists
+2022/02/27 15:25:32 -> Checking if latency is installed...
+2022/02/27 15:25:32 	/home/bwilliams/openhpca/build/install/osu_noncontig_mem/libexec/osu-micro-benchmarks/mpi/pt2pt/osu_latency exists
+2022/02/27 15:25:32 -> Checking if bcast is installed...
+2022/02/27 15:25:32 	/home/bwilliams/openhpca/build/install/osu_noncontig_mem/libexec/osu-micro-benchmarks/mpi/collective/osu_bcast exists
+2022/02/27 15:25:32 -> Checking if gather is installed...
+2022/02/27 15:25:32 	/home/bwilliams/openhpca/build/install/osu_noncontig_mem/libexec/osu-micro-benchmarks/mpi/collective/osu_gather exists
+2022/02/27 15:25:32 -> Checking if ireduce_scatter is installed...
+2022/02/27 15:25:32 	/home/bwilliams/openhpca/build/install/osu_noncontig_mem/libexec/osu-micro-benchmarks/mpi/collective/osu_ireduce_scatter does not exist
+2022/02/27 15:25:32 -> Checking if scatter is installed...
+2022/02/27 15:25:32 	/home/bwilliams/openhpca/build/install/osu_noncontig_mem/libexec/osu-micro-benchmarks/mpi/collective/osu_scatter exists
+2022/02/27 15:25:32 Detecting SMB installation...
+2022/02/27 15:25:32 -> Checking if mpi_overhead is installed...
+2022/02/27 15:25:32 	/home/bwilliams/openhpca/build/install/mpi_overhead/mpi_overhead/mpi_overhead exists
+2022/02/27 15:25:32 -> Checking if msgrate is installed...
+2022/02/27 15:25:32 	 does not exist
+2022/02/27 15:25:32 -> Checking if rma_mt_mpi is installed...
+2022/02/27 15:25:32 	/home/bwilliams/openhpca/build/install/rma_mt_mpi/rma_mt_mpi/msgrate exists
+2022/02/27 15:25:32 Detecting overlap installation...
+2022/02/27 15:25:32 -> Checking if overlap_ibcast is installed...
+2022/02/27 15:25:32 	/home/bwilliams/openhpca/build/install/overlap/overlap/overlap_ibcast exists
+2022/02/27 15:25:32 -> Checking if overlap_ireduce is installed...
+2022/02/27 15:25:32 	/home/bwilliams/openhpca/build/install/overlap/overlap/overlap_ireduce exists
+2022/02/27 15:25:32 -> Checking if overlap_ialltoall is installed...
+2022/02/27 15:25:32 	/home/bwilliams/openhpca/build/install/overlap/overlap/overlap_ialltoall exists
+2022/02/27 15:25:32 -> Checking if overlap_ibarrier is installed...
+2022/02/27 15:25:32 	/home/bwilliams/openhpca/build/install/overlap/overlap/overlap_ibarrier exists
+2022/02/27 15:25:32 -> Checking if overlap_ialltoallv is installed...
+2022/02/27 15:25:32 	/home/bwilliams/openhpca/build/install/overlap/overlap/overlap_ialltoallv exists
+2022/02/27 15:25:32 -> Checking if overlap_igather is installed...
+2022/02/27 15:25:32 	/home/bwilliams/openhpca/build/install/overlap/overlap/overlap_igather exists
+2022/02/27 15:25:32 -> Checking if overlap_igatherv is installed...
+2022/02/27 15:25:32 	/home/bwilliams/openhpca/build/install/overlap/overlap/overlap_igatherv exists
+2022/02/27 15:25:32 -> Checking if overlap_iallgather is installed...
+2022/02/27 15:25:32 	/home/bwilliams/openhpca/build/install/overlap/overlap/overlap_iallgather exists
+2022/02/27 15:25:32 -> Checking if overlap_iallgatherv is installed...
+2022/02/27 15:25:32 	/home/bwilliams/openhpca/build/install/overlap/overlap/overlap_iallgatherv exists
+2022/02/27 15:25:32 -> Checking if overlap_iallreduce is installed...
+2022/02/27 15:25:32 	/home/bwilliams/openhpca/build/install/overlap/overlap/overlap_iallreduce exists
+2022/02/27 15:25:32 3 benchmarks being executed:
+2022/02/27 15:25:32  - osu: latency
+2022/02/27 15:25:32  - osu: bw
+2022/02/27 15:25:32  - smb: mpi_overhead
+2022/02/27 15:25:32  - overlap: overlap_iallreduce
+2022/02/27 15:25:32  - overlap: overlap_ireduce
+2022/02/27 15:25:32  - overlap: overlap_iallgather
+2022/02/27 15:25:32  - overlap: overlap_iallgatherv
+2022/02/27 15:25:32  - overlap: overlap_ialltoall
+2022/02/27 15:25:32  - overlap: overlap_ialltoallv
+2022/02/27 15:25:32  - overlap: overlap_ibcast
+2022/02/27 15:25:32  - overlap: overlap_igather
+2022/02/27 15:25:32  - overlap: overlap_igatherv
+2022/02/27 15:25:32 12 experiments to run
+runtime: adding 1 to work group2022/02/27 15:25:32 1 experiments are pending
+2022/02/27 15:25:32 no build environment defined, not trying to build application
+2022/02/27 15:25:32 -> Running /cm/shared/apps/openmpi/gcc/64/4.1.0-ucx/bin/ompi_info --version from 
+2022/02/27 15:25:32 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 0 --format=%t from 
+2022/02/27 15:25:32 Launching experiment 0 from /home/bwilliams/openhpca/build/run using 
+2022/02/27 15:25:32 batch script ready: /home/bwilliams/openhpca/build/run/sbatch-220227152532-5f0f21d0c30dd8e8e46356cf59933bcf999ccf748478385e598de3c6.sh
+2022/02/27 15:25:32 -> Running /cm/shared/apps/slurm/current/bin/sbatch /home/bwilliams/openhpca/build/run/sbatch-220227152532-5f0f21d0c30dd8e8e46356cf59933bcf999ccf748478385e598de3c6.sh from /home/bwilliams/openhpca/build/run
+2022/02/27 15:25:32 11 experiments are pending
+2022/02/27 15:25:32 no build environment defined, not trying to build application
+2022/02/27 15:25:32 -> Running /cm/shared/apps/openmpi/gcc/64/4.1.0-ucx/bin/ompi_info --version from 
+2022/02/27 15:25:32 Launching experiment 1 from /home/bwilliams/openhpca/build/run using 
+2022/02/27 15:25:32 batch script ready: /home/bwilliams/openhpca/build/run/sbatch-220227152532-fa8e5736dec6939fd969c5b557e4b43723b895fe562624a989644fef.sh
+2022/02/27 15:25:32 -> Running /cm/shared/apps/slurm/current/bin/sbatch /home/bwilliams/openhpca/build/run/sbatch-220227152532-fa8e5736dec6939fd969c5b557e4b43723b895fe562624a989644fef.sh from /home/bwilliams/openhpca/build/run
+2022/02/27 15:25:32 10 experiments are pending
+2022/02/27 15:25:32 no build environment defined, not trying to build application
+2022/02/27 15:25:32 -> Running /cm/shared/apps/openmpi/gcc/64/4.1.0-ucx/bin/ompi_info --version from 
+2022/02/27 15:25:32 Launching experiment 2 from /home/bwilliams/openhpca/build/run using 
+2022/02/27 15:25:32 batch script ready: /home/bwilliams/openhpca/build/run/sbatch-220227152532-82146d1d9c3d1ecaa96c1cd298ab80e49c2e80c22eee172be61600ca.sh
+2022/02/27 15:25:32 -> Running /cm/shared/apps/slurm/current/bin/sbatch /home/bwilliams/openhpca/build/run/sbatch-220227152532-82146d1d9c3d1ecaa96c1cd298ab80e49c2e80c22eee172be61600ca.sh from /home/bwilliams/openhpca/build/run
+2022/02/27 15:25:32 9 experiments are pending
+2022/02/27 15:25:32 no build environment defined, not trying to build application
+2022/02/27 15:25:32 -> Running /cm/shared/apps/openmpi/gcc/64/4.1.0-ucx/bin/ompi_info --version from 
+2022/02/27 15:25:32 Launching experiment 3 from /home/bwilliams/openhpca/build/run using 
+2022/02/27 15:25:32 batch script ready: /home/bwilliams/openhpca/build/run/sbatch-220227152532-064e91d31e2d9f338d0d6e2e00937c2b828124d54c30a6ca1124a01a.sh
+2022/02/27 15:25:32 -> Running /cm/shared/apps/slurm/current/bin/sbatch /home/bwilliams/openhpca/build/run/sbatch-220227152532-064e91d31e2d9f338d0d6e2e00937c2b828124d54c30a6ca1124a01a.sh from /home/bwilliams/openhpca/build/run
+2022/02/27 15:25:32 8 experiments are pending
+2022/02/27 15:25:32 no build environment defined, not trying to build application
+2022/02/27 15:25:32 -> Running /cm/shared/apps/openmpi/gcc/64/4.1.0-ucx/bin/ompi_info --version from 
+2022/02/27 15:25:32 Launching experiment 4 from /home/bwilliams/openhpca/build/run using 
+2022/02/27 15:25:32 batch script ready: /home/bwilliams/openhpca/build/run/sbatch-220227152532-ec728480c0ca474520ab4983071608560b8508973f5990c742d67124.sh
+2022/02/27 15:25:32 -> Running /cm/shared/apps/slurm/current/bin/sbatch /home/bwilliams/openhpca/build/run/sbatch-220227152532-ec728480c0ca474520ab4983071608560b8508973f5990c742d67124.sh from /home/bwilliams/openhpca/build/run
+2022/02/27 15:25:32 5 experiments are running
+2022/02/27 15:25:32 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5354 --format=%t from 
+2022/02/27 15:25:32 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5355 --format=%t from 
+2022/02/27 15:25:32 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5356 --format=%t from 
+2022/02/27 15:25:32 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5357 --format=%t from 
+2022/02/27 15:25:32 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5358 --format=%t from 
+2022/02/27 15:25:32 5 experiments are running
+2022/02/27 15:25:32 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5354 --format=%t from 
+2022/02/27 15:25:32 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5355 --format=%t from 
+2022/02/27 15:25:32 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5356 --format=%t from 
+2022/02/27 15:25:32 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5357 --format=%t from 
+2022/02/27 15:25:32 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5358 --format=%t from 
+2022/02/27 15:25:32 5 experiments are running
+2022/02/27 15:25:32 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5354 --format=%t from 
+2022/02/27 15:25:32 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5355 --format=%t from 
+2022/02/27 15:25:32 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5356 --format=%t from 
+2022/02/27 15:25:32 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5357 --format=%t from 
+2022/02/27 15:25:32 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5358 --format=%t from 
+2022/02/27 15:25:32 5 experiments are running
+2022/02/27 15:25:32 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5354 --format=%t from 
+2022/02/27 15:25:32 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5355 --format=%t from 
+2022/02/27 15:25:32 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5356 --format=%t from 
+2022/02/27 15:25:32 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5357 --format=%t from 
+2022/02/27 15:25:32 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5358 --format=%t from 
+2022/02/27 15:25:32 5 experiments are running
+2022/02/27 15:25:32 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5354 --format=%t from 
+2022/02/27 15:25:32 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5355 --format=%t from 
+2022/02/27 15:25:32 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5356 --format=%t from 
+2022/02/27 15:25:32 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5357 --format=%t from 
+2022/02/27 15:25:32 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5358 --format=%t from 
+2022/02/27 15:26:32 7 experiments are pending
+2022/02/27 15:26:32 5 experiments are running
+2022/02/27 15:26:32 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5354 --format=%t from 
+2022/02/27 15:26:32 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5355 --format=%t from 
+2022/02/27 15:26:32 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5356 --format=%t from 
+2022/02/27 15:26:32 -> Running /cm/shared/apps/slurm/current/bin/sacct -j 5356 --format=state from 
+2022/02/27 15:26:33 Experiment 2 has completed; 7 pending, 5 running
+2022/02/27 15:26:33 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5357 --format=%t from 
+2022/02/27 15:26:33 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5358 --format=%t from 
+2022/02/27 15:27:33 7 experiments are pending
+2022/02/27 15:27:33 no build environment defined, not trying to build application
+2022/02/27 15:27:33 -> Running /cm/shared/apps/openmpi/gcc/64/4.1.0-ucx/bin/ompi_info --version from 
+2022/02/27 15:27:33 Launching experiment 5 from /home/bwilliams/openhpca/build/run using 
+2022/02/27 15:27:33 batch script ready: /home/bwilliams/openhpca/build/run/sbatch-220227152733-52b4788b7ec7b1a9893d93f6e14cede690b2802585def96dcad11b0a.sh
+2022/02/27 15:27:33 -> Running /cm/shared/apps/slurm/current/bin/sbatch /home/bwilliams/openhpca/build/run/sbatch-220227152733-52b4788b7ec7b1a9893d93f6e14cede690b2802585def96dcad11b0a.sh from /home/bwilliams/openhpca/build/run
+2022/02/27 15:27:33 5 experiments are running
+2022/02/27 15:27:33 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5354 --format=%t from 
+2022/02/27 15:27:33 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5355 --format=%t from 
+2022/02/27 15:27:33 -> Running /cm/shared/apps/slurm/current/bin/sacct -j 5355 --format=state from 
+2022/02/27 15:27:33 Experiment 1 has completed; 6 pending, 5 running
+2022/02/27 15:27:33 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5357 --format=%t from 
+2022/02/27 15:27:33 -> Running /cm/shared/apps/slurm/current/bin/sacct -j 5357 --format=state from 
+2022/02/27 15:27:33 Experiment 3 has completed; 6 pending, 4 running
+2022/02/27 15:27:33 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5358 --format=%t from 
+2022/02/27 15:27:33 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5359 --format=%t from 
+2022/02/27 15:28:33 6 experiments are pending
+2022/02/27 15:28:33 no build environment defined, not trying to build application
+2022/02/27 15:28:33 -> Running /cm/shared/apps/openmpi/gcc/64/4.1.0-ucx/bin/ompi_info --version from 
+2022/02/27 15:28:33 Launching experiment 6 from /home/bwilliams/openhpca/build/run using 
+2022/02/27 15:28:33 batch script ready: /home/bwilliams/openhpca/build/run/sbatch-220227152833-b532f61fce5663250339a0332dd2056b9a70dc4737e63a7b6fe5b2a9.sh
+2022/02/27 15:28:33 -> Running /cm/shared/apps/slurm/current/bin/sbatch /home/bwilliams/openhpca/build/run/sbatch-220227152833-b532f61fce5663250339a0332dd2056b9a70dc4737e63a7b6fe5b2a9.sh from /home/bwilliams/openhpca/build/run
+2022/02/27 15:28:33 5 experiments are pending
+2022/02/27 15:28:33 no build environment defined, not trying to build application
+2022/02/27 15:28:33 -> Running /cm/shared/apps/openmpi/gcc/64/4.1.0-ucx/bin/ompi_info --version from 
+2022/02/27 15:28:33 Launching experiment 7 from /home/bwilliams/openhpca/build/run using 
+2022/02/27 15:28:33 batch script ready: /home/bwilliams/openhpca/build/run/sbatch-220227152833-6ad2364c6e2c98369551dbcb2f80d39a3e82e759112cb7e2fae49999.sh
+2022/02/27 15:28:33 -> Running /cm/shared/apps/slurm/current/bin/sbatch /home/bwilliams/openhpca/build/run/sbatch-220227152833-6ad2364c6e2c98369551dbcb2f80d39a3e82e759112cb7e2fae49999.sh from /home/bwilliams/openhpca/build/run
+2022/02/27 15:28:33 5 experiments are running
+2022/02/27 15:28:33 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5354 --format=%t from 
+2022/02/27 15:28:33 -> Running /cm/shared/apps/slurm/current/bin/sacct -j 5354 --format=state from 
+2022/02/27 15:28:33 Experiment 0 has completed; 4 pending, 5 running
+2022/02/27 15:28:33 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5358 --format=%t from 
+2022/02/27 15:28:33 -> Running /cm/shared/apps/slurm/current/bin/sacct -j 5358 --format=state from 
+2022/02/27 15:28:33 Experiment 4 has completed; 4 pending, 4 running
+2022/02/27 15:28:33 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5359 --format=%t from 
+2022/02/27 15:28:33 -> Running /cm/shared/apps/slurm/current/bin/sacct -j 5359 --format=state from 
+2022/02/27 15:28:33 Experiment 5 has completed; 4 pending, 3 running
+2022/02/27 15:28:33 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5360 --format=%t from 
+2022/02/27 15:28:33 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5361 --format=%t from 
+2022/02/27 15:28:33 2 experiments are running
+2022/02/27 15:28:33 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5360 --format=%t from 
+2022/02/27 15:28:33 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5361 --format=%t from 
+2022/02/27 15:29:33 4 experiments are pending
+2022/02/27 15:29:33 no build environment defined, not trying to build application
+2022/02/27 15:29:33 -> Running /cm/shared/apps/openmpi/gcc/64/4.1.0-ucx/bin/ompi_info --version from 
+2022/02/27 15:29:34 Launching experiment 8 from /home/bwilliams/openhpca/build/run using 
+2022/02/27 15:29:34 batch script ready: /home/bwilliams/openhpca/build/run/sbatch-220227152934-a3d1389f042798d326a790ed0186a6f91a8635437a952d226c87dfeb.sh
+2022/02/27 15:29:34 -> Running /cm/shared/apps/slurm/current/bin/sbatch /home/bwilliams/openhpca/build/run/sbatch-220227152934-a3d1389f042798d326a790ed0186a6f91a8635437a952d226c87dfeb.sh from /home/bwilliams/openhpca/build/run
+2022/02/27 15:29:34 3 experiments are pending
+2022/02/27 15:29:34 no build environment defined, not trying to build application
+2022/02/27 15:29:34 -> Running /cm/shared/apps/openmpi/gcc/64/4.1.0-ucx/bin/ompi_info --version from 
+2022/02/27 15:29:34 Launching experiment 9 from /home/bwilliams/openhpca/build/run using 
+2022/02/27 15:29:34 batch script ready: /home/bwilliams/openhpca/build/run/sbatch-220227152934-a74f8ef2ecc148803e335ecbda0d0225af25124612ae5be05b7e1c11.sh
+2022/02/27 15:29:34 -> Running /cm/shared/apps/slurm/current/bin/sbatch /home/bwilliams/openhpca/build/run/sbatch-220227152934-a74f8ef2ecc148803e335ecbda0d0225af25124612ae5be05b7e1c11.sh from /home/bwilliams/openhpca/build/run
+2022/02/27 15:29:34 2 experiments are pending
+2022/02/27 15:29:34 no build environment defined, not trying to build application
+2022/02/27 15:29:34 -> Running /cm/shared/apps/openmpi/gcc/64/4.1.0-ucx/bin/ompi_info --version from 
+2022/02/27 15:29:34 Launching experiment 10 from /home/bwilliams/openhpca/build/run using 
+2022/02/27 15:29:34 batch script ready: /home/bwilliams/openhpca/build/run/sbatch-220227152934-5f6de4d7efc332d7b45cff97b6e78532fc12ce985ec9511975dae2b1.sh
+2022/02/27 15:29:34 -> Running /cm/shared/apps/slurm/current/bin/sbatch /home/bwilliams/openhpca/build/run/sbatch-220227152934-5f6de4d7efc332d7b45cff97b6e78532fc12ce985ec9511975dae2b1.sh from /home/bwilliams/openhpca/build/run
+2022/02/27 15:29:34 5 experiments are running
+2022/02/27 15:29:34 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5360 --format=%t from 
+2022/02/27 15:29:34 -> Running /cm/shared/apps/slurm/current/bin/sacct -j 5360 --format=state from 
+2022/02/27 15:29:34 Experiment 6 has completed; 1 pending, 5 running
+2022/02/27 15:29:34 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5361 --format=%t from 
+2022/02/27 15:29:34 -> Running /cm/shared/apps/slurm/current/bin/sacct -j 5361 --format=state from 
+2022/02/27 15:29:34 Experiment 7 has completed; 1 pending, 4 running
+2022/02/27 15:29:34 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5362 --format=%t from 
+2022/02/27 15:29:34 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5363 --format=%t from 
+2022/02/27 15:29:34 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5364 --format=%t from 
+2022/02/27 15:29:34 3 experiments are running
+2022/02/27 15:29:34 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5362 --format=%t from 
+2022/02/27 15:29:34 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5363 --format=%t from 
+2022/02/27 15:29:34 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5364 --format=%t from 
+2022/02/27 15:29:34 3 experiments are running
+2022/02/27 15:29:34 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5362 --format=%t from 
+2022/02/27 15:29:34 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5363 --format=%t from 
+2022/02/27 15:29:34 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5364 --format=%t from 
+2022/02/27 15:30:32 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5354 --format=%t from 
+2022/02/27 15:30:32 -> Running /cm/shared/apps/slurm/current/bin/sacct -j 5354 --format=state from 
+2022/02/27 15:30:32 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5355 --format=%t from 
+2022/02/27 15:30:32 -> Running /cm/shared/apps/slurm/current/bin/sacct -j 5355 --format=state from 
+2022/02/27 15:30:32 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5356 --format=%t from 
+2022/02/27 15:30:32 -> Running /cm/shared/apps/slurm/current/bin/sacct -j 5356 --format=state from 
+2022/02/27 15:30:32 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5357 --format=%t from 
+2022/02/27 15:30:32 -> Running /cm/shared/apps/slurm/current/bin/sacct -j 5357 --format=state from 
+2022/02/27 15:30:33 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5358 --format=%t from 
+2022/02/27 15:30:33 -> Running /cm/shared/apps/slurm/current/bin/sacct -j 5358 --format=state from 
+2022/02/27 15:30:33 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5359 --format=%t from 
+2022/02/27 15:30:33 -> Running /cm/shared/apps/slurm/current/bin/sacct -j 5359 --format=state from 
+2022/02/27 15:30:33 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5360 --format=%t from 
+2022/02/27 15:30:33 -> Running /cm/shared/apps/slurm/current/bin/sacct -j 5360 --format=state from 
+2022/02/27 15:30:33 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5361 --format=%t from 
+2022/02/27 15:30:33 -> Running /cm/shared/apps/slurm/current/bin/sacct -j 5361 --format=state from 
+2022/02/27 15:30:33 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5362 --format=%t from 
+2022/02/27 15:30:33 -> Running /cm/shared/apps/slurm/current/bin/sacct -j 5362 --format=state from 
+2022/02/27 15:30:33 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5363 --format=%t from 
+2022/02/27 15:30:33 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5364 --format=%t from 
+2022/02/27 15:30:34 1 experiments are pending
+2022/02/27 15:30:34 no build environment defined, not trying to build application
+2022/02/27 15:30:34 -> Running /cm/shared/apps/openmpi/gcc/64/4.1.0-ucx/bin/ompi_info --version from 
+2022/02/27 15:30:34 Launching experiment 11 from /home/bwilliams/openhpca/build/run using 
+2022/02/27 15:30:34 batch script ready: /home/bwilliams/openhpca/build/run/sbatch-220227153034-082dad1c1c0a4e417370caa9846c058a567a488431bbe136dd45a28a.sh
+2022/02/27 15:30:34 -> Running /cm/shared/apps/slurm/current/bin/sbatch /home/bwilliams/openhpca/build/run/sbatch-220227153034-082dad1c1c0a4e417370caa9846c058a567a488431bbe136dd45a28a.sh from /home/bwilliams/openhpca/build/run
+2022/02/27 15:30:34 4 experiments are running
+2022/02/27 15:30:34 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5362 --format=%t from 
+2022/02/27 15:30:34 -> Running /cm/shared/apps/slurm/current/bin/sacct -j 5362 --format=state from 
+2022/02/27 15:30:34 Experiment 8 has completed; 0 pending, 4 running
+2022/02/27 15:30:34 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5363 --format=%t from 
+2022/02/27 15:30:34 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5364 --format=%t from 
+2022/02/27 15:30:34 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5365 --format=%t from 
+2022/02/27 15:31:34 0 experiments are pending
+2022/02/27 15:31:34 3 experiments are running
+2022/02/27 15:31:34 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5363 --format=%t from 
+2022/02/27 15:31:34 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5364 --format=%t from 
+2022/02/27 15:31:34 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5365 --format=%t from 
+2022/02/27 15:32:34 0 experiments are pending
+2022/02/27 15:32:34 3 experiments are running
+2022/02/27 15:32:34 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5363 --format=%t from 
+2022/02/27 15:32:34 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5364 --format=%t from 
+2022/02/27 15:32:34 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5365 --format=%t from 
+2022/02/27 15:33:34 0 experiments are pending
+2022/02/27 15:33:34 3 experiments are running
+2022/02/27 15:33:34 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5363 --format=%t from 
+2022/02/27 15:33:34 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5364 --format=%t from 
+2022/02/27 15:33:34 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5365 --format=%t from 
+2022/02/27 15:34:34 0 experiments are pending
+2022/02/27 15:34:34 3 experiments are running
+2022/02/27 15:34:34 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5363 --format=%t from 
+2022/02/27 15:34:34 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5364 --format=%t from 
+2022/02/27 15:34:34 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5365 --format=%t from 
+2022/02/27 15:35:33 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5363 --format=%t from 
+2022/02/27 15:35:33 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5364 --format=%t from 
+2022/02/27 15:35:33 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5365 --format=%t from 
+2022/02/27 15:35:34 0 experiments are pending
+2022/02/27 15:35:34 3 experiments are running
+2022/02/27 15:35:34 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5363 --format=%t from 
+2022/02/27 15:35:34 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5364 --format=%t from 
+2022/02/27 15:35:34 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5365 --format=%t from 
+2022/02/27 15:36:34 0 experiments are pending
+2022/02/27 15:36:34 3 experiments are running
+2022/02/27 15:36:34 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5363 --format=%t from 
+2022/02/27 15:36:34 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5364 --format=%t from 
+2022/02/27 15:36:34 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5365 --format=%t from 
+2022/02/27 15:37:34 0 experiments are pending
+2022/02/27 15:37:34 3 experiments are running
+2022/02/27 15:37:34 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5363 --format=%t from 
+2022/02/27 15:37:34 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5364 --format=%t from 
+2022/02/27 15:37:34 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5365 --format=%t from 
+2022/02/27 15:38:34 0 experiments are pending
+2022/02/27 15:38:34 3 experiments are running
+2022/02/27 15:38:34 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5363 --format=%t from 
+2022/02/27 15:38:34 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5364 --format=%t from 
+2022/02/27 15:38:34 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5365 --format=%t from 
+2022/02/27 15:39:35 0 experiments are pending
+2022/02/27 15:39:35 3 experiments are running
+2022/02/27 15:39:35 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5363 --format=%t from 
+2022/02/27 15:39:35 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5364 --format=%t from 
+2022/02/27 15:39:35 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5365 --format=%t from 
+2022/02/27 15:40:33 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5363 --format=%t from 
+2022/02/27 15:40:33 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5364 --format=%t from 
+2022/02/27 15:40:33 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5365 --format=%t from 
+2022/02/27 15:40:35 0 experiments are pending
+2022/02/27 15:40:35 3 experiments are running
+2022/02/27 15:40:35 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5363 --format=%t from 
+2022/02/27 15:40:35 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5364 --format=%t from 
+2022/02/27 15:40:35 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5365 --format=%t from 
+2022/02/27 15:41:35 0 experiments are pending
+2022/02/27 15:41:35 3 experiments are running
+2022/02/27 15:41:35 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5363 --format=%t from 
+2022/02/27 15:41:35 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5364 --format=%t from 
+2022/02/27 15:41:35 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5365 --format=%t from 
+2022/02/27 15:42:35 0 experiments are pending
+2022/02/27 15:42:35 3 experiments are running
+2022/02/27 15:42:35 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5363 --format=%t from 
+2022/02/27 15:42:35 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5364 --format=%t from 
+2022/02/27 15:42:35 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5365 --format=%t from 
+2022/02/27 15:43:35 0 experiments are pending
+2022/02/27 15:43:35 3 experiments are running
+2022/02/27 15:43:35 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5363 --format=%t from 
+2022/02/27 15:43:35 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5364 --format=%t from 
+2022/02/27 15:43:35 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5365 --format=%t from 
+2022/02/27 15:44:35 0 experiments are pending
+2022/02/27 15:44:35 3 experiments are running
+2022/02/27 15:44:35 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5363 --format=%t from 
+2022/02/27 15:44:35 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5364 --format=%t from 
+2022/02/27 15:44:35 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5365 --format=%t from 
+2022/02/27 15:45:33 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5363 --format=%t from 
+2022/02/27 15:45:33 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5364 --format=%t from 
+2022/02/27 15:45:33 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5365 --format=%t from 
+2022/02/27 15:45:35 0 experiments are pending
+2022/02/27 15:45:35 3 experiments are running
+2022/02/27 15:45:35 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5363 --format=%t from 
+2022/02/27 15:45:35 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5364 --format=%t from 
+2022/02/27 15:45:35 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5365 --format=%t from 
+2022/02/27 15:46:35 0 experiments are pending
+2022/02/27 15:46:35 3 experiments are running
+2022/02/27 15:46:35 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5363 --format=%t from 
+2022/02/27 15:46:35 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5364 --format=%t from 
+2022/02/27 15:46:35 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5365 --format=%t from 
+2022/02/27 15:47:35 0 experiments are pending
+2022/02/27 15:47:35 3 experiments are running
+2022/02/27 15:47:35 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5363 --format=%t from 
+2022/02/27 15:47:35 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5364 --format=%t from 
+2022/02/27 15:47:35 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5365 --format=%t from 
+2022/02/27 15:48:35 0 experiments are pending
+2022/02/27 15:48:35 3 experiments are running
+2022/02/27 15:48:35 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5363 --format=%t from 
+2022/02/27 15:48:35 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5364 --format=%t from 
+2022/02/27 15:48:35 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5365 --format=%t from 
+2022/02/27 15:49:35 0 experiments are pending
+2022/02/27 15:49:35 3 experiments are running
+2022/02/27 15:49:35 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5363 --format=%t from 
+2022/02/27 15:49:35 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5364 --format=%t from 
+2022/02/27 15:49:35 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5365 --format=%t from 
+2022/02/27 15:50:34 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5363 --format=%t from 
+2022/02/27 15:50:34 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5364 --format=%t from 
+2022/02/27 15:50:34 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5365 --format=%t from 
+2022/02/27 15:50:35 0 experiments are pending
+2022/02/27 15:50:35 3 experiments are running
+2022/02/27 15:50:35 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5363 --format=%t from 
+2022/02/27 15:50:35 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5364 --format=%t from 
+2022/02/27 15:50:35 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5365 --format=%t from 
+2022/02/27 15:51:35 0 experiments are pending
+2022/02/27 15:51:35 3 experiments are running
+2022/02/27 15:51:35 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5363 --format=%t from 
+2022/02/27 15:51:35 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5364 --format=%t from 
+2022/02/27 15:51:35 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5365 --format=%t from 
+2022/02/27 15:52:35 0 experiments are pending
+2022/02/27 15:52:35 3 experiments are running
+2022/02/27 15:52:35 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5363 --format=%t from 
+2022/02/27 15:52:35 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5364 --format=%t from 
+2022/02/27 15:52:35 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5365 --format=%t from 
+2022/02/27 15:53:35 0 experiments are pending
+2022/02/27 15:53:35 3 experiments are running
+2022/02/27 15:53:35 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5363 --format=%t from 
+2022/02/27 15:53:35 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5364 --format=%t from 
+2022/02/27 15:53:35 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5365 --format=%t from 
+2022/02/27 15:54:35 0 experiments are pending
+2022/02/27 15:54:35 3 experiments are running
+2022/02/27 15:54:35 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5363 --format=%t from 
+2022/02/27 15:54:36 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5364 --format=%t from 
+2022/02/27 15:54:36 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5365 --format=%t from 
+2022/02/27 15:55:34 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5363 --format=%t from 
+2022/02/27 15:55:34 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5364 --format=%t from 
+2022/02/27 15:55:34 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5365 --format=%t from 
+2022/02/27 15:55:36 0 experiments are pending
+2022/02/27 15:55:36 3 experiments are running
+2022/02/27 15:55:36 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5363 --format=%t from 
+2022/02/27 15:55:36 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5364 --format=%t from 
+2022/02/27 15:55:36 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5365 --format=%t from 
+2022/02/27 15:56:36 0 experiments are pending
+2022/02/27 15:56:36 3 experiments are running
+2022/02/27 15:56:36 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5363 --format=%t from 
+2022/02/27 15:56:36 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5364 --format=%t from 
+2022/02/27 15:56:36 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5365 --format=%t from 
+2022/02/27 15:57:36 0 experiments are pending
+2022/02/27 15:57:36 3 experiments are running
+2022/02/27 15:57:36 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5363 --format=%t from 
+2022/02/27 15:57:36 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5364 --format=%t from 
+2022/02/27 15:57:36 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5365 --format=%t from 
+2022/02/27 15:58:36 0 experiments are pending
+2022/02/27 15:58:36 3 experiments are running
+2022/02/27 15:58:36 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5363 --format=%t from 
+2022/02/27 15:58:36 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5364 --format=%t from 
+2022/02/27 15:58:36 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5365 --format=%t from 
+2022/02/27 15:59:36 0 experiments are pending
+2022/02/27 15:59:36 3 experiments are running
+2022/02/27 15:59:36 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5363 --format=%t from 
+2022/02/27 15:59:36 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5364 --format=%t from 
+2022/02/27 15:59:36 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5365 --format=%t from 
+2022/02/27 16:00:34 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5363 --format=%t from 
+2022/02/27 16:00:34 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5364 --format=%t from 
+2022/02/27 16:00:34 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5365 --format=%t from 
+2022/02/27 16:00:36 0 experiments are pending
+2022/02/27 16:00:36 3 experiments are running
+2022/02/27 16:00:36 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5363 --format=%t from 
+2022/02/27 16:00:36 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5364 --format=%t from 
+2022/02/27 16:00:36 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5365 --format=%t from 
+2022/02/27 16:01:36 0 experiments are pending
+2022/02/27 16:01:36 3 experiments are running
+2022/02/27 16:01:36 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5363 --format=%t from 
+2022/02/27 16:01:36 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5364 --format=%t from 
+2022/02/27 16:01:36 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5365 --format=%t from 
+2022/02/27 16:02:36 0 experiments are pending
+2022/02/27 16:02:36 3 experiments are running
+2022/02/27 16:02:36 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5363 --format=%t from 
+2022/02/27 16:02:36 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5364 --format=%t from 
+2022/02/27 16:02:36 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5365 --format=%t from 
+2022/02/27 16:03:36 0 experiments are pending
+2022/02/27 16:03:36 3 experiments are running
+2022/02/27 16:03:36 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5363 --format=%t from 
+2022/02/27 16:03:36 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5364 --format=%t from 
+2022/02/27 16:03:36 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5365 --format=%t from 
+2022/02/27 16:04:36 0 experiments are pending
+2022/02/27 16:04:36 3 experiments are running
+2022/02/27 16:04:36 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5363 --format=%t from 
+2022/02/27 16:04:36 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5364 --format=%t from 
+2022/02/27 16:04:36 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5365 --format=%t from 
+2022/02/27 16:05:34 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5363 --format=%t from 
+2022/02/27 16:05:34 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5364 --format=%t from 
+2022/02/27 16:05:34 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5365 --format=%t from 
+2022/02/27 16:05:36 0 experiments are pending
+2022/02/27 16:05:36 3 experiments are running
+2022/02/27 16:05:36 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5363 --format=%t from 
+2022/02/27 16:05:36 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5364 --format=%t from 
+2022/02/27 16:05:36 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5365 --format=%t from 
+2022/02/27 16:06:36 0 experiments are pending
+2022/02/27 16:06:36 3 experiments are running
+2022/02/27 16:06:36 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5363 --format=%t from 
+2022/02/27 16:06:36 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5364 --format=%t from 
+2022/02/27 16:06:36 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5365 --format=%t from 
+2022/02/27 16:07:36 0 experiments are pending
+2022/02/27 16:07:36 3 experiments are running
+2022/02/27 16:07:36 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5363 --format=%t from 
+2022/02/27 16:07:36 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5364 --format=%t from 
+2022/02/27 16:07:36 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5365 --format=%t from 
+2022/02/27 16:08:36 0 experiments are pending
+2022/02/27 16:08:36 3 experiments are running
+2022/02/27 16:08:36 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5363 --format=%t from 
+2022/02/27 16:08:36 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5364 --format=%t from 
+2022/02/27 16:08:36 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5365 --format=%t from 
+2022/02/27 16:09:36 0 experiments are pending
+2022/02/27 16:09:36 3 experiments are running
+2022/02/27 16:09:36 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5363 --format=%t from 
+2022/02/27 16:09:36 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5364 --format=%t from 
+2022/02/27 16:09:36 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5365 --format=%t from 
+2022/02/27 16:10:34 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5363 --format=%t from 
+2022/02/27 16:10:34 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5364 --format=%t from 
+2022/02/27 16:10:34 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5365 --format=%t from 
+2022/02/27 16:10:36 0 experiments are pending
+2022/02/27 16:10:36 3 experiments are running
+2022/02/27 16:10:36 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5363 --format=%t from 
+2022/02/27 16:10:37 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5364 --format=%t from 
+2022/02/27 16:10:37 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5365 --format=%t from 
+2022/02/27 16:11:37 0 experiments are pending
+2022/02/27 16:11:37 3 experiments are running
+2022/02/27 16:11:37 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5363 --format=%t from 
+2022/02/27 16:11:37 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5364 --format=%t from 
+2022/02/27 16:11:37 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5365 --format=%t from 
+2022/02/27 16:12:37 0 experiments are pending
+2022/02/27 16:12:37 3 experiments are running
+2022/02/27 16:12:37 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5363 --format=%t from 
+2022/02/27 16:12:37 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5364 --format=%t from 
+2022/02/27 16:12:37 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5365 --format=%t from 
+2022/02/27 16:13:37 0 experiments are pending
+2022/02/27 16:13:37 3 experiments are running
+2022/02/27 16:13:37 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5363 --format=%t from 
+2022/02/27 16:13:37 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5364 --format=%t from 
+2022/02/27 16:13:37 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5365 --format=%t from 
+2022/02/27 16:14:37 0 experiments are pending
+2022/02/27 16:14:37 3 experiments are running
+2022/02/27 16:14:37 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5363 --format=%t from 
+2022/02/27 16:14:37 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5364 --format=%t from 
+2022/02/27 16:14:37 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5365 --format=%t from 
+2022/02/27 16:15:34 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5363 --format=%t from 
+2022/02/27 16:15:34 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5364 --format=%t from 
+2022/02/27 16:15:34 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5365 --format=%t from 
+2022/02/27 16:15:37 0 experiments are pending
+2022/02/27 16:15:37 3 experiments are running
+2022/02/27 16:15:37 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5363 --format=%t from 
+2022/02/27 16:15:37 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5364 --format=%t from 
+2022/02/27 16:15:37 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5365 --format=%t from 
+2022/02/27 16:16:37 0 experiments are pending
+2022/02/27 16:16:37 3 experiments are running
+2022/02/27 16:16:37 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5363 --format=%t from 
+2022/02/27 16:16:37 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5364 --format=%t from 
+2022/02/27 16:16:37 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5365 --format=%t from 
+2022/02/27 16:17:37 0 experiments are pending
+2022/02/27 16:17:37 3 experiments are running
+2022/02/27 16:17:37 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5363 --format=%t from 
+2022/02/27 16:17:37 -> Running /cm/shared/apps/slurm/current/bin/sacct -j 5363 --format=state from 
+2022/02/27 16:17:37 Experiment 9 has completed; 0 pending, 3 running
+2022/02/27 16:17:37 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5364 --format=%t from 
+2022/02/27 16:17:37 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5365 --format=%t from 
+2022/02/27 16:18:37 0 experiments are pending
+2022/02/27 16:18:37 2 experiments are running
+2022/02/27 16:18:37 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5364 --format=%t from 
+2022/02/27 16:18:37 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5365 --format=%t from 
+2022/02/27 16:19:37 0 experiments are pending
+2022/02/27 16:19:37 2 experiments are running
+2022/02/27 16:19:37 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5364 --format=%t from 
+2022/02/27 16:19:37 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5365 --format=%t from 
+2022/02/27 16:20:34 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5363 --format=%t from 
+2022/02/27 16:20:34 -> Running /cm/shared/apps/slurm/current/bin/sacct -j 5363 --format=state from 
+2022/02/27 16:20:34 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5364 --format=%t from 
+2022/02/27 16:20:34 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5365 --format=%t from 
+2022/02/27 16:20:37 0 experiments are pending
+2022/02/27 16:20:37 2 experiments are running
+2022/02/27 16:20:37 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5364 --format=%t from 
+2022/02/27 16:20:37 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5365 --format=%t from 
+2022/02/27 16:21:37 0 experiments are pending
+2022/02/27 16:21:37 2 experiments are running
+2022/02/27 16:21:37 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5364 --format=%t from 
+2022/02/27 16:21:37 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5365 --format=%t from 
+2022/02/27 16:22:37 0 experiments are pending
+2022/02/27 16:22:37 2 experiments are running
+2022/02/27 16:22:37 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5364 --format=%t from 
+2022/02/27 16:22:37 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5365 --format=%t from 
+2022/02/27 16:23:37 0 experiments are pending
+2022/02/27 16:23:37 2 experiments are running
+2022/02/27 16:23:37 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5364 --format=%t from 
+2022/02/27 16:23:37 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5365 --format=%t from 
+2022/02/27 16:24:37 0 experiments are pending
+2022/02/27 16:24:37 2 experiments are running
+2022/02/27 16:24:37 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5364 --format=%t from 
+2022/02/27 16:24:37 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5365 --format=%t from 
+2022/02/27 16:25:34 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5364 --format=%t from 
+2022/02/27 16:25:34 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5365 --format=%t from 
+2022/02/27 16:25:37 0 experiments are pending
+2022/02/27 16:25:37 2 experiments are running
+2022/02/27 16:25:37 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5364 --format=%t from 
+2022/02/27 16:25:37 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5365 --format=%t from 
+2022/02/27 16:26:37 0 experiments are pending
+2022/02/27 16:26:37 2 experiments are running
+2022/02/27 16:26:37 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5364 --format=%t from 
+2022/02/27 16:26:37 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5365 --format=%t from 
+2022/02/27 16:27:38 0 experiments are pending
+2022/02/27 16:27:38 2 experiments are running
+2022/02/27 16:27:38 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5364 --format=%t from 
+2022/02/27 16:27:38 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5365 --format=%t from 
+2022/02/27 16:28:38 0 experiments are pending
+2022/02/27 16:28:38 2 experiments are running
+2022/02/27 16:28:38 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5364 --format=%t from 
+2022/02/27 16:28:38 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5365 --format=%t from 
+2022/02/27 16:29:38 0 experiments are pending
+2022/02/27 16:29:38 2 experiments are running
+2022/02/27 16:29:38 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5364 --format=%t from 
+2022/02/27 16:29:38 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5365 --format=%t from 
+2022/02/27 16:30:34 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5364 --format=%t from 
+2022/02/27 16:30:34 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5365 --format=%t from 
+2022/02/27 16:30:38 0 experiments are pending
+2022/02/27 16:30:38 2 experiments are running
+2022/02/27 16:30:38 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5364 --format=%t from 
+2022/02/27 16:30:38 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5365 --format=%t from 
+2022/02/27 16:31:38 0 experiments are pending
+2022/02/27 16:31:38 2 experiments are running
+2022/02/27 16:31:38 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5364 --format=%t from 
+2022/02/27 16:31:38 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5365 --format=%t from 
+2022/02/27 16:32:38 0 experiments are pending
+2022/02/27 16:32:38 2 experiments are running
+2022/02/27 16:32:38 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5364 --format=%t from 
+2022/02/27 16:32:38 -> Running /cm/shared/apps/slurm/current/bin/sacct -j 5364 --format=state from 
+2022/02/27 16:32:38 Experiment 10 has completed; 0 pending, 2 running
+2022/02/27 16:32:38 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5365 --format=%t from 
+2022/02/27 16:32:38 -> Running /cm/shared/apps/slurm/current/bin/sacct -j 5365 --format=state from 
+2022/02/27 16:32:38 Experiment 11 has completed; 0 pending, 1 running
+2022/02/27 16:33:38 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5365 --format=%t from 
+2022/02/27 16:33:38 -> Running /cm/shared/apps/slurm/current/bin/sacct -j 5365 --format=state from 
+Runtime: all jobs completed, terminating...2022/02/27 16:35:34 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5364 --format=%t from 
+2022/02/27 16:35:34 -> Running /cm/shared/apps/slurm/current/bin/sacct -j 5364 --format=state from 
+2022/02/27 16:35:34 -> Running /cm/shared/apps/slurm/current/bin/squeue -j 5365 --format=%t from 
+2022/02/27 16:35:35 -> Running /cm/shared/apps/slurm/current/bin/sacct -j 5365 --format=state from 
+2022/02/27 16:35:35 -> Job successfully executed
+ERROR: unable to display results: undefined data

@@ -1,0 +1,7 @@
+[node001:54547] ../../../../../ompi/mca/pml/ucx/pml_ucx.c:888  Error: mca_pml_ucx_send_nbr failed: -25, Connection reset by remote peer
+[node001:54547] *** An error occurred in MPI_Barrier
+[node001:54547] *** reported by process [4217700353,0]
+[node001:54547] *** on communicator MPI_COMM_WORLD
+[node001:54547] *** MPI_ERR_OTHER: known error not in list
+[node001:54547] *** MPI_ERRORS_ARE_FATAL (processes in this communicator will now abort,
+[node001:54547] ***    and potentially your MPI job)

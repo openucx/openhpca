@@ -1,0 +1,155 @@
+[node003:64120:0:64120] Caught signal 11 (Segmentation fault: invalid permissions for mapped object at address 0x1555418e5000)
+[node004:8983 :0:8983] Caught signal 11 (Segmentation fault: invalid permissions for mapped object at address 0x1555418e5000)
+[node005:1973 :0:1973] Caught signal 11 (Segmentation fault: invalid permissions for mapped object at address 0x1555418e5000)
+[node006:18552:0:18552] Caught signal 11 (Segmentation fault: invalid permissions for mapped object at address 0x1555418e5000)
+==== backtrace (tid:  64120) ====
+ 0  /home/bwilliams/ucx/build/lib/libucs.so.0(ucs_handle_error+0x10c) [0x155548e7d46c]
+ 1  /home/bwilliams/ucx/build/lib/libucs.so.0(+0x2b7ec) [0x155548e7d7ec]
+ 2  /home/bwilliams/ucx/build/lib/libucs.so.0(+0x2ba64) [0x155548e7da64]
+ 3  /lib/x86_64-linux-gnu/libpthread.so.0(+0x12890) [0x155553e81890]
+ 4  /lib/x86_64-linux-gnu/libc.so.6(+0xbb686) [0x155554922686]
+ 5  /cm/shared/apps/openmpi/gcc/64/4.1.0-ucx/lib/libopen-pal.so.40(+0x4e35d) [0x1555542e435d]
+ 6  /cm/shared/apps/openmpi/gcc/64/4.1.0-ucx/lib/libmpi.so.40(ompi_datatype_sndrcv+0x54f) [0x155554cbd2af]
+ 7  /cm/shared/apps/openmpi/gcc/64/4.1.0-ucx/lib/openmpi/mca_coll_libnbc.so(+0x6ebb) [0x155543bd8ebb]
+ 8  /cm/shared/apps/openmpi/gcc/64/4.1.0-ucx/lib/openmpi/mca_coll_libnbc.so(NBC_Start+0x29) [0x155543bd96f9]
+ 9  /cm/shared/apps/openmpi/gcc/64/4.1.0-ucx/lib/openmpi/mca_coll_libnbc.so(ompi_coll_libnbc_iallreduce+0x26) [0x155543be09b6]
+10  /cm/shared/apps/openmpi/gcc/64/4.1.0-ucx/lib/libmpi.so.40(PMPI_Iallreduce+0x14e) [0x155554cbf24e]
+11  /home/bwilliams/openhpca/build/install/overlap/overlap/overlap_iallreduce(+0x7db6) [0x55555555bdb6]
+12  /home/bwilliams/openhpca/build/install/overlap/overlap/overlap_iallreduce(+0x899d) [0x55555555c99d]
+13  /home/bwilliams/openhpca/build/install/overlap/overlap/overlap_iallreduce(+0xb026) [0x55555555f026]
+14  /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xe7) [0x155554888b97]
+15  /home/bwilliams/openhpca/build/install/overlap/overlap/overlap_iallreduce(+0x104a) [0x55555555504a]
+=================================
+==== backtrace (tid:   8983) ====
+ 0  /home/bwilliams/ucx/build/lib/libucs.so.0(ucs_handle_error+0x10c) [0x155548e7d46c]
+[node003:64120] *** Process received signal ***
+[node003:64120] Signal: Segmentation fault (11)
+[node003:64120] Signal code:  (-6)
+[node003:64120] Failing at address: 0x3ed0000fa78
+[node003:64120] [ 0] /lib/x86_64-linux-gnu/libpthread.so.0(+0x12890)[0x155553e81890]
+[node003:64120] [ 1]  1  /home/bwilliams/ucx/build/lib/libucs.so.0(+0x2b7ec) [0x155548e7d7ec]
+ 2  /home/bwilliams/ucx/build/lib/libucs.so.0(+0x2ba64) [0x155548e7da64]
+ 3  /lib/x86_64-linux-gnu/libpthread.so.0(+0x12890) [0x155553e81890]
+ 4  /lib/x86_64-linux-gnu/libc.so.6(+0xbb686) [0x155554922686]
+ 5  /cm/shared/apps/openmpi/gcc/64/4.1.0-ucx/lib/libopen-pal.so.40(+0x4e35d) [0x1555542e435d]
+ 6  /cm/shared/apps/openmpi/gcc/64/4.1.0-ucx/lib/libmpi.so.40(ompi_datatype_sndrcv+0x54f) [0x155554cbd2af]
+ 7  /cm/shared/apps/openmpi/gcc/64/4.1.0-ucx/lib/openmpi/mca_coll_libnbc.so(+0x6ebb) [0x155543bd8ebb]
+ 8  /cm/shared/apps/openmpi/gcc/64/4.1.0-ucx/lib/openmpi/mca_coll_libnbc.so(NBC_Start+0x29) [0x155543bd96f9]
+ 9  /cm/shared/apps/openmpi/gcc/64/4.1.0-ucx/lib/openmpi/mca_coll_libnbc.so(ompi_coll_libnbc_iallreduce+0x26) [0x155543be09b6]
+10  /cm/shared/apps/openmpi/gcc/64/4.1.0-ucx/lib/libmpi.so.40(PMPI_Iallreduce+0x14e) [0x155554cbf24e]
+11  /home/bwilliams/openhpca/build/install/overlap/overlap/overlap_iallreduce(+0x7db6) [0x55555555bdb6]
+12  /home/bwilliams/openhpca/build/install/overlap/overlap/overlap_iallreduce(+0x899d) [0x55555555c99d]
+13  /home/bwilliams/openhpca/build/install/overlap/overlap/overlap_iallreduce(+0xb026) [0x55555555f026]
+14  /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xe7) [0x155554888b97]
+15  /home/bwilliams/openhpca/build/install/overlap/overlap/overlap_iallreduce(+0x104a) [0x55555555504a]
+=================================
+/lib/x86_64-linux-gnu/libc.so.6(+0xbb686)[0x155554922686]
+[node003:64120] [ 2] /cm/shared/apps/openmpi/gcc/64/4.1.0-ucx/lib/libopen-pal.so.40(+0x4e35d)[0x1555542e435d]
+[node003:64120] [ 3] ==== backtrace (tid:  18552) ====
+ 0  /home/bwilliams/ucx/build/lib/libucs.so.0(ucs_handle_error+0x10c) [0x155548e7d46c]
+ 1  /home/bwilliams/ucx/build/lib/libucs.so.0(+0x2b7ec) [0x155548e7d7ec]
+ 2  /home/bwilliams/ucx/build/lib/libucs.so.0(+0x2ba64) [0x155548e7da64]
+ 3  /lib/x86_64-linux-gnu/libpthread.so.0(+0x12890) [0x155553e81890]
+ 4  /lib/x86_64-linux-gnu/libc.so.6(+0xbb686) [0x155554922686]
+ 5  /cm/shared/apps/openmpi/gcc/64/4.1.0-ucx/lib/libopen-pal.so.40(+0x4e35d) [0x1555542e435d]
+ 6  /cm/shared/apps/openmpi/gcc/64/4.1.0-ucx/lib/libmpi.so.40(ompi_datatype_sndrcv+0x54f) [0x155554cbd2af]
+ 7  /cm/shared/apps/openmpi/gcc/64/4.1.0-ucx/lib/openmpi/mca_coll_libnbc.so(+0x6ebb) [0x155543bd8ebb]
+ 8  /cm/shared/apps/openmpi/gcc/64/4.1.0-ucx/lib/openmpi/mca_coll_libnbc.so(NBC_Start+0x29) [0x155543bd96f9]
+ 9  /cm/shared/apps/openmpi/gcc/64/4.1.0-ucx/lib/openmpi/mca_coll_libnbc.so(ompi_coll_libnbc_iallreduce+0x26) [0x155543be09b6]
+10  /cm/shared/apps/openmpi/gcc/64/4.1.0-ucx/lib/libmpi.so.40(PMPI_Iallreduce+0x14e) [0x155554cbf24e]
+11  /home/bwilliams/openhpca/build/install/overlap/overlap/overlap_iallreduce(+0x7db6) [0x55555555bdb6]
+12  /home/bwilliams/openhpca/build/install/overlap/overlap/overlap_iallreduce(+0x899d) [0x55555555c99d]
+13  /home/bwilliams/openhpca/build/install/overlap/overlap/overlap_iallreduce(+0xb026) [0x55555555f026]
+14  /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xe7) [0x155554888b97]
+15  /home/bwilliams/openhpca/build/install/overlap/overlap/overlap_iallreduce(+0x104a) [0x55555555504a]
+=================================
+==== backtrace (tid:   1973) ====
+ 0  /home/bwilliams/ucx/build/lib/libucs.so.0(ucs_handle_error+0x10c) [0x155548e7d46c]
+ 1  /home/bwilliams/ucx/build/lib/libucs.so.0(+0x2b7ec) [0x155548e7d7ec]
+ 2  /home/bwilliams/ucx/build/lib/libucs.so.0(+0x2ba64) [0x155548e7da64]
+ 3  /lib/x86_64-linux-gnu/libpthread.so.0(+0x12890) [0x155553e81890]
+ 4  /lib/x86_64-linux-gnu/libc.so.6(+0xbb686) [0x155554922686]
+ 5  /cm/shared/apps/openmpi/gcc/64/4.1.0-ucx/lib/libopen-pal.so.40(+0x4e35d) [0x1555542e435d]
+ 6  /cm/shared/apps/openmpi/gcc/64/4.1.0-ucx/lib/libmpi.so.40(ompi_datatype_sndrcv+0x54f) [0x155554cbd2af]
+ 7  /cm/shared/apps/openmpi/gcc/64/4.1.0-ucx/lib/openmpi/mca_coll_libnbc.so(+0x6ebb) [0x155543bd8ebb]
+ 8  /cm/shared/apps/openmpi/gcc/64/4.1.0-ucx/lib/openmpi/mca_coll_libnbc.so(NBC_Start+0x29) [0x155543bd96f9]
+ 9  /cm/shared/apps/openmpi/gcc/64/4.1.0-ucx/lib/openmpi/mca_coll_libnbc.so(ompi_coll_libnbc_iallreduce+0x26) [0x155543be09b6]
+10  /cm/shared/apps/openmpi/gcc/64/4.1.0-ucx/lib/libmpi.so.40(PMPI_Iallreduce+0x14e) [0x155554cbf24e]
+11  /home/bwilliams/openhpca/build/install/overlap/overlap/overlap_iallreduce(+0x7db6) [0x55555555bdb6]
+12  /home/bwilliams/openhpca/build/install/overlap/overlap/overlap_iallreduce(+0x899d) [0x55555555c99d]
+13  /home/bwilliams/openhpca/build/install/overlap/overlap/overlap_iallreduce(+0xb026) [0x55555555f026]
+14  /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xe7) [0x155554888b97]
+15  /home/bwilliams/openhpca/build/install/overlap/overlap/overlap_iallreduce(+0x104a) [0x55555555504a]
+=================================
+/cm/shared/apps/openmpi/gcc/64/4.1.0-ucx/lib/libmpi.so.40(ompi_datatype_sndrcv+0x54f)[0x155554cbd2af]
+[node003:64120] [ 4] /cm/shared/apps/openmpi/gcc/64/4.1.0-ucx/lib/openmpi/mca_coll_libnbc.so(+0x6ebb)[0x155543bd8ebb]
+[node003:64120] [ 5] /cm/shared/apps/openmpi/gcc/64/4.1.0-ucx/lib/openmpi/mca_coll_libnbc.so(NBC_Start+0x29)[0x155543bd96f9]
+[node003:64120] [ 6] /cm/shared/apps/openmpi/gcc/64/4.1.0-ucx/lib/openmpi/mca_coll_libnbc.so(ompi_coll_libnbc_iallreduce+0x26)[0x155543be09b6]
+[node003:64120] [ 7] /cm/shared/apps/openmpi/gcc/64/4.1.0-ucx/lib/libmpi.so.40(PMPI_Iallreduce+0x14e)[0x155554cbf24e]
+[node003:64120] [ 8] /home/bwilliams/openhpca/build/install/overlap/overlap/overlap_iallreduce(+0x7db6)[0x55555555bdb6]
+[node003:64120] [ 9] /home/bwilliams/openhpca/build/install/overlap/overlap/overlap_iallreduce(+0x899d)[0x55555555c99d]
+[node003:64120] [node004:08983] *** Process received signal ***
+[node006:18552] *** Process received signal ***
+[node006:18552] Signal: Segmentation fault (11)
+[node006:18552] Signal code:  (-6)
+[node006:18552] Failing at address: 0x3ed00004878
+[node005:01973] *** Process received signal ***
+[node005:01973] Signal: Segmentation fault (11)
+[node005:01973] Signal code:  (-6)
+[node005:01973] Failing at address: 0x3ed000007b5
+[10] /home/bwilliams/openhpca/build/install/overlap/overlap/overlap_iallreduce(+0xb026)[0x55555555f026]
+[node003:64120] [11] /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xe7)[0x155554888b97]
+[node003:64120] [12] /home/bwilliams/openhpca/build/install/overlap/overlap/overlap_iallreduce(+0x104a)[0x55555555504a]
+[node003:64120] *** End of error message ***
+[node004:08983] Signal: Segmentation fault (11)
+[node004:08983] Signal code:  (-6)
+[node004:08983] Failing at address: 0x3ed00002317
+[node006:18552] [ 0] /lib/x86_64-linux-gnu/libpthread.so.0(+0x12890)[0x155553e81890]
+[node006:18552] [ 1] [node005:01973] [ 0] /lib/x86_64-linux-gnu/libpthread.so.0(+0x12890)[0x155553e81890]
+[node005:01973] [ 1] [node004:08983] [ 0] /lib/x86_64-linux-gnu/libpthread.so.0(+0x12890)[0x155553e81890]
+[node004:08983] [ 1] /lib/x86_64-linux-gnu/libc.so.6(+0xbb686)[0x155554922686]
+[node006:18552] [ 2] /lib/x86_64-linux-gnu/libc.so.6(+0xbb686)[0x155554922686]
+[node005:01973] [ 2] /lib/x86_64-linux-gnu/libc.so.6(+0xbb686)[0x155554922686]
+[node004:08983] [ 2] /cm/shared/apps/openmpi/gcc/64/4.1.0-ucx/lib/libopen-pal.so.40(+0x4e35d)[0x1555542e435d]
+[node006:18552] [ 3] /cm/shared/apps/openmpi/gcc/64/4.1.0-ucx/lib/libopen-pal.so.40(+0x4e35d)[0x1555542e435d]
+[node005:01973] [ 3] /cm/shared/apps/openmpi/gcc/64/4.1.0-ucx/lib/libopen-pal.so.40(+0x4e35d)[0x1555542e435d]
+[node004:08983] [ 3] /cm/shared/apps/openmpi/gcc/64/4.1.0-ucx/lib/libmpi.so.40(ompi_datatype_sndrcv+0x54f)[0x155554cbd2af]
+[node006:18552] [ 4] /cm/shared/apps/openmpi/gcc/64/4.1.0-ucx/lib/openmpi/mca_coll_libnbc.so(+0x6ebb)[0x155543bd8ebb]
+[node006:18552] [ 5] /cm/shared/apps/openmpi/gcc/64/4.1.0-ucx/lib/libmpi.so.40(ompi_datatype_sndrcv+0x54f)[0x155554cbd2af]
+[node005:01973] [ 4] /cm/shared/apps/openmpi/gcc/64/4.1.0-ucx/lib/openmpi/mca_coll_libnbc.so(+0x6ebb)[0x155543bd8ebb]
+[node005:01973] [ 5] /cm/shared/apps/openmpi/gcc/64/4.1.0-ucx/lib/openmpi/mca_coll_libnbc.so(NBC_Start+0x29)[0x155543bd96f9]
+[node005:01973] [ 6] /cm/shared/apps/openmpi/gcc/64/4.1.0-ucx/lib/libmpi.so.40(ompi_datatype_sndrcv+0x54f)[0x155554cbd2af]
+[node004:08983] [ 4] /cm/shared/apps/openmpi/gcc/64/4.1.0-ucx/lib/openmpi/mca_coll_libnbc.so(+0x6ebb)[0x155543bd8ebb]
+[node004:08983] [ 5] /cm/shared/apps/openmpi/gcc/64/4.1.0-ucx/lib/openmpi/mca_coll_libnbc.so(NBC_Start+0x29)[0x155543bd96f9]
+[node006:18552] [ 6] /cm/shared/apps/openmpi/gcc/64/4.1.0-ucx/lib/openmpi/mca_coll_libnbc.so(ompi_coll_libnbc_iallreduce+0x26)[0x155543be09b6]
+[node006:18552] [ 7] /cm/shared/apps/openmpi/gcc/64/4.1.0-ucx/lib/openmpi/mca_coll_libnbc.so(ompi_coll_libnbc_iallreduce+0x26)[0x155543be09b6]
+[node005:01973] [ 7] /cm/shared/apps/openmpi/gcc/64/4.1.0-ucx/lib/libmpi.so.40(PMPI_Iallreduce+0x14e)[0x155554cbf24e]
+/cm/shared/apps/openmpi/gcc/64/4.1.0-ucx/lib/openmpi/mca_coll_libnbc.so(NBC_Start+0x29)[0x155543bd96f9]
+[node004:08983] [ 6] /cm/shared/apps/openmpi/gcc/64/4.1.0-ucx/lib/openmpi/mca_coll_libnbc.so(ompi_coll_libnbc_iallreduce+0x26)[0x155543be09b6]
+[node004:08983] [ 7] /cm/shared/apps/openmpi/gcc/64/4.1.0-ucx/lib/libmpi.so.40(PMPI_Iallreduce+0x14e)[0x155554cbf24e]
+[node006:18552] [ 8] /home/bwilliams/openhpca/build/install/overlap/overlap/overlap_iallreduce(+0x7db6)[0x55555555bdb6]
+[node006:18552] [ 9] /home/bwilliams/openhpca/build/install/overlap/overlap/overlap_iallreduce(+0x899d)[0x55555555c99d]
+[node006:18552] [10] /home/bwilliams/openhpca/build/install/overlap/overlap/overlap_iallreduce(+0xb026)[0x55555555f026]
+[node006:18552] [11] [node005:01973] [ 8] /home/bwilliams/openhpca/build/install/overlap/overlap/overlap_iallreduce(+0x7db6)[0x55555555bdb6]
+[node005:01973] [ 9] /home/bwilliams/openhpca/build/install/overlap/overlap/overlap_iallreduce(+0x899d)[0x55555555c99d]
+[node005:01973] [10] /home/bwilliams/openhpca/build/install/overlap/overlap/overlap_iallreduce(+0xb026)[0x55555555f026]
+[node005:01973] [11] /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xe7)[0x155554888b97]
+[node005:01973] [12] /cm/shared/apps/openmpi/gcc/64/4.1.0-ucx/lib/libmpi.so.40(PMPI_Iallreduce+0x14e)[0x155554cbf24e]
+[node004:08983] [ 8] /home/bwilliams/openhpca/build/install/overlap/overlap/overlap_iallreduce(+0x7db6)[0x55555555bdb6]
+[node004:08983] [ 9] /home/bwilliams/openhpca/build/install/overlap/overlap/overlap_iallreduce(+0x899d)[0x55555555c99d]
+[node004:08983] [10] /home/bwilliams/openhpca/build/install/overlap/overlap/overlap_iallreduce(+0xb026)[0x55555555f026]
+[node004:08983] [11] /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xe7)[0x155554888b97]
+[node006:18552] [12] /home/bwilliams/openhpca/build/install/overlap/overlap/overlap_iallreduce(+0x104a)[0x55555555504a]
+[node006:18552] *** End of error message ***
+/home/bwilliams/openhpca/build/install/overlap/overlap/overlap_iallreduce(+0x104a)[0x55555555504a]
+[node005:01973] *** End of error message ***
+/lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xe7)[0x155554888b97]
+[node004:08983] [12] /home/bwilliams/openhpca/build/install/overlap/overlap/overlap_iallreduce(+0x104a)[0x55555555504a]
+[node004:08983] *** End of error message ***
+--------------------------------------------------------------------------
+Primary job  terminated normally, but 1 process returned
+a non-zero exit code. Per user-direction, the job has been aborted.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+mpirun noticed that process rank 0 with PID 0 on node node003 exited on signal 11 (Segmentation fault).
+--------------------------------------------------------------------------
