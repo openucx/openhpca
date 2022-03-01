@@ -170,11 +170,21 @@ int time_driven_loop(overlap_params_t *params, double *result)
     {
         get_coll_config_info(params, result, data, n_elts, 5, 0, &stdev, &avg_wait_time);
         if (params->world_rank == 0 && avg_wait_time < params->cutoff_time)
+        {
+            if(n_elts * 2 > params->max_elts)
+            {
+                fprintf(stderr, "Cannot further increase n_elts beyond %d!\n", n_elts);
+                fprintf(stderr, "Please enlarge %s\n", OVERLAP_MAX_NUM_ELTS_ENVVAR);
+                goto end_find_n_elts;
+            }
             n_elts *= 2;
+        }
 
         MPI_CHECK(MPI_Bcast(&avg_wait_time, 1, MPI_DOUBLE, 0, MPI_COMM_WORLD));
         MPI_CHECK(MPI_Bcast(&n_elts, 8, MPI_BYTE, 0, MPI_COMM_WORLD));
     } while (avg_wait_time < params->cutoff_time);
+
+end_find_n_elts:
 
     if (params->world_rank == 0)
         OVERLAP_DEBUG(params, "Will be using %" PRIu64 " elts (time = %f)\n", n_elts, avg_wait_time);
