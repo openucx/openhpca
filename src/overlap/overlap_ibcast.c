@@ -173,9 +173,9 @@ int time_driven_loop(overlap_params_t *params, double *result)
         {
             if(n_elts * 2 > params->max_elts)
             {
-                    fprintf(stderr, "Cannot further increase n_elts beyond %d!\n", n_elts);
-                    fprintf(stderr, "Please enlarge %s\n", OVERLAP_MAX_NUM_ELTS_ENVVAR);
-                    goto exit_error;
+                fprintf(stderr, "Cannot further increase n_elts beyond %d!\n", n_elts);
+                fprintf(stderr, "Please enlarge %s\n", OVERLAP_MAX_NUM_ELTS_ENVVAR);
+                goto exit_error;
             }
             n_elts *= 2;
         }

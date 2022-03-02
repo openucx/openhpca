@@ -178,7 +178,7 @@ int time_driven_loop(overlap_params_t *params, double *val, double *result)
             {
                 fprintf(stderr, "Cannot further increase n_elts beyond %d!\n", n_elts);
                 fprintf(stderr, "Please enlarge %s\n", OVERLAP_MAX_NUM_ELTS_ENVVAR);
-                goto end_find_n_elts;
+                goto exit_error;
             }
             n_elts *= 2;
         }
@@ -186,8 +186,6 @@ int time_driven_loop(overlap_params_t *params, double *val, double *result)
         MPI_CHECK(MPI_Bcast(&avg_wait_time, 1, MPI_DOUBLE, 0, MPI_COMM_WORLD));
         MPI_CHECK(MPI_Bcast(&n_elts, 8, MPI_BYTE, 0, MPI_COMM_WORLD));
     } while (avg_wait_time < params->cutoff_time);
-
-end_find_n_elts:
 
     if (params->world_rank == 0)
         OVERLAP_DEBUG(params, "Will be using %" PRIu64 " elts (time = %f)\n", n_elts, avg_wait_time);
@@ -208,7 +206,15 @@ end_find_n_elts:
                 required_iters = pow((1.645 * stdev) / (avg_wait_time / 10), 2);
                 OVERLAP_DEBUG(params, "Required number of iterations = %.0f (%" PRIu64 " elts)\n", required_iters, n_elts);
                 if (required_iters > MAX_NUM_CALIBRATION_POINTS)
+                {
+                    if (n_elts * 2 > params->max_elts);
+                    {
+                        fprintf(stderr, "Cannot further increase n_elts beyond %d!\n", n_elts);
+                        fprintf(stderr, "Please enlarge %s\n", OVERLAP_MAX_NUM_ELTS_ENVVAR);
+                        goto exit_error;
+                    }
                     n_elts *= 2;
+                }
                 else
                 {
                     if (required_iters > n_iters)
@@ -217,6 +223,7 @@ end_find_n_elts:
                         n_iters = params->max_iters;
                 }
             }
+
             MPI_CHECK(MPI_Bcast(&n_iters, 1, MPI_INT, 0, MPI_COMM_WORLD));
             MPI_CHECK(MPI_Bcast(&n_elts, 8, MPI_BYTE, 0, MPI_COMM_WORLD));
         } while (required_iters > MAX_NUM_CALIBRATION_POINTS);
