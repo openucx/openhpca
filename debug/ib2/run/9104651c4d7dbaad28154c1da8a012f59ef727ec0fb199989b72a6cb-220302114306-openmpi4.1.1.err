@@ -1,7 +1,0 @@
-MPI Error in ompi_datatype_sndrcv() (15)
-[thor005:87693] *** An error occurred in MPI_Igatherv
-[thor005:87693] *** reported by process [382205953,0]
-[thor005:87693] *** on communicator MPI_COMM_WORLD
-[thor005:87693] *** MPI_ERR_TRUNCATE: message truncated
-[thor005:87693] *** MPI_ERRORS_ARE_FATAL (processes in this communicator will now abort,
-[thor005:87693] ***    and potentially your MPI job)

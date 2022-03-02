@@ -36,12 +36,7 @@ int data_driven_loop(overlap_params_t *params, double *s_buf, double *r_buf, int
 
         // Prepare the igatherv parameters for the current data size
         for (i = 0; i < params->world_size; i++)
-        {
-            if (i == params->world_rank)
-                r_counts[i] = 0;
-            else
-                r_counts[i] = n_elts;
-        }
+            r_counts[i] = n_elts;
 
         displs[0] = 0;
         for (i = 1; i < params->world_size; i++)
@@ -197,12 +192,8 @@ int time_driven_loop(overlap_params_t *params, double *s_buf, double *r_buf, int
     {
         // Prepare the igatherv parameters for the current data size
         for (i = 0; i < params->world_size; i++)
-        {
-            if (i == params->world_rank)
-                r_counts[i] = 0;
-            else
-                r_counts[i] = n_elts;
-        }
+            r_counts[i] = n_elts;
+
         displs[0] = 0;
         for (i = 1; i < params->world_size; i++)
             displs[i] = displs[i - 1] + r_counts[i - 1];
@@ -259,7 +250,7 @@ int time_driven_loop(overlap_params_t *params, double *s_buf, double *r_buf, int
                         n_iters = params->max_iters;
                 }
             }
-            
+
             MPI_CHECK(MPI_Bcast(&n_iters, 1, MPI_INT, 0, MPI_COMM_WORLD));
             MPI_CHECK(MPI_Bcast(&n_elts, 8, MPI_BYTE, 0, MPI_COMM_WORLD));
         } while (required_iters > MAX_NUM_CALIBRATION_POINTS);
