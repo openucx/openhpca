@@ -11,12 +11,12 @@ a collective operation.
 
 ## Overlap calculation
 
-To achieve that goal, the benchmark, for supported collective operations, calculate first
+To achieve that goal, the benchmark, for supported collective operations, calculates first
 the time to execute the operation, from the time it it initiated to the time it completed.
 Practically, a warm-up loop is first executed, followed by a timing loop where the mean of
 the execution times is used as reference time. This reference time is then used to estimate
-the equalivent maximum amount of work. Finally, we execute a loop during which we try to
-inject the maximum amount of time. if the time is less than the reference time, it means 
+the equivalent maximum amount of work. Finally, we execute a loop during which we try to
+inject the maximum amount of time. If the time is less than the reference time, it means
 more work could be injected. If the time is more than the reference time, it means too
 much work has been injected.
 Benchmarks are therefore composed of the following phases:
@@ -24,7 +24,7 @@ Benchmarks are therefore composed of the following phases:
 collective, without injecting any work.
 Practically, it means that the operation is invoked and MPI_Wait() is called right after the
 call to the MPI collective returns. The standard deviation is also calculated.
-2. Calculate the equivalent amoutn of work for the reference time.
+2. Calculate the equivalent amount of work for the reference time.
 3. If the execution time of the collective in addition of the injected work and MPI_Wait() is
 greater than the reference time, redo the step after dividing the amount of time in half.
 Otherwise increase the amount of work to be injected and move to Step 4.
@@ -47,9 +47,9 @@ collective.
 In addition to this mechanism, when the benchmark finds a configuration where the injected work
 increases the overall execution time, instead of flagging the configuration has injecting too
 much work, beyond what a perfect overlap would allow, the same configuration is executed
-multiple times. If a single run reports that the injected work can be executed during the 
+multiple times. If a single run reports that the injected work can be executed during the
 collective, it assumed that the amount of work injected can be injected and the benchmark then
-tries to inject more work. This allows us to find the maximum amount of wrk that can injected.
+tries to inject more work. This allows us to find the maximum amount of work that can injected.
 
 # Installation
 

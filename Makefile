@@ -15,7 +15,7 @@ endif
 
 check:
 
-init:
+init: check update tools
 	./tools/cmd/openhpca_setup/openhpca_setup
 
 install: check update tools init
