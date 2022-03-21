@@ -97,10 +97,12 @@ doable with minimum effort.
 
 To run the benchmarks, the full command line looks like:
 ```
-./tools/cmd/openhpca_run/openhpca_run -d mlx5_0:1 -p cluster_partition
+./tools/cmd/openhpca_run/openhpca_run -d mlx5_0:1 -p cluster_partition -num-nodes 32 -ppn 32
 ```
 Where `mlx5_0:1` is the device to use for the execution of the benchmarks and
 `cluster_partition` the partition to use, for instance, on a Slurm cluster.
+The parameter `-num-nodes` specifies how many nodes should be used (1 by default),
+and `-ppn` specifies how many MPI ranks per nodes must be used (1 by default).
 For a full description of the supported parameters, please execute
 `./tools/cmd/openhpca_run/openhpca_run -h` from the top directory of the
 OpenHPCA source code.
