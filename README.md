@@ -111,6 +111,15 @@ For a manual execution, users are asked to run the various benchmarks as they
 would usually do. All the benchmarks are available from the `install` directory
 in the workspace that they defined.
 
+## Tuning
+
+If errors in the run directory show that the maximum number of elements needs
+to be increased via the `OVERLAP_MAX_NUM_ELTS` environment variables, it means
+that the default values are not quite suitable for the current configuration.
+To address it, simply set the `OVERLAP_MAX_NUM_ELTS` variable in your environment,
+the infrastructure will detect it and make sure that benchmarks are executed with
+it.
+
 # Data visualization
 
 Since OpenHPCA generates a fairly large of data, the recommended way to
