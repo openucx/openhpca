@@ -425,6 +425,9 @@ func ComputeScore(dataDir string) (*score.Metrics, error) {
 		return nil, err
 	}
 	bwData := osuData["bw"]
+	if bwData == nil {
+		return nil, fmt.Errorf("bandwidth data is missing")
+	}
 	bandwidth, bandwidthUnit, err := GetBandwidth(bwData)
 	if err != nil {
 		return nil, err

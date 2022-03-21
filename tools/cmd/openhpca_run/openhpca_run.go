@@ -224,6 +224,12 @@ func main() {
 			}
 
 			exps.List = append(exps.List, e)
+
+			// Make sure to set special environment variables
+			overlapNumElts := os.Getenv("OPENHPCA_OVERLAP_MAX_NUM_ELTS")
+			if overlapNumElts != "" && benchmarkName == "overlap" {
+				e.Env.Env = append(e.Env.Env, overlapNumElts)
+			}
 		}
 	}
 
