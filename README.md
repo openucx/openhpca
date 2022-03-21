@@ -97,10 +97,12 @@ doable with minimum effort.
 
 To run the benchmarks, the full command line looks like:
 ```
-./tools/cmd/openhpca_run/openhpca_run -d mlx5_0:1 -p cluster_partition
+./tools/cmd/openhpca_run/openhpca_run -d mlx5_0:1 -p cluster_partition -num-nodes 32 -ppn 32
 ```
 Where `mlx5_0:1` is the device to use for the execution of the benchmarks and
 `cluster_partition` the partition to use, for instance, on a Slurm cluster.
+The parameter `-num-nodes` specifies how many nodes should be used (1 by default),
+and `-ppn` specifies how many MPI ranks per nodes must be used (1 by default).
 For a full description of the supported parameters, please execute
 `./tools/cmd/openhpca_run/openhpca_run -h` from the top directory of the
 OpenHPCA source code.
@@ -110,6 +112,15 @@ OpenHPCA source code.
 For a manual execution, users are asked to run the various benchmarks as they
 would usually do. All the benchmarks are available from the `install` directory
 in the workspace that they defined.
+
+## Tuning
+
+If errors in the run directory show that the maximum number of elements needs
+to be increased via the `OVERLAP_MAX_NUM_ELTS` environment variables, it means
+that the default values are not quite suitable for the current configuration.
+To address it, simply set the `OVERLAP_MAX_NUM_ELTS` variable in your environment,
+the infrastructure will detect it and make sure that benchmarks are executed with
+it.
 
 # Data visualization
 

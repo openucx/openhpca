@@ -223,6 +223,13 @@ func main() {
 				e.Platform.MaxNumNodes = 2
 			}
 
+			// Make sure to set special environment variables
+			// todo: find a better way to abtract this, i.e., make sure it is set correctly for all MPI implementations
+			overlapNumElts := os.Getenv("OPENHPCA_OVERLAP_MAX_NUM_ELTS")
+			if overlapNumElts != "" && benchmarkName == "overlap" {
+					e.MpirunArgs = append(e.MpirunArgs, "-x OPENHPCA_OVERLAP_MAX_NUM_ELTS="+overlapNumElts)
+			}
+
 			exps.List = append(exps.List, e)
 		}
 	}

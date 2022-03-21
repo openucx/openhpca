@@ -98,6 +98,18 @@ void __no_optimization do_work(double x, double y, double a, double b, int64_t n
     }
 }
 
+#define CHECK_N_ELTS(_n_elts, _max_elts) do {                                     \
+    uint64_t _n = _n_elts * 2;                                                    \
+    if (_n * 2 > (_max_elts))                                                     \
+    {                                                                             \
+        fprintf(stderr,                                                           \
+                "Cannot further increase n_elts (%"PRIu64") beyond %" PRIu64"\n", \
+                _n, _max_elts);                                                   \
+        fprintf(stderr, "Please enlarge %s\n", OVERLAP_MAX_NUM_ELTS_ENVVAR);      \
+        goto exit_error;                                                          \
+    }                                                                             \
+} while (0)
+
 #define INIT_OVERLAP_LOOP                                                    \
     /* All the variables necessary to use non-blocking collectives */        \
     double end_time, total_time = 0.0, ref_time = 0.0, start_work, end_work; \
