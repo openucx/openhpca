@@ -4,7 +4,7 @@ OpenHPCA is an implementation of the benchmarks defined by the High Performance
 Compute Availability (HPCA) group.
 HPCA aims at providing a comprehensive set of benchmarks to evaluate the
 overall compute resource performance in the presence of in-network computing
-technologies​. These benchmarks are a mix of existing benchmarks as well as new
+technologies. These benchmarks are a mix of existing benchmarks as well as new
 benchmarks that are defined and implemented by the group.
 
 The benchmarks included in OpenHPCA are:
