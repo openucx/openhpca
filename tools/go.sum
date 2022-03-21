@@ -30,7 +30,6 @@ github.com/gvallee/go_exec v1.0.1/go.mod h1:s9fSkVniLYlQUZb99zuioVH45nkvnYxw6vmG
 github.com/gvallee/go_exec v1.1.0 h1:3xhwLIcxY4VNGGPL5YZYxnWeTgLYU0PSOEMcO0gfi+Q=
 github.com/gvallee/go_exec v1.1.0/go.mod h1:s9fSkVniLYlQUZb99zuioVH45nkvnYxw6vmGEaZCUPk=
 github.com/gvallee/go_hpc_jobmgr v1.2.0/go.mod h1:gsikmgiQ+su5Cbaj48ErVtXyyTxXSiJf8r6CEUiN2wI=
-github.com/gvallee/go_hpc_jobmgr v1.3.0 h1:i8971+BHsNIRIzHDFuhwFtDFnIIDeQ2ewBKig0zaFe4=
 github.com/gvallee/go_hpc_jobmgr v1.3.0/go.mod h1:gsikmgiQ+su5Cbaj48ErVtXyyTxXSiJf8r6CEUiN2wI=
 github.com/gvallee/go_hpc_jobmgr v1.3.1 h1:ZMYbfV9C8yhDWPYL5P1ezmZadRfbHUbeJFboLt4z2HI=
 github.com/gvallee/go_hpc_jobmgr v1.3.1/go.mod h1:gsikmgiQ+su5Cbaj48ErVtXyyTxXSiJf8r6CEUiN2wI=
@@ -54,8 +53,8 @@ github.com/gvallee/go_workspace v1.2.1/go.mod h1:LSgGPUXEtWGVdfZGyAxR89CDMYVlzMA
 github.com/gvallee/kv v1.0.0 h1:QE3Ua8JewroqJqc+J9RWtL7KUu7rQmfLfxlBVY5t1ko=
 github.com/gvallee/kv v1.0.0/go.mod h1:sfSclfFfLV+Y+9e9FayIbBUOtvbt1779S6q52bSSU5E=
 github.com/gvallee/syserror v1.0.0/go.mod h1:UtEvDMlsf6YpA29eU+JlpINYz/bLqfBEJ8wmpoJIzs4=
-github.com/gvallee/validation_tool v1.3.0 h1:CPEysepVeLrfmtScaQhAmc9E1vHy1cJ3u4StiAT49xw=
-github.com/gvallee/validation_tool v1.3.0/go.mod h1:C27ofMGqhJeFnODDU6SYpnHNZ3Pqu2YVmUA/vuF1z6c=
+github.com/gvallee/validation_tool v1.3.1 h1:pzVw0nYevpJ8ZvpZqErkk9dLf1F0z2VZWtMQp4LE8vM=
+github.com/gvallee/validation_tool v1.3.1/go.mod h1:C27ofMGqhJeFnODDU6SYpnHNZ3Pqu2YVmUA/vuF1z6c=
 github.com/jung-kurt/gofpdf v1.0.0/go.mod h1:7Id9E/uU8ce6rXgefFLlgrJj/GYY22cpxn+r32jIOes=
 github.com/jung-kurt/gofpdf v1.0.3-0.20190309125859-24315acbbda5/go.mod h1:7Id9E/uU8ce6rXgefFLlgrJj/GYY22cpxn+r32jIOes=
 github.com/mohae/deepcopy v0.0.0-20170929034955-c48cc78d4826 h1:RWengNIwukTxcDr9M+97sNutRR1RKhG96O6jWumTTnw=
