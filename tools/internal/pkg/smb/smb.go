@@ -27,6 +27,8 @@ const (
 	mpiOverheadBinName = "mpi_overhead"
 	rmaMTmpiID         = "rma_mt_mpi"
 	rmaMTmpiBinName    = "msgrate"
+	msgrateID          = "msgrate"
+	msgrateBinName     = "msgrate"
 
 	OverheadResultFilePrefix = "smb_mpi_overhead"
 
@@ -72,7 +74,9 @@ func getSubBenchmarks(cfg *benchmark.Config, wp *workspace.Config) map[string]ap
 
 	msgrateInfo := app.Info{
 		Name: "msgrate",
-		URL:  "file:///" + filepath.Join(smbDir, "src", "msgrate"),
+		URL:  "file:///" + filepath.Join(smbDir, "src", msgrateID),
+		BinName: msgrateBinName,
+		BinPath: filepath.Join(wp.InstallDir, msgrateID, msgrateID, msgrateBinName),
 	}
 	m["msgrate"] = msgrateInfo
 
