@@ -54,18 +54,18 @@ type Server struct {
 	cfg                 *Config
 	httpServer          *http.Server
 	wg                  *sync.WaitGroup
-	data                *analyser.Results
+	data                *result.Results
 	mpiOverhead         float32
 	latency             float32
 	latencyUnit         string
 	bandwidth           float64
 	bandwidthUnit       string
-	osuData             map[string]*analyser.Data
-	osuNonContigMemData map[string]*analyser.Data
-	smbData             map[string][]string
-	overlapData         map[string][]string
-	overlapDetails      map[string]float32
-	ipd                 indexPageData
+	osuData             map[string]*result.Data
+	osuNonContigMemData map[string]*result.Data
+	//smbData             map[string][]string
+	overlapData map[string][]string
+	//overlapDetails      map[string]float32
+	ipd indexPageData
 }
 
 func (c *Config) getTemplateFilePath(name string) string {
@@ -264,10 +264,11 @@ func Init(verbose bool) (*Config, error) {
 // Start instantiates a HTTP server and start the webUI. This is a non-blocking function,
 // meaning the function returns after successfully initiating the WebUI. To wait for the
 // termination of the webUI, please use Wait()
+// todo: use analyser.ComputeScore() instead of explicitly calling a unch of functions.
 func (c *Config) Start() (*Server, error) {
 	var err error
 	s := c.newServer()
-	s.data, err = analyser.GetResults(c.openhpcaCfg.GetRunDir())
+	s.data, err = result.Get(c.openhpcaCfg.GetRunDir())
 	if err != nil {
 		return nil, err
 	}
@@ -294,7 +295,7 @@ func (c *Config) Start() (*Server, error) {
 	if bwData == nil {
 		return nil, fmt.Errorf("undefined bandwidth data")
 	}
-	s.bandwidth, s.bandwidthUnit, err = analyser.GetBandwidth(bwData)
+	s.bandwidth, s.bandwidthUnit, err = result.GetBandwidth(bwData)
 	if err != nil {
 		return nil, err
 	}
@@ -329,7 +330,7 @@ func (c *Config) Start() (*Server, error) {
 	*/
 
 	s.ipd.OverlapData = s.overlapData
-	err = s.data.Plot(s.cfg.openhpcaCfg.WP.ScratchDir)
+	err = analyser.Plot(s.data, s.cfg.openhpcaCfg.WP.ScratchDir)
 	if err != nil {
 		return nil, err
 	}
