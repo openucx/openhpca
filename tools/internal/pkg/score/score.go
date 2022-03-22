@@ -9,12 +9,15 @@ package score
 import "fmt"
 
 type Metrics struct {
-	Bandwidth     float64
-	BandwidthUnit string
-	Latency       float64
-	LatencyUnit   string
-	Overlap       float64
-	Score         int
+	Bandwidth      float64
+	BandwidthUnit  string
+	Latency        float64
+	LatencyUnit    string
+	MpiOverlap     float32
+	Score          int
+	OverlapData    map[string][]string
+	OverlapScore   float32
+	OverlapDetails map[string]float32
 }
 
 func (s *Metrics) Compute() int {
@@ -25,7 +28,15 @@ func (s *Metrics) Compute() int {
 func (s *Metrics) ToString() string {
 	content := fmt.Sprintf("Bandwidth: %f %s\n", s.Bandwidth, s.BandwidthUnit)
 	content += fmt.Sprintf("Latency: %f %s\n", s.Latency, s.LatencyUnit)
-	content += fmt.Sprintf("Overlap: %f %%\n", s.Overlap)
+	content += fmt.Sprintf("Overlap: %f\n", s.OverlapScore)
+	content += fmt.Sprintf("\t- MPI overlap: %f %%\n", s.MpiOverlap)
+	for benchmarkName, results := range s.OverlapData {
+		content += "\t- " + benchmarkName + ":\n"
+		for _, line := range results {
+			content += "\t\t" + line + "\n"
+		}
+		content += "\n"
+	}
 	content += "\n"
 	//content += fmt.Sprintf("Score: %d\n", s.Score)
 	return content

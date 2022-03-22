@@ -6,11 +6,7 @@
 
 package score
 
-import (
-	"fmt"
-	"testing"
-)
-
+/*
 func TestStringToFloatBase(t *testing.T) {
 	tests := []struct {
 		input          string
@@ -81,3 +77,4 @@ func TestStringToFloatBase(t *testing.T) {
 		}
 	}
 }
+*/

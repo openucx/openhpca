@@ -227,7 +227,7 @@ func main() {
 			// todo: find a better way to abtract this, i.e., make sure it is set correctly for all MPI implementations
 			overlapNumElts := os.Getenv("OPENHPCA_OVERLAP_MAX_NUM_ELTS")
 			if overlapNumElts != "" && benchmarkName == "overlap" {
-					e.MpirunArgs = append(e.MpirunArgs, "-x OPENHPCA_OVERLAP_MAX_NUM_ELTS="+overlapNumElts)
+				e.MpirunArgs = append(e.MpirunArgs, "-x OPENHPCA_OVERLAP_MAX_NUM_ELTS="+overlapNumElts)
 			}
 
 			exps.List = append(exps.List, e)
@@ -258,6 +258,8 @@ func main() {
 	err = displayResults(cfg)
 	if err != nil {
 		fmt.Printf("ERROR: unable to display results: %s\n", err)
+		fmt.Println("Some jobs executed by OpenHPCA may have failed because the default configuration needs to be customized for your configuration.")
+		fmt.Printf("Please check the results in %s\n", cfg.GetRunDir())
 		os.Exit(1)
 	}
 }
