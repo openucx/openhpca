@@ -148,11 +148,10 @@ func selectBenchmarksToRun(cfg *config.Data) map[string]*benchmark.Install {
 			benchmarksToRun["osu"].SubBenchmarks = osuBenchmarksToRun
 		}
 
-		// At the moment selecting OSU and OSU for non-contiguous memory is the same thing
 		if cfg.UserSelection.OsuNoncontigmemSelected {
 			var osuBenchmarksToRun []app.Info
-			installedOSUSubBenchmarks := cfg.InstalledBenchmarks["osu"]
-			osuBenchmarksToRun = append(osuBenchmarksToRun, installedOSUSubBenchmarks.SubBenchmarks...)
+			installedOSUNoncontigmemSubBenchmarks := cfg.InstalledBenchmarks["osu_noncontig_mem"]
+			osuBenchmarksToRun = append(osuBenchmarksToRun, installedOSUNoncontigmemSubBenchmarks.SubBenchmarks...)
 			benchmarksToRun["osu"] = new(benchmark.Install)
 			benchmarksToRun["osu"].SubBenchmarks = osuBenchmarksToRun
 		}
