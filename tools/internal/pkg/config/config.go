@@ -61,17 +61,30 @@ type AppsCfg struct {
 	OverlapCfg benchmark.Config
 }
 
-// Data represents the configuration of the file, mainly based
-// on what is in the configuration file
-type Data struct {
+type BenchmarksSelection struct {
 	// LongRun specifies that the long execution mode has been requested
 	LongRun bool
 
+	OsuSelected bool
+
+	OsuNoncontigmemSelected bool
+
+	SmbSelected bool
+
+	OverlapSelected bool
+}
+
+// Data represents the configuration of the file, mainly based
+// on what is in the configuration file
+type Data struct {
 	// Basedir is the base directory where the code is
 	Basedir string
 
 	// BinName is the name of the setup binary
 	BinName string
+
+	// UserSelection reflects the list of parameters specified by the user for the execution of specific benchmarks
+	UserSelection BenchmarksSelection
 
 	// ConfigFile is the path the private OpenHPCA configuration file
 	ConfigFile string
