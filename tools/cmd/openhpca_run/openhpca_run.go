@@ -64,6 +64,121 @@ func experimentIsStrictlyPointToPoint(name string) bool {
 	}
 }
 
+func userSelectedAllBenchmarks(cfg *config.Data) bool {
+	if cfg.UserSelection.OsuNoncontigmemSelected &&
+		cfg.UserSelection.OsuSelected &&
+		cfg.UserSelection.SmbSelected &&
+		cfg.UserSelection.OverlapSelected {
+		return true
+	}
+	return false
+}
+
+func userSelectedAtLeastOneBenchmark(cfg *config.Data) bool {
+	if cfg.UserSelection.OsuNoncontigmemSelected ||
+		cfg.UserSelection.OsuSelected ||
+		cfg.UserSelection.SmbSelected ||
+		cfg.UserSelection.OverlapSelected {
+		return true
+	}
+	return false
+}
+
+func selectBenchmarksToRun(cfg *config.Data) map[string]*benchmark.Install {
+	var benchmarksToRun map[string]*benchmark.Install
+	benchmarksToRun = make(map[string]*benchmark.Install)
+
+	// Check the options to make sure we know what is required
+	if userSelectedAllBenchmarks(cfg) {
+		cfg.UserSelection.LongRun = true
+	}
+
+	if !userSelectedAtLeastOneBenchmark(cfg) && !cfg.UserSelection.LongRun {
+		// We need to run all the benchmarks required to get the OpenHPCA metrics
+		// We only keep the installed benchmarks that are part of the list of
+		// benchmarks required to generate the final metrics
+		var osuBenchmarksToRun []app.Info
+		installedOSUSubBenchmarks := cfg.InstalledBenchmarks["osu"]
+		for _, name := range config.OSURequiredBenchmarks {
+			for _, app := range installedOSUSubBenchmarks.SubBenchmarks {
+				if app.Name == name {
+					osuBenchmarksToRun = append(osuBenchmarksToRun, app)
+					break
+				}
+			}
+		}
+		benchmarksToRun["osu"] = new(benchmark.Install)
+		benchmarksToRun["osu"].SubBenchmarks = osuBenchmarksToRun
+
+		var smbBenchmarksToRun []app.Info
+		installedSMBSubBenchmarks := cfg.InstalledBenchmarks["smb"]
+		for _, name := range smb.RequiredBenchmarks {
+			for _, app := range installedSMBSubBenchmarks.SubBenchmarks {
+				if app.Name == name {
+					smbBenchmarksToRun = append(smbBenchmarksToRun, app)
+					break
+				}
+			}
+		}
+		benchmarksToRun["smb"] = new(benchmark.Install)
+		benchmarksToRun["smb"].SubBenchmarks = smbBenchmarksToRun
+
+		var overlapBenchmarksToRun []app.Info
+		installOverlapSubBenchmarks := cfg.InstalledBenchmarks["overlap"]
+		for _, name := range overlap.RequiredBenchmarks {
+			for _, app := range installOverlapSubBenchmarks.SubBenchmarks {
+				if app.Name == name {
+					overlapBenchmarksToRun = append(overlapBenchmarksToRun, app)
+					break
+				}
+			}
+		}
+		benchmarksToRun["overlap"] = new(benchmark.Install)
+		benchmarksToRun["overlap"].SubBenchmarks = overlapBenchmarksToRun
+		return benchmarksToRun
+	}
+
+	if !cfg.UserSelection.LongRun && userSelectedAtLeastOneBenchmark(cfg) {
+		// Get the list of selected benchmarks by the user
+		if cfg.UserSelection.OsuSelected {
+			var osuBenchmarksToRun []app.Info
+			installedOSUSubBenchmarks := cfg.InstalledBenchmarks["osu"]
+			osuBenchmarksToRun = append(osuBenchmarksToRun, installedOSUSubBenchmarks.SubBenchmarks...)
+			benchmarksToRun["osu"] = new(benchmark.Install)
+			benchmarksToRun["osu"].SubBenchmarks = osuBenchmarksToRun
+		}
+
+		if cfg.UserSelection.OsuNoncontigmemSelected {
+			var osuBenchmarksToRun []app.Info
+			installedOSUNoncontigmemSubBenchmarks := cfg.InstalledBenchmarks["osu_noncontig_mem"]
+			osuBenchmarksToRun = append(osuBenchmarksToRun, installedOSUNoncontigmemSubBenchmarks.SubBenchmarks...)
+			benchmarksToRun["osu"] = new(benchmark.Install)
+			benchmarksToRun["osu"].SubBenchmarks = osuBenchmarksToRun
+		}
+
+		if cfg.UserSelection.SmbSelected {
+			var smbBenchmarksToRun []app.Info
+			installedSMBSubBenchmarks := cfg.InstalledBenchmarks["smb"]
+			smbBenchmarksToRun = append(smbBenchmarksToRun, installedSMBSubBenchmarks.SubBenchmarks...)
+			benchmarksToRun["smb"] = new(benchmark.Install)
+			benchmarksToRun["smb"].SubBenchmarks = smbBenchmarksToRun
+		}
+
+		if cfg.UserSelection.OverlapSelected {
+			var overlapBenchmarksToRun []app.Info
+			installOverlapSubBenchmarks := cfg.InstalledBenchmarks["overlap"]
+			overlapBenchmarksToRun = append(overlapBenchmarksToRun, installOverlapSubBenchmarks.SubBenchmarks...)
+			benchmarksToRun["overlap"] = new(benchmark.Install)
+			benchmarksToRun["overlap"].SubBenchmarks = overlapBenchmarksToRun
+		}
+		return benchmarksToRun
+	}
+
+	// If we get here, it means we need to execute everything installed
+	benchmarksToRun = cfg.InstalledBenchmarks
+	return benchmarksToRun
+}
+
 func main() {
 	verbose := flag.Bool("v", false, "Enable verbose mode")
 	help := flag.Bool("h", false, "Help message")
@@ -73,6 +188,10 @@ func main() {
 	ppnFlag := flag.Int("ppn", 1, "Number of MPI ranks per node (default: 1)")
 	nNodesFlag := flag.Int("num-nodes", 1, "Number of nodes to use (default: 1)")
 	longRunFlag := flag.Bool("long", false, "Run all supported tests, including tests not used to create the final metrics")
+	osuUserSelectFlag := flag.Bool("osu", false, "Explicitly select OSU for execution. Only selected benchmarks will be executed")
+	osuNonContigMemSelectFlag := flag.Bool("osu-noncontigmem", false, "Explicitly select OSU for non-contiguous memory for execution. Only selected benchmarks will be executed")
+	smbSelectFlag := flag.Bool("smb", false, "Explicitly select SMB for execution. Only selected benchmarks will be executed")
+	overlapSelectFlag := flag.Bool("overlap", false, "Explicitly select the overlap benchmark suite for execution. Only selected benchmarks will be executed")
 
 	flag.Parse()
 
@@ -98,7 +217,11 @@ func main() {
 	cfg := new(config.Data)
 	cfg.Basedir = basedir
 	cfg.BinName = filename
-	cfg.LongRun = *longRunFlag
+	cfg.UserSelection.LongRun = *longRunFlag
+	cfg.UserSelection.OsuSelected = *osuUserSelectFlag
+	cfg.UserSelection.OsuNoncontigmemSelected = *osuNonContigMemSelectFlag
+	cfg.UserSelection.SmbSelected = *smbSelectFlag
+	cfg.UserSelection.OverlapSelected = *overlapSelectFlag
 
 	// Load the configuration
 	err := cfg.Load()
@@ -148,54 +271,7 @@ func main() {
 	exps.Platform.MaxNumNodes = *nNodesFlag
 	exps.MaxExecTime = "1:00:00"
 
-	// Depending on the execution mode, we want to run either all the installed benchmarks
-	// or only those that are required to compute the final metrics.
-	var benchmarksToRun map[string]*benchmark.Install
-	if !cfg.LongRun {
-		// We only keep the installed benchmarks that are part of the list of benchmarks required to generate the final metrics
-		benchmarksToRun = make(map[string]*benchmark.Install)
-
-		var osuBenchmarksToRun []app.Info
-		installedOSUSubBenchmarks := cfg.InstalledBenchmarks["osu"]
-		for _, name := range config.OSURequiredBenchmarks {
-			for _, app := range installedOSUSubBenchmarks.SubBenchmarks {
-				if app.Name == name {
-					osuBenchmarksToRun = append(osuBenchmarksToRun, app)
-					break
-				}
-			}
-		}
-		benchmarksToRun["osu"] = new(benchmark.Install)
-		benchmarksToRun["osu"].SubBenchmarks = osuBenchmarksToRun
-
-		var smbBenchmarksToRun []app.Info
-		installedSMBSubBenchmarks := cfg.InstalledBenchmarks["smb"]
-		for _, name := range smb.RequiredBenchmarks {
-			for _, app := range installedSMBSubBenchmarks.SubBenchmarks {
-				if app.Name == name {
-					smbBenchmarksToRun = append(smbBenchmarksToRun, app)
-					break
-				}
-			}
-		}
-		benchmarksToRun["smb"] = new(benchmark.Install)
-		benchmarksToRun["smb"].SubBenchmarks = smbBenchmarksToRun
-
-		var overlapBenchmarksToRun []app.Info
-		installOverlapSubBenchmarks := cfg.InstalledBenchmarks["overlap"]
-		for _, name := range overlap.RequiredBenchmarks {
-			for _, app := range installOverlapSubBenchmarks.SubBenchmarks {
-				if app.Name == name {
-					overlapBenchmarksToRun = append(overlapBenchmarksToRun, app)
-					break
-				}
-			}
-		}
-		benchmarksToRun["overlap"] = new(benchmark.Install)
-		benchmarksToRun["overlap"].SubBenchmarks = overlapBenchmarksToRun
-	} else {
-		benchmarksToRun = cfg.InstalledBenchmarks
-	}
+	benchmarksToRun := selectBenchmarksToRun(cfg)
 
 	if *verbose {
 		log.Printf("%d benchmarks being executed:\n", len(benchmarksToRun))

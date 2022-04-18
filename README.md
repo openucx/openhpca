@@ -113,6 +113,16 @@ For a manual execution, users are asked to run the various benchmarks as they
 would usually do. All the benchmarks are available from the `install` directory
 in the workspace that they defined.
 
+## Execution of specific benchmarks such as OSU
+
+The OpenHPCA infrastructure can be used to execute individual benchmarks and visualise
+the associated results. For example, users can request the execution of OSU only by using
+the `-osu` argument to `openhpca_run`. Once executed, results can be visualized as
+described further in this documentation.
+
+To get the list of all the benchmarks suites that can be individually executed, please
+refer to the `./tools/cmd/openhpca_run/openhpca_run -h` help.
+
 ## Tuning
 
 If errors in the run directory show that the maximum number of elements needs
