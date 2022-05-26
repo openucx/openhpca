@@ -1,6 +1,0 @@
-Command: ./configure --prefix /global/home/users/bwilliams/openhpca/build/install/OSU
-
-Execution path: /global/home/users/bwilliams/openhpca/build/src/osu-micro-benchmarks-5.7
-Execution time: 2022-05-24 12:40:56
---prefix /global/home/users/bwilliams/openhpca/build/install/OSU
-/global/home/users/bwilliams/openhpca/build/src/osu-micro-benchmarks-5.7/configure: 4a70264c4204ea3e01a578ebc6887bab393e193c302c9d5689a271038c7f8254

@@ -1,6 +1,0 @@
-Command: ./configure --prefix /global/home/users/bwilliams/openhpca/build/install/osu_noncontig_mem
-
-Execution path: /global/home/users/bwilliams/openhpca/build/build/osu_noncontig_mem/osu_noncontig_mem
-Execution time: 2022-05-24 12:41:06
---prefix /global/home/users/bwilliams/openhpca/build/install/osu_noncontig_mem
-/global/home/users/bwilliams/openhpca/build/build/osu_noncontig_mem/osu_noncontig_mem/configure: 4a70264c4204ea3e01a578ebc6887bab393e193c302c9d5689a271038c7f8254
