@@ -1,0 +1,37 @@
+#!/bin/bash
+# Copyright 2006 Sandia Corporation. Under the terms of Contract 
+# DE-AC04-94AL85000, there is a non-exclusive license for use of this work 
+# by or on behalf of the U.S. Government. Export of this program may require 
+# a license from the United States Government.
+
+# Example options. For a complete list perform a "man qsub"
+#PBS -l nodes=2:ppn=2
+#PBS -l walltime=00:30:00
+#PBS -N overhead
+
+echo "######### START #########"
+echo Running on `hostname`
+echo Dir is `pwd`
+
+mpirun=mpirun
+
+min_msgsize=0
+max_msgsize=`expr 4 \* 1024 \* 1024`
+msgsize=$min_msgsize
+while [ $msgsize -le $max_msgsize ]
+do
+  command="$mpirun -np 2 ./mpi_overhead --msgsize $msgsize $1"
+  if [ $msgsize -gt $min_msgsize ]; then
+    command="$command --nohdr"
+  fi
+  $command
+
+  if [ $msgsize -eq 0 ]; then
+    msgsize=2
+  else
+    msgsize=`expr $msgsize \* 2`
+  fi
+done
+
+echo "######### DONE! #########"
+

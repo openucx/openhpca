@@ -1,0 +1,158 @@
+-*- text -*-
+
+Sandia Real-World Message Rate Benchmark (msgrate)
+--------------------------------------------------
+
+This README describes the Sandia Real-World Message Rate Benchmark
+(msgrate), in terms of both goals and methodology.  Build and
+execution instructions are also included.
+
+* Build and Execution:
+
+  If the MPI to be used in testing provides a mpicc wrapper compiler,
+  building should be as simple as running 'make'.  Setting CC, CFLAGS,
+  and LDFLAGS should all work as expected.  Users are free to
+  experiment with optimization flags, including setting CFLAGS to
+  "-O3".  By default, -O3 is used.
+
+  By default, the test requires at least 7 processes to be used in
+  testing, although as few as three can be used if the number of peers
+  is set sufficiently low.  A number of parameters control the
+  experiment:
+
+    -p <num>     Number of peers used in communication
+    -i <num>     Number of iterations per test
+    -m <num>     Number of messages per peer per iteration
+    -s <size>    Number of bytes per message
+    -c <size>    Cache size in bytes
+    -n <ppn>     Number of procs per node
+    -o           Format output to be machine readable
+
+* Goals:
+
+  Unlike tradition message rate benchmarks, which attempt to discover
+  peak message rate in ideal conditions, our message rate benchmark is
+  more concerned with sustained message throughput in application
+  scenarios.  We are concerned with how three different
+  characteristics of the message pattern influence message rate:
+
+  1) Cold Cache Start-up:  Unlike traditional microbenchmarks, which
+     work hard to warm both the cache and network before execution of
+     the test, the msgrate benchmark attempts to invalidate the cache
+     at the start of each iteration.  This cache invalidation seeks to
+     mimic the effect of the "real work" part of a scientific code,
+     which is likely to include a large enough computation step to
+     result in a data cache devoid of both the receive buffers and all
+     MPI-related structures.
+
+     As send buffers are generally touched just before the MPI send is
+     performed, those buffers are written to at the completion of the
+     cache invalidation in order to bring them into cache.
+
+  2) Simultaneous Send and Receive: We are concerned with the ability
+     of networks and MPI implementations to support a high rate of
+     messaging when a given node is both sending and receiving
+     messages.  Our benchmark counts the total number of messages
+     processed, both sending and receiving.
+
+  3) Multiple Communication Peers: The benchmark will simultaneously
+     communicate with a specified number of peers.  All receives will
+     be posted (all from peer a, then all from peer b, and so on),
+     then all sends will be started (first all to peer a, then all to
+     peer b, and so on).
+
+* Methodology:
+
+There are a number different communication patterns of interest to us,
+based on codes of interest.  Assume that peers is a list of npeers in
+length which is ordered to contain the npeers/2 "lower" peers, in
+ascending order followed by npeers/2 "higher" peers.
+
+- Single direction: This test approximates the behavior of traditional
+  message rate benchmarks, with a given peer communicating with
+  exactly one other peer (and only in one direction).  The cache
+  invalidation phase, which mimics the effect of an application
+  working set, is the only notable addition.  The kernel looks
+  something like:
+
+  if (odd)
+    for number of iterations:
+      invalidate cache
+      start timer
+      post N sends to peer
+      wait all
+      stop timer
+  else
+    for number of iterations:
+      invalidate cache
+      start timer
+      post N sends to peer
+      wait all
+      stop timer
+
+- Pair-based: Each process communicates with a number of peers, so
+  that a given process is both sending and receiving messages with
+  exactly one other process at a time.  Synchronization can not be
+  guaranteed, so the test may result in a number of unexpected
+  messages.  The kernel looks something like:
+
+  for number of iterations:
+    invalidate cache
+    start timer
+    for peers
+      post N receives from peer[i]
+      post N sends to peer[i]
+      waitall
+    stop timer
+
+- Pre-posted: This test extends the pair-based test by pre-posting
+  receives before cache invalidation, mimicing applications which
+  pre-post receives at the completion of the previous computation
+  phase.  The kernel looks something like:
+
+  start timer
+  <pre-post receives>
+  stop timer
+
+  for number of iterations
+    invalidate cache
+    barrier
+    start timer
+    for peers
+      post N sends to peer[i]
+    wait all
+    for peers
+      post N receives to peer[i]
+    stop timer
+
+  start timer
+  <post final sends>
+  stop timer
+
+- All-Start: Similar to the pre-posted, but does not guarantee
+  pre-posted.  Simulates an application which finishes a computation
+  phase, then issues all communication calls at once with a single
+  MPI_WAITALL.
+
+  for number of iterations
+    invalidate cache
+    barrier
+
+    start timer
+    for peers
+      post N receives from peer[i]
+      post N sends to peer[i]
+    waitall
+    stop timer
+
+Cache invalidation presents a number of challanges, as there's no way
+to guarantee a cache is completely invalidated.  Our current approach
+is to create an array of size 16MB (larger than most currently
+available L3 cache structures) and iterate through the memory with an
+algorithm similar to:
+
+
+    a[i] = a[i - 1] + 1
+
+Assuming a write-thru cache structure, this should ensure that only
+the array is in any layer of caching.
