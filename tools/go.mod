@@ -12,3 +12,5 @@ require (
 	github.com/gvallee/validation_tool v1.3.1
 	gonum.org/v1/plot v0.9.0
 )
+
+replace github.com/gvallee/go_hpc_jobmgr v1.3.1 => github.com/BrodyWilliams/go_hpc_jobmgr v1.3.2-0.20220528001707-b0cfa6925f60

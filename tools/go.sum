@@ -2,6 +2,8 @@ dmitri.shuralyov.com/gpu/mtl v0.0.0-20190408044501-666a987793e9/go.mod h1:H6x//7
 gioui.org v0.0.0-20210308172011-57750fc8a0a6/go.mod h1:RSH6KIUZ0p2xy5zHDxgAM4zumjgTw83q2ge/PI+yyw8=
 github.com/360EntSecGroup-Skylar/excelize v1.4.1 h1:l55mJb6rkkaUzOpSsgEeKYtS6/0gHwBYyfo5Jcjv/Ks=
 github.com/360EntSecGroup-Skylar/excelize v1.4.1/go.mod h1:vnax29X2usfl7HHkBrX5EvSCJcmH3dT9luvxzu8iGAE=
+github.com/BrodyWilliams/go_hpc_jobmgr v1.3.2-0.20220528001707-b0cfa6925f60 h1:KTdD4Jkf3UjUvslXWHLynXM2V9W2T2KR2x7Ke5ONaAM=
+github.com/BrodyWilliams/go_hpc_jobmgr v1.3.2-0.20220528001707-b0cfa6925f60/go.mod h1:gsikmgiQ+su5Cbaj48ErVtXyyTxXSiJf8r6CEUiN2wI=
 github.com/BurntSushi/xgb v0.0.0-20160522181843-27f122750802/go.mod h1:IVnqGOEym/WlBOVXweHU+Q+/VP0lqqI8lqeDx9IjBqo=
 github.com/ajstarks/svgo v0.0.0-20180226025133-644b8db467af h1:wVe6/Ea46ZMeNkQjjBW6xcqyQA/j5e0D6GytH95g0gQ=
 github.com/ajstarks/svgo v0.0.0-20180226025133-644b8db467af/go.mod h1:K08gAheRH3/J6wwsYMMT4xOr94bZjxIelGM0+d/wbFw=

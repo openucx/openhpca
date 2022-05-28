@@ -68,7 +68,7 @@ func getSubBenchmarks(cfg *benchmark.Config, wp *workspace.Config) map[string]ap
 		URL:     "file:///" + filepath.Join(smbDir, "src", mpiOverheadID),
 		BinName: mpiOverheadBinName,
 		BinPath: filepath.Join(wp.InstallDir, mpiOverheadID, mpiOverheadID, mpiOverheadBinName),
-		BinArgs: []string{"--msgsize", fmt.Sprintf("%d", defaultMsgSize)},
+		BinArgs: []string{" --msgsize", " ", fmt.Sprintf("%d", defaultMsgSize)},
 	}
 	m[mpiOverheadID] = mpiOverheadInfo
 

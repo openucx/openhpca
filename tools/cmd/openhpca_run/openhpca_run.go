@@ -299,6 +299,14 @@ func main() {
 				e.Platform.MaxNumNodes = 2
 			}
 
+			//For SMB msgrate tests, add ppn, peers to BinArgs
+			if e.Name == "smb_msgrate" || e.Name == "smb_rma_mt_mpi" {
+				e.App.BinArgs = append(e.App.BinArgs,
+						       fmt.Sprintf(" -p %d -n %d",
+						       exps.Platform.MaxNumNodes-1,
+						       exps.Platform.MaxPPR))
+			}
+
 			// Make sure to set special environment variables
 			// todo: find a better way to abtract this, i.e., make sure it is set correctly for all MPI implementations
 			overlapNumElts := os.Getenv("OPENHPCA_OVERLAP_MAX_NUM_ELTS")
