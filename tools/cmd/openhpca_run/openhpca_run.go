@@ -302,7 +302,7 @@ func main() {
 			//For SMB msgrate tests, add ppn, peers to BinArgs
 			if e.Name == "smb_msgrate" || e.Name == "smb_rma_mt_mpi" {
 				e.App.BinArgs = append(e.App.BinArgs,
-						       fmt.Sprintf(" -p %d -n %d",
+						       fmt.Sprintf("-p %d -n %d",
 						       exps.Platform.MaxNumNodes-1,
 						       exps.Platform.MaxPPR))
 			}
