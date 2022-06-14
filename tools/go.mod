@@ -12,4 +12,3 @@ require (
 	github.com/gvallee/validation_tool v1.3.1
 	gonum.org/v1/plot v0.9.0
 )
-
