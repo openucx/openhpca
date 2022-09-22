@@ -28,12 +28,8 @@ import (
 	"github.com/openucx/openhpca/tools/internal/pkg/smb"
 )
 
-func getRunDir(cfg *config.Data) string {
-	return filepath.Join(cfg.WP.Basedir, "run")
-}
-
 func displayResults(cfg *config.Data) error {
-	runDir := getRunDir(cfg)
+	runDir := cfg.GetRunDir()
 	resultsStr, err := result.String(runDir)
 	if err != nil {
 		return err
@@ -235,7 +231,7 @@ func main() {
 	}
 
 	// Make sure the run directory exists and make sure it will be used when running experiments
-	runDir := getRunDir(cfg)
+	runDir := cfg.GetRunDir()
 	if !util.PathExists(runDir) {
 		err = os.MkdirAll(runDir, 0777)
 		if err != nil {

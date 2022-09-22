@@ -53,6 +53,7 @@ dkms.conf
 # Generated binaries
 tools/cmd/openhpca_setup/openhpca_setup
 tools/cmd/openhpca_run/openhpca_run
+tools/cmd/openhpca_report/openhpca_report
 tools/cmd/webui/webui
 src/overlap/overlap_iallreduce
 src/overlap/overlap_ialltoall
