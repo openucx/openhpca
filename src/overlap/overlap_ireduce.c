@@ -168,7 +168,7 @@ int time_driven_loop(overlap_params_t *params, double *val, double *result)
         get_coll_config_info(params, val, result, data, n_elts, 5, 0, &stdev, &avg_wait_time);
         if (params->world_rank == 0 && avg_wait_time < params->cutoff_time)
         {
-            CHECK_N_ELTS(n_elts, params->max_elts);
+            CHECK_N_ELTS(n_elts, params->max_elts, avg_wait_time);
             n_elts *= 2;
         }
 
@@ -196,7 +196,7 @@ int time_driven_loop(overlap_params_t *params, double *val, double *result)
                 OVERLAP_DEBUG(params, "Required number of iterations = %.0f (%" PRIu64 " elts)\n", required_iters, n_elts);
                 if (required_iters > MAX_NUM_CALIBRATION_POINTS)
                 {
-                    CHECK_N_ELTS(n_elts, params->max_elts);
+                    CHECK_N_ELTS(n_elts, params->max_elts, avg_wait_time);
                     n_elts *= 2;
                 }
                 else
