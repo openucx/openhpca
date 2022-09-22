@@ -98,7 +98,7 @@ void __no_optimization do_work(double x, double y, double a, double b, int64_t n
     }
 }
 
-#define CHECK_N_ELTS(_n_elts, _max_elts) do {                                     \
+#define CHECK_N_ELTS(_n_elts, _max_elts, _avg_wait_time) do {                                     \
     uint64_t _n = _n_elts * 2;                                                    \
     if (_n * 2 > (_max_elts))                                                     \
     {                                                                             \
@@ -106,6 +106,7 @@ void __no_optimization do_work(double x, double y, double a, double b, int64_t n
                 "Cannot further increase n_elts (%"PRIu64") beyond %" PRIu64"\n", \
                 _n, _max_elts);                                                   \
         fprintf(stderr, "Please enlarge %s\n", OVERLAP_MAX_NUM_ELTS_ENVVAR);      \
+        fprintf(stderr, "Average wait time: %f\n", _avg_wait_time);               \
         goto exit_error;                                                          \
     }                                                                             \
 } while (0)
