@@ -109,6 +109,8 @@ func analyzeRunErrors(cfg *config.Data, reportFile *os.File) error {
 	cataloguedErrors := make(map[int][]string)
 	numKnownErrors := make(map[int]int)
 	var unknownErrors []string
+	successfulRuns := 0
+	failedRuns := 0
 	for _, errorFilePath := range errorFiles {
 		// Is the file empty?
 		s, err := os.Stat(errorFilePath)
@@ -116,6 +118,7 @@ func analyzeRunErrors(cfg *config.Data, reportFile *os.File) error {
 			return fmt.Errorf("unable to get statistics about %s: %w", errorFilePath, err)
 		}
 		if s.Size() != 0 {
+			failedRuns++
 			// Get the error message from error log
 			errorMsgData, err := os.ReadFile(errorFilePath)
 			if err != nil {
@@ -132,7 +135,15 @@ func analyzeRunErrors(cfg *config.Data, reportFile *os.File) error {
 			} else {
 				unknownErrors = append(unknownErrors, string(errorMsgData))
 			}
+		} else {
+			successfulRuns++
 		}
+	}
+
+	// Save overall count of successful and failed runs
+	_, err = reportFile.Write([]byte(fmt.Sprintf("# Results overview\n\nNumber of successful runs: %d\nNumber of failed runs: %d\n\n", successfulRuns, failedRuns)))
+	if err != nil {
+		return fmt.Errorf("unable to save the results overview into the report")
 	}
 
 	// Save all the error message data in a separate file
