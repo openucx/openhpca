@@ -12,11 +12,6 @@ import (
 	"path/filepath"
 
 	"github.com/openucx/openhpca/tools/internal/pkg/fileUtils"
-	"github.com/openucx/openhpca/tools/internal/pkg/result"
-)
-
-const (
-	FileName       = "openhpca_results.txt"
 )
 
 // Metrics gathers all the data that represents the final result of the benchmark suite

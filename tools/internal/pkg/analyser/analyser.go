@@ -22,6 +22,10 @@ import (
 	"github.com/openucx/openhpca/tools/internal/pkg/result"
 )
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 07bc7cd092e23957516f3dfd9da5c303f6c47435
 func preparePoints(n int, x []float64, y []float64) plotter.XYs {
 	pts := make(plotter.XYs, n)
 	for i := range pts {
