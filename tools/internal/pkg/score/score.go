@@ -8,6 +8,7 @@ package score
 
 import "fmt"
 
+// Metrics gathers all the data that represents the final result of the benchmark suite
 type Metrics struct {
 	Bandwidth     float64
 	BandwidthUnit string
