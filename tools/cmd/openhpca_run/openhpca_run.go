@@ -15,6 +15,7 @@ import (
 	"os"
 	"path/filepath"
 	"runtime"
+	"time"
 
 	"github.com/gvallee/go_benchmark/pkg/benchmark"
 	"github.com/gvallee/go_hpc_jobmgr/pkg/implem"
@@ -24,6 +25,7 @@ import (
 	"github.com/gvallee/validation_tool/pkg/platform"
 	"github.com/openucx/openhpca/tools/internal/pkg/config"
 	"github.com/openucx/openhpca/tools/internal/pkg/overlap"
+	"github.com/openucx/openhpca/tools/internal/pkg/report"
 	"github.com/openucx/openhpca/tools/internal/pkg/result"
 	"github.com/openucx/openhpca/tools/internal/pkg/smb"
 )
@@ -61,20 +63,20 @@ func experimentIsStrictlyPointToPoint(name string) bool {
 }
 
 func userSelectedAllBenchmarks(cfg *config.Data) bool {
-	if cfg.UserSelection.OsuNoncontigmemSelected &&
-		cfg.UserSelection.OsuSelected &&
-		cfg.UserSelection.SmbSelected &&
-		cfg.UserSelection.OverlapSelected {
+	if cfg.UserParams.BenchSelection.OsuNoncontigmemSelected &&
+		cfg.UserParams.BenchSelection.OsuSelected &&
+		cfg.UserParams.BenchSelection.SmbSelected &&
+		cfg.UserParams.BenchSelection.OverlapSelected {
 		return true
 	}
 	return false
 }
 
 func userSelectedAtLeastOneBenchmark(cfg *config.Data) bool {
-	if cfg.UserSelection.OsuNoncontigmemSelected ||
-		cfg.UserSelection.OsuSelected ||
-		cfg.UserSelection.SmbSelected ||
-		cfg.UserSelection.OverlapSelected {
+	if cfg.UserParams.BenchSelection.OsuNoncontigmemSelected ||
+		cfg.UserParams.BenchSelection.OsuSelected ||
+		cfg.UserParams.BenchSelection.SmbSelected ||
+		cfg.UserParams.BenchSelection.OverlapSelected {
 		return true
 	}
 	return false
@@ -86,10 +88,10 @@ func selectBenchmarksToRun(cfg *config.Data) map[string]*benchmark.Install {
 
 	// Check the options to make sure we know what is required
 	if userSelectedAllBenchmarks(cfg) {
-		cfg.UserSelection.LongRun = true
+		cfg.UserParams.BenchSelection.LongRun = true
 	}
 
-	if !userSelectedAtLeastOneBenchmark(cfg) && !cfg.UserSelection.LongRun {
+	if !userSelectedAtLeastOneBenchmark(cfg) && !cfg.UserParams.BenchSelection.LongRun {
 		// We need to run all the benchmarks required to get the OpenHPCA metrics
 		// We only keep the installed benchmarks that are part of the list of
 		// benchmarks required to generate the final metrics
@@ -134,9 +136,9 @@ func selectBenchmarksToRun(cfg *config.Data) map[string]*benchmark.Install {
 		return benchmarksToRun
 	}
 
-	if !cfg.UserSelection.LongRun && userSelectedAtLeastOneBenchmark(cfg) {
+	if !cfg.UserParams.BenchSelection.LongRun && userSelectedAtLeastOneBenchmark(cfg) {
 		// Get the list of selected benchmarks by the user
-		if cfg.UserSelection.OsuSelected {
+		if cfg.UserParams.BenchSelection.OsuSelected {
 			var osuBenchmarksToRun []app.Info
 			installedOSUSubBenchmarks := cfg.InstalledBenchmarks["osu"]
 			osuBenchmarksToRun = append(osuBenchmarksToRun, installedOSUSubBenchmarks.SubBenchmarks...)
@@ -144,7 +146,7 @@ func selectBenchmarksToRun(cfg *config.Data) map[string]*benchmark.Install {
 			benchmarksToRun["osu"].SubBenchmarks = osuBenchmarksToRun
 		}
 
-		if cfg.UserSelection.OsuNoncontigmemSelected {
+		if cfg.UserParams.BenchSelection.OsuNoncontigmemSelected {
 			var osuBenchmarksToRun []app.Info
 			installedOSUNoncontigmemSubBenchmarks := cfg.InstalledBenchmarks["osu_noncontig_mem"]
 			osuBenchmarksToRun = append(osuBenchmarksToRun, installedOSUNoncontigmemSubBenchmarks.SubBenchmarks...)
@@ -152,7 +154,7 @@ func selectBenchmarksToRun(cfg *config.Data) map[string]*benchmark.Install {
 			benchmarksToRun["osu"].SubBenchmarks = osuBenchmarksToRun
 		}
 
-		if cfg.UserSelection.SmbSelected {
+		if cfg.UserParams.BenchSelection.SmbSelected {
 			var smbBenchmarksToRun []app.Info
 			installedSMBSubBenchmarks := cfg.InstalledBenchmarks["smb"]
 			smbBenchmarksToRun = append(smbBenchmarksToRun, installedSMBSubBenchmarks.SubBenchmarks...)
@@ -160,7 +162,7 @@ func selectBenchmarksToRun(cfg *config.Data) map[string]*benchmark.Install {
 			benchmarksToRun["smb"].SubBenchmarks = smbBenchmarksToRun
 		}
 
-		if cfg.UserSelection.OverlapSelected {
+		if cfg.UserParams.BenchSelection.OverlapSelected {
 			var overlapBenchmarksToRun []app.Info
 			installOverlapSubBenchmarks := cfg.InstalledBenchmarks["overlap"]
 			overlapBenchmarksToRun = append(overlapBenchmarksToRun, installOverlapSubBenchmarks.SubBenchmarks...)
@@ -182,7 +184,7 @@ func main() {
 	device := flag.String("d", "", "Device to use (optional)")
 	nActiveJobsFlag := flag.Int("max-running-jobs", 5, "The maximum of active running job at any given time (other jobs are queued and executed upon completion of running jobs)")
 	ppnFlag := flag.Int("ppn", 1, "Number of MPI ranks per node (default: 1)")
-	nNodesFlag := flag.Int("num-nodes", 1, "Number of nodes to use (default: 1)")
+	nNodesFlag := flag.Int("num-nodes", 2, "Number of nodes to use (default: 2)")
 	longRunFlag := flag.Bool("long", false, "Run all supported tests, including tests not used to create the final metrics")
 	osuUserSelectFlag := flag.Bool("osu", false, "Explicitly select OSU for execution. Only selected benchmarks will be executed")
 	osuNonContigMemSelectFlag := flag.Bool("osu-noncontigmem", false, "Explicitly select OSU for non-contiguous memory for execution. Only selected benchmarks will be executed")
@@ -213,11 +215,18 @@ func main() {
 	cfg := new(config.Data)
 	cfg.Basedir = basedir
 	cfg.BinName = filename
-	cfg.UserSelection.LongRun = *longRunFlag
-	cfg.UserSelection.OsuSelected = *osuUserSelectFlag
-	cfg.UserSelection.OsuNoncontigmemSelected = *osuNonContigMemSelectFlag
-	cfg.UserSelection.SmbSelected = *smbSelectFlag
-	cfg.UserSelection.OverlapSelected = *overlapSelectFlag
+	cfg.UserParams.Set = true
+	cfg.UserParams.StartTime = report.CreateTimestampString(time.Now())
+	cfg.UserParams.Device = *device
+	cfg.UserParams.NumActiveJobs = *nActiveJobsFlag
+	cfg.UserParams.NumNodes = *nNodesFlag
+	cfg.UserParams.PPN = *ppnFlag
+	cfg.UserParams.Partition = *partition
+	cfg.UserParams.BenchSelection.LongRun = *longRunFlag
+	cfg.UserParams.BenchSelection.OsuSelected = *osuUserSelectFlag
+	cfg.UserParams.BenchSelection.OsuNoncontigmemSelected = *osuNonContigMemSelectFlag
+	cfg.UserParams.BenchSelection.SmbSelected = *smbSelectFlag
+	cfg.UserParams.BenchSelection.OverlapSelected = *overlapSelectFlag
 
 	// Load the configuration
 	err := cfg.Load()
@@ -298,9 +307,9 @@ func main() {
 			//For SMB msgrate tests, add ppn, peers to BinArgs
 			if e.Name == "smb_msgrate" || e.Name == "smb_rma_mt_mpi" {
 				e.App.BinArgs = append(e.App.BinArgs,
-						       fmt.Sprintf("-p %d -n %d",
-						       exps.Platform.MaxNumNodes-1,
-						       exps.Platform.MaxPPR))
+					fmt.Sprintf("-p %d -n %d",
+						exps.Platform.MaxNumNodes-1,
+						exps.Platform.MaxPPR))
 			}
 
 			// Make sure to set special environment variables
@@ -340,6 +349,12 @@ func main() {
 		fmt.Printf("ERROR: unable to display results: %s\n", err)
 		fmt.Println("Some jobs executed by OpenHPCA may have failed because the default configuration needs to be customized for your configuration.")
 		fmt.Printf("Please check the results in %s\n", cfg.GetRunDir())
+		os.Exit(1)
+	}
+
+	err = report.Generate(cfg)
+	if err != nil {
+		fmt.Printf("ERROR: unable to generate the report: %s\n", err)
 		os.Exit(1)
 	}
 }

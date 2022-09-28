@@ -61,17 +61,49 @@ type AppsCfg struct {
 	OverlapCfg benchmark.Config
 }
 
+// BenchmarksSelection stores the selection of sub-benchmarks to be executed
 type BenchmarksSelection struct {
 	// LongRun specifies that the long execution mode has been requested
 	LongRun bool
 
+	// OsuSelected specifies whether the user explicitely selected the execution of OSU micro-benchmarks
 	OsuSelected bool
 
+	// OsuNoncontigmemSelected specifies whether the user explicitely selected the execution of OSU micro-benchmarks for non-contiguous data
 	OsuNoncontigmemSelected bool
 
+	// SmbSelected specifies whether the user explicitely selected the execution of the Sandia micro-benchmarks
 	SmbSelected bool
 
+	// OverlapSelected specifies whether the user explicitely selected the selection of the OpenHPCA overlap benchmark suite
 	OverlapSelected bool
+}
+
+// RuntimeParams gathers all the runtime parameters used by the user
+type RuntimeParams struct {
+	// Set specifies whether the runtime parameters were actually set or not
+	Set bool
+
+	// Partition stores the partition specified by the user for the execution of OpenHPCA
+	Partition string
+
+	// Device stores the networking devices specified by the user for the execution  of OpenHPCA
+	Device string
+
+	// NumActiveJobs stores the number of active jobs that can be executed in parallel
+	NumActiveJobs int
+
+	// PPN stores the number of processes per nodes that can be used for the execution of OpenHPCA
+	PPN int
+
+	// NumNodes stores the number of compute nodes that is used to execute OpenHPCA
+	NumNodes int
+
+	// StartTime specifies when the openhpca_run command started its execution
+	StartTime string
+
+	// BenchSelection reflects the list of parameters specified by the user for the execution of specific benchmarks
+	BenchSelection BenchmarksSelection
 }
 
 // Data represents the configuration of the file, mainly based
@@ -82,9 +114,6 @@ type Data struct {
 
 	// BinName is the name of the setup binary
 	BinName string
-
-	// UserSelection reflects the list of parameters specified by the user for the execution of specific benchmarks
-	UserSelection BenchmarksSelection
 
 	// ConfigFile is the path the private OpenHPCA configuration file
 	ConfigFile string
@@ -103,6 +132,19 @@ type Data struct {
 
 	// Slurm represents the configuration of Slurm, including users' parameters (e.g., partition)
 	Slurm SlurmCfg
+
+	// UserParams stores all the parameters used by the user while executing OpenHPCA
+	UserParams RuntimeParams
+}
+
+func (c *Data) BenchSelectionToString() string {
+	return fmt.Sprintf("Long run: %t\nOSU: %t\nOSU for non-contiguous memory: %t\nSMD: %t\nOpenHPCA overlap: %t\n",
+		c.UserParams.BenchSelection.LongRun, c.UserParams.BenchSelection.OsuSelected, c.UserParams.BenchSelection.OsuNoncontigmemSelected, c.UserParams.BenchSelection.SmbSelected, c.UserParams.BenchSelection.OverlapSelected)
+}
+
+func (c *Data) UserParamsToString() string {
+	return fmt.Sprintf("Partition: %s\nDevice: %s\nNumber of active jobs: %d\nPPN: %d\nNumber of nodes: %d\nStart time: %s\n%s",
+		c.UserParams.Partition, c.UserParams.Device, c.UserParams.NumActiveJobs, c.UserParams.PPN, c.UserParams.NumNodes, c.UserParams.StartTime, c.BenchSelectionToString())
 }
 
 func cleanupLine(line string) string {
