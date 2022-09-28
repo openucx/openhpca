@@ -182,7 +182,7 @@ func main() {
 	device := flag.String("d", "", "Device to use (optional)")
 	nActiveJobsFlag := flag.Int("max-running-jobs", 5, "The maximum of active running job at any given time (other jobs are queued and executed upon completion of running jobs)")
 	ppnFlag := flag.Int("ppn", 1, "Number of MPI ranks per node (default: 1)")
-	nNodesFlag := flag.Int("num-nodes", 1, "Number of nodes to use (default: 1)")
+	nNodesFlag := flag.Int("num-nodes", 2, "Number of nodes to use (default: 2)")
 	longRunFlag := flag.Bool("long", false, "Run all supported tests, including tests not used to create the final metrics")
 	osuUserSelectFlag := flag.Bool("osu", false, "Explicitly select OSU for execution. Only selected benchmarks will be executed")
 	osuNonContigMemSelectFlag := flag.Bool("osu-noncontigmem", false, "Explicitly select OSU for non-contiguous memory for execution. Only selected benchmarks will be executed")
@@ -298,9 +298,9 @@ func main() {
 			//For SMB msgrate tests, add ppn, peers to BinArgs
 			if e.Name == "smb_msgrate" || e.Name == "smb_rma_mt_mpi" {
 				e.App.BinArgs = append(e.App.BinArgs,
-						       fmt.Sprintf("-p %d -n %d",
-						       exps.Platform.MaxNumNodes-1,
-						       exps.Platform.MaxPPR))
+					fmt.Sprintf("-p %d -n %d",
+						exps.Platform.MaxNumNodes-1,
+						exps.Platform.MaxPPR))
 			}
 
 			// Make sure to set special environment variables
