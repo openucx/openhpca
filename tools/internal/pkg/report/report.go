@@ -28,7 +28,7 @@ func addConfigFileContent(cfg *config.Data, reportFile *os.File) error {
 	}
 
 	// Copy the content of the configuration file
-	configData, err := os.ReadFile(cfg.WP.ConfigFile)
+	configData, err := ioutil.ReadFile(cfg.WP.ConfigFile)
 	if err != nil {
 		return fmt.Errorf("unable to read the content of the configuration file %s: %w", cfg.ConfigFile, err)
 	}
@@ -120,7 +120,7 @@ func analyzeRunErrors(cfg *config.Data, reportFile *os.File) error {
 		if s.Size() != 0 {
 			failedRuns++
 			// Get the error message from error log
-			errorMsgData, err := os.ReadFile(errorFilePath)
+			errorMsgData, err := ioutil.ReadFile(errorFilePath)
 			if err != nil {
 				return fmt.Errorf("unable to read file %s: %w", errorFilePath, err)
 			}
