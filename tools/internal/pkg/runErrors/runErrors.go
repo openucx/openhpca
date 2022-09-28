@@ -17,12 +17,12 @@ const (
 	route found between them. Please check network connectivity
 	(including firewalls and network routing requirements).
 	--------------------------------------------------------------------------`
-	slurmTimeOut = "slurmstepd"
+	slurmTimeOut                     = "slurmstepd"
 	overlapBenchElementIncreaseError = "Cannot further increase n_elts"
-	overlapBenchCalibrationFailure = "Calibration failed"
+	overlapBenchCalibrationFailure   = "Calibration failed"
 )
 
-var KnownErrors []string = []string{pmixError, slurmTimeOut}
+var KnownErrors []string = []string{pmixError, slurmTimeOut, overlapBenchElementIncreaseError, overlapBenchCalibrationFailure}
 
 func IsKnownError(errorMsg string) int {
 	for idx, e := range KnownErrors {
