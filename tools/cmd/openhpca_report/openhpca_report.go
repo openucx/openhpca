@@ -62,6 +62,7 @@ func main() {
 		fmt.Printf("ERROR: run directory %s not found\n", runDir)
 		os.Exit(1)
 	}
+	cfg.UserParams.Set = false
 
 	err = report.Generate(cfg)
 	if err != nil {

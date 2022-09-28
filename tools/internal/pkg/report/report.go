@@ -12,6 +12,7 @@ import (
 	"os"
 	"path/filepath"
 	"strings"
+	"time"
 
 	"github.com/openucx/openhpca/tools/internal/pkg/config"
 	"github.com/openucx/openhpca/tools/internal/pkg/runErrors"
@@ -20,6 +21,20 @@ import (
 const (
 	errorFileSuffix = ".err"
 )
+
+func addUserParams(cfg *config.Data, reportFile *os.File) error {
+	_, err := reportFile.Write([]byte("# Run time parameters\n\n"))
+	if err != nil {
+		return fmt.Errorf("unable to write header for the runtime parameters: %w", err)
+	}
+
+	_, err = reportFile.Write([]byte(fmt.Sprintf("%s\n\n", cfg.UserParamsToString())))
+	if err != nil {
+		return fmt.Errorf("unable to the runtime parameters: %w", err)
+	}
+
+	return nil
+}
 
 func addConfigFileContent(cfg *config.Data, reportFile *os.File) error {
 	_, err := reportFile.Write([]byte("# Configuration\n\n"))
@@ -163,11 +178,21 @@ func analyzeRunErrors(cfg *config.Data, reportFile *os.File) error {
 
 func Generate(cfg *config.Data) error {
 	reportFilePath := filepath.Join(cfg.WP.Basedir, "report.md")
+	if cfg.UserParams.Set {
+		reportFilePath = filepath.Join(cfg.WP.Basedir, fmt.Sprintf("report_%s.md", cfg.UserParams.StartTime))
+	}
 	reportFile, err := os.Create(reportFilePath)
 	if err != nil {
 		return fmt.Errorf("unable to create report file %s: %w", reportFilePath, err)
 	}
 	defer reportFile.Close()
+
+	if cfg.UserParams.Set {
+		err = addUserParams(cfg, reportFile)
+		if err != nil {
+			return fmt.Errorf("addUserParams() failed: %w", err)
+		}
+	}
 
 	err = addConfigFileContent(cfg, reportFile)
 	if err != nil {
@@ -182,4 +207,8 @@ func Generate(cfg *config.Data) error {
 	fmt.Printf("Successfully create %s\n", reportFilePath)
 
 	return nil
+}
+
+func CreateTimestampString(t time.Time) string {
+	return fmt.Sprintf("%04d-%02d-%02dT%02d%02d%02d-%s", t.Year(), t.Month(), t.Day(), t.Hour(), t.Minute(), t.Second(), t.Location())
 }
