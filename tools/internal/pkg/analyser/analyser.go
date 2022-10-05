@@ -22,6 +22,10 @@ import (
 	"github.com/openucx/openhpca/tools/internal/pkg/result"
 )
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 07bc7cd092e23957516f3dfd9da5c303f6c47435
 func preparePoints(n int, x []float64, y []float64) plotter.XYs {
 	pts := make(plotter.XYs, n)
 	for i := range pts {
@@ -54,7 +58,7 @@ func PlotBenchmarkGraph(outputDir string, operationName string, x []float64, y [
 	return nil
 }
 
-func Plot(r *result.Results, outputDir string) error {
+func Plot(r *result.Data, outputDir string) error {
 	for benchmarkName, benchmarkData := range r.OsuData {
 		if strings.HasPrefix(benchmarkName, "i") || strings.Contains(benchmarkName, "_i") {
 			log.Printf("skipping plotting of %s since it is a non-blocking operation", benchmarkName)
