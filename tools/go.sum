@@ -33,6 +33,8 @@ github.com/gvallee/go_hpc_jobmgr v1.2.0/go.mod h1:gsikmgiQ+su5Cbaj48ErVtXyyTxXSi
 github.com/gvallee/go_hpc_jobmgr v1.3.0/go.mod h1:gsikmgiQ+su5Cbaj48ErVtXyyTxXSiJf8r6CEUiN2wI=
 github.com/gvallee/go_hpc_jobmgr v1.3.3 h1:6obL2tTBRbLMCOfj+dVFNvf7fqYiVSvTiDJdxDLzzxU=
 github.com/gvallee/go_hpc_jobmgr v1.3.3/go.mod h1:gsikmgiQ+su5Cbaj48ErVtXyyTxXSiJf8r6CEUiN2wI=
+github.com/gvallee/go_hpc_jobmgr v1.4.0 h1:xQTw9WjGNCJkkruhsX7gdxcgCNqPzLQVfEt24PQTjR8=
+github.com/gvallee/go_hpc_jobmgr v1.4.0/go.mod h1:gsikmgiQ+su5Cbaj48ErVtXyyTxXSiJf8r6CEUiN2wI=
 github.com/gvallee/go_osu v1.7.1 h1:/9VqERdtg7X9W1M1N2efmpape1bGq9YfiG1RdTHqrtM=
 github.com/gvallee/go_osu v1.7.1/go.mod h1:UXtUwETw+dmI12Ror3YzGTRFSXINqQ6jz1NNMY1bH0M=
 github.com/gvallee/go_software_build v0.0.17/go.mod h1:xpG+JoRV2XgxWOWmwuySzdKs2+jhWIeLu3MtTrWfQ2Y=

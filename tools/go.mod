@@ -4,7 +4,7 @@ go 1.14
 
 require (
 	github.com/gvallee/go_benchmark v1.0.0
-	github.com/gvallee/go_hpc_jobmgr v1.3.3
+	github.com/gvallee/go_hpc_jobmgr v1.4.0
 	github.com/gvallee/go_osu v1.7.1
 	github.com/gvallee/go_software_build v1.1.2
 	github.com/gvallee/go_util v1.5.1
