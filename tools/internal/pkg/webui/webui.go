@@ -54,14 +54,14 @@ type Server struct {
 	cfg                 *Config
 	httpServer          *http.Server
 	wg                  *sync.WaitGroup
-	data                *result.Results
+	data                *result.Data
 	mpiOverhead         float32
 	latency             float32
 	latencyUnit         string
 	bandwidth           float64
 	bandwidthUnit       string
-	osuData             map[string]*result.Data
-	osuNonContigMemData map[string]*result.Data
+	osuData             map[string]*result.RawData
+	osuNonContigMemData map[string]*result.RawData
 	//smbData             map[string][]string
 	overlapData map[string][]string
 	//overlapDetails      map[string]float32
@@ -273,31 +273,18 @@ func (c *Config) Start() (*Server, error) {
 		return nil, err
 	}
 
-	s.osuData = s.data.LoadResultsWithPrefix("osu")
-	if len(s.osuData) == 0 {
-		return nil, fmt.Errorf("no OSU data")
-	}
-	s.osuNonContigMemData = s.data.LoadResultsWithPrefix("osu_noncontig_mem")
-	if len(s.osuNonContigMemData) == 0 {
-		return nil, fmt.Errorf("no OSU data for non-contiguous memory")
-	}
+	// Copy some of the data to make it easier to the webui to display them. May not be required if we update the webui code.
+	s.osuData = s.data.OsuData
+	s.osuNonContigMemData = s.data.OsuNonContigMemData
 
-	s.mpiOverhead, err = s.data.GetSMBOverlap()
-	if err != nil {
-		return nil, err
-	}
-	s.latency, s.latencyUnit, err = s.data.GetLatency()
-	if err != nil {
-		return nil, err
-	}
-
+	s.mpiOverhead = s.data.MpiOverhead
+	s.latency = s.data.Latency
+	s.latencyUnit = s.data.LatencyUnit
+	s.bandwidth = s.data.Bandwidth
+	s.bandwidthUnit = s.data.BandwidthUnit
 	bwData := s.osuData[bwMetricID]
 	if bwData == nil {
 		return nil, fmt.Errorf("undefined bandwidth data")
-	}
-	s.bandwidth, s.bandwidthUnit, err = result.GetBandwidth(bwData)
-	if err != nil {
-		return nil, err
 	}
 
 	s.ipd.OSUData = make(map[string][]string)
@@ -308,27 +295,12 @@ func (c *Config) Start() (*Server, error) {
 		s.ipd.OSUData[key] = val.Text
 	}
 
-	s.overlapData = s.data.GetOverlapData()
-	var overlapScore float32
-	overlapScore, s.ipd.OverlapDetails, err = result.ComputeOverlap(s.mpiOverhead, s.overlapData)
-	if err != nil {
-		return nil, err
-	}
-	s.ipd.Overlap = fmt.Sprintf("%.0f", overlapScore)
+	s.ipd.Overlap = fmt.Sprintf("%.0f", s.data.OverlapScore)
 	s.ipd.Bandwidth = fmt.Sprintf("%.2f", s.bandwidth)
 	s.ipd.BandwidthUnit = s.bandwidthUnit
 	s.ipd.Latency = s.latency
 	s.ipd.LatencyUnit = s.latencyUnit
 	s.ipd.ScratchPath = s.cfg.openhpcaCfg.WP.ScratchDir
-
-	/*
-		metrics := new(score.Metrics)
-		metrics.Bandwidth = s.ipd.Bandwidth
-		metrics.Latency = float64(s.ipd.Latency)
-		metrics.Overlap = float64(s.ipd.Overlap)
-		s.ipd.Score = metrics.Compute()
-	*/
-
 	s.ipd.OverlapData = s.overlapData
 	err = analyser.Plot(s.data, s.cfg.openhpcaCfg.WP.ScratchDir)
 	if err != nil {
