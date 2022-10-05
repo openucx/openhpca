@@ -24,23 +24,21 @@ import (
 	"github.com/gvallee/validation_tool/pkg/experiments"
 	"github.com/gvallee/validation_tool/pkg/platform"
 	"github.com/openucx/openhpca/tools/internal/pkg/config"
-	"github.com/openucx/openhpca/tools/internal/pkg/fileUtils"
 	"github.com/openucx/openhpca/tools/internal/pkg/overlap"
-	"github.com/openucx/openhpca/tools/internal/pkg/score"
 	"github.com/openucx/openhpca/tools/internal/pkg/report"
+	"github.com/openucx/openhpca/tools/internal/pkg/result"
 	"github.com/openucx/openhpca/tools/internal/pkg/smb"
 )
 
 func displayResults(cfg *config.Data) error {
 	runDir := cfg.GetRunDir()
-	m, err := score.Compute(runDir)
+	resultsStr, err := result.String(runDir)
 	if err != nil {
-		return fmt.Errorf("unable to compute the metrics: %w", err)
+		return err
 	}
-	resultsStr := m.ToString()
 	fmt.Printf("\nOpenHPCA:\n" + resultsStr)
-	resultFile := filepath.Join(cfg.Basedir, "..", score.FileName)
-	err = ioutil.WriteFile(resultFile, []byte(resultsStr), fileUtils.DefaultPermission)
+	resultFile := filepath.Join(cfg.Basedir, "..", result.FileName)
+	err = ioutil.WriteFile(resultFile, []byte(resultsStr), result.FilePermission)
 	if err != nil {
 		return err
 	}
