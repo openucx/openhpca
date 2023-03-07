@@ -126,9 +126,9 @@ refer to the `./tools/cmd/openhpca_run/openhpca_run -h` help.
 ## Tuning
 
 If errors in the run directory show that the maximum number of elements needs
-to be increased via the `OVERLAP_MAX_NUM_ELTS` environment variables, it means
+to be increased via the `OPENHPCA_OVERLAP_MAX_NUM_ELTS` environment variables, it means
 that the default values are not quite suitable for the current configuration.
-To address it, simply set the `OVERLAP_MAX_NUM_ELTS` variable in your environment,
+To address it, simply set the `OPENHPCA_OVERLAP_MAX_NUM_ELTS` variable in your environment,
 the infrastructure will detect it and make sure that benchmarks are executed with
 it.
 
