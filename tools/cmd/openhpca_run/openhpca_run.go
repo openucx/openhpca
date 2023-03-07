@@ -351,6 +351,13 @@ func main() {
 		fmt.Printf("ERROR: unable to display results: %s\n", err)
 		fmt.Println("Some jobs executed by OpenHPCA may have failed because the default configuration needs to be customized for your configuration.")
 		fmt.Printf("Please check the results in %s\n", cfg.GetRunDir())
+
+		// Generate the report even if case of errors to make it easier to identify
+		// what are the errors
+		err = report.Generate(cfg)
+		if err != nil {
+			fmt.Printf("ERROR: unable to generate the report: %s\n", err)
+		}
 		os.Exit(1)
 	}
 
