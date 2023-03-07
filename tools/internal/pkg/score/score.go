@@ -6,8 +6,20 @@
 
 package score
 
-import "fmt"
+import (
+	"fmt"
+	"io/ioutil"
+	"path/filepath"
 
+	"github.com/openucx/openhpca/tools/internal/pkg/fileUtils"
+	"github.com/openucx/openhpca/tools/internal/pkg/result"
+)
+
+const (
+	FileName = "score.txt"
+)
+
+// Metrics gathers all the data that represents the final result of the benchmark suite
 type Metrics struct {
 	Bandwidth      float64
 	BandwidthUnit  string
@@ -20,9 +32,31 @@ type Metrics struct {
 	OverlapDetails map[string]float32
 }
 
-func (s *Metrics) Compute() int {
-	return -1
-	//return int(100 - 1000/s.Bandwidth + 100 - 100 * float64(s.Latency) + float64(s.Overlap))
+func Compute(dataDir string) (*Metrics, error) {
+	data, err := result.Get(dataDir)
+	if err != nil {
+		return nil, err
+	}
+
+	if data == nil {
+		return nil, fmt.Errorf("unable to load results")
+	}
+
+	metrics := new(Metrics)
+	metrics.Bandwidth = data.Bandwidth
+	metrics.BandwidthUnit = data.BandwidthUnit
+	metrics.Latency = float64(data.Latency)
+	metrics.LatencyUnit = data.LatencyUnit
+	metrics.OverlapScore = data.MpiOverhead
+
+	if data.BandwidthUnit != "Gb/s" {
+		return nil, fmt.Errorf("unsupported unit for bandwidth (%s)", data.BandwidthUnit)
+	}
+	if data.LatencyUnit != "us" {
+		return nil, fmt.Errorf("unsupported unit for latency (%s)", data.LatencyUnit)
+	}
+
+	return metrics, nil
 }
 
 func (s *Metrics) ToString() string {
@@ -40,4 +74,22 @@ func (s *Metrics) ToString() string {
 	content += "\n"
 	//content += fmt.Sprintf("Score: %d\n", s.Score)
 	return content
+}
+
+func (s *Metrics) Save(path string) error {
+	content := s.ToString()
+	return ioutil.WriteFile(path, []byte(content), fileUtils.DefaultPermission)
+}
+
+func Create(outputDir string, dataDir string) error {
+	filePath := filepath.Join(outputDir, FileName)
+	m, err := Compute(dataDir)
+	if err != nil {
+		return fmt.Errorf("unable to compute the metrics: %w", err)
+	}
+	err = m.Save(filePath)
+	if err != nil {
+		return err
+	}
+	return nil
 }

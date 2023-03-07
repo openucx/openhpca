@@ -16,7 +16,6 @@ import (
 
 	"github.com/gvallee/validation_tool/pkg/label"
 	"github.com/openucx/openhpca/tools/internal/pkg/overlap"
-	"github.com/openucx/openhpca/tools/internal/pkg/score"
 	"github.com/openucx/openhpca/tools/internal/pkg/util"
 )
 
@@ -25,23 +24,117 @@ const (
 	FileName       = "openhpca_results.txt"
 )
 
-type Data struct {
+type RawData struct {
 	Text []string
 	Unit string
 }
 
-type Results struct {
-	resultsDir         string
-	osuResultFiles     map[string]string
-	smbResultFiles     map[string]string
-	overlapResultFiles map[string]string
-	OsuFilesMap        map[string]string
-	OsuData            map[string]*Data
-	overlapFilesMap    map[string]string
-	overlapData        map[string]*Data
+// Data gathers all the results' details that we need to compute the final score and display all the required details
+type Data struct {
+	resultsDir          string
+	osuResultFiles      map[string]string
+	smbResultFiles      map[string]string
+	overlapResultFiles  map[string]string
+	OsuFilesMap         map[string]string
+	overlapFilesMap     map[string]string
+	overlapData         map[string]*RawData
+	MpiOverhead         float32
+	BwData              *RawData
+	OsuData             map[string]*RawData
+	OsuNonContigMemData map[string]*RawData
+	Bandwidth           float64
+	BandwidthUnit       string
+	Latency             float32
+	LatencyUnit         string
+	OverlapData         map[string][]string
+	OverlapScore        float32
+	OverlapDetails      map[string]float32
 }
 
-func (r *Results) GetOverlapData() map[string][]string {
+func (r *Data) GetSMBOverlap() (float32, error) {
+	f := r.smbResultFiles["smb_mpi_overhead"]
+	if f == "" {
+		return 0, fmt.Errorf("unable to get output file for SMB MPI overhead")
+	}
+
+	f = filepath.Join(r.resultsDir, f)
+	content, err := ioutil.ReadFile(f)
+	if err != nil {
+		return 0, err
+	}
+	lines := strings.Split(string(content), "\n")
+	if len(lines) != 4 {
+		return 0, fmt.Errorf("content of %s is not compliant with SMB mpi_overhead format (%d lines instead of 4)", f, len(lines))
+	}
+	targetLine := lines[2]
+	for {
+		// Cleanup the line to make parsing more reliable
+		if !strings.Contains(targetLine, "  ") {
+			break
+		}
+		targetLine = strings.ReplaceAll(targetLine, "  ", " ")
+	}
+	words := strings.Split(targetLine, " ")
+	if len(words) != 8 {
+		return 0, fmt.Errorf("invalid format: %s, %d elements instead of 8: %s", lines[2], len(words), words)
+	}
+	value, err := strconv.ParseFloat(words[6], 32)
+	if err != nil {
+		return 0, fmt.Errorf("unable to get actual data from %s: %w", words[6], err)
+	}
+	return float32(value), nil
+}
+
+func GetBandwidth(d *RawData) (float64, string, error) {
+	if d == nil {
+		return 0, "", fmt.Errorf("undefined data")
+	}
+
+	unit := "Unknown"
+	header := d.Text[2]
+	header = util.CleanOSUline(header)
+	unit = strings.TrimPrefix(header, "# Size Bandwidth (")
+	unit = strings.TrimSuffix(unit, ")")
+
+	idx := len(d.Text) - 1
+	for {
+		if d.Text[idx] == "" {
+			idx--
+		} else {
+			break
+		}
+	}
+	if !strings.HasPrefix(d.Text[idx], "4194304") {
+		return -1, unit, fmt.Errorf("unexpected data, unable to find result for 4M messages: %s (idx: %d)", d.Text[idx], idx)
+	}
+	bw := 0.0
+	for i := 0; i <= 5; i++ {
+		line := d.Text[idx-i]
+		line = util.CleanOSUline(line)
+		tokens := strings.Split(line, " ")
+		if len(tokens) != 2 {
+			return -1, unit, fmt.Errorf("unexpected data, unable to find size and data: %s (idx: %d, len: %d)", line, idx, len(tokens))
+		}
+		tokens[1] = strings.TrimLeft(tokens[1], " ")
+		tokens[1] = strings.TrimLeft(tokens[1], "\t")
+		val, err := strconv.ParseFloat(tokens[1], 32)
+		if err != nil {
+			return -1, unit, fmt.Errorf("unexpected data, unable to parse data: %s (idx: %d)", d.Text[idx], idx)
+		}
+		if bw < val {
+			bw = val
+		}
+	}
+
+	if unit == "MB/s" {
+		bw = bw / 125
+		unit = "Gb/s"
+	}
+
+	return bw, unit, nil
+}
+
+func (r *Data) GetOverlapData() map[string][]string {
 	res := make(map[string][]string)
 	for benchName, f := range r.overlapResultFiles {
 		content, err := ioutil.ReadFile(filepath.Join(r.resultsDir, f))
@@ -57,9 +150,9 @@ func (r *Results) GetOverlapData() map[string][]string {
 
 		// We also store the results in the result object
 		if r.overlapData == nil {
-			r.overlapData = make(map[string]*Data)
+			r.overlapData = make(map[string]*RawData)
 		}
-		d := new(Data)
+		d := new(RawData)
 		d.Text = lines
 		r.overlapData[benchName] = d
 		if r.overlapFilesMap == nil {
@@ -72,8 +165,8 @@ func (r *Results) GetOverlapData() map[string][]string {
 
 // LoadResultsWithPrefix enables loading OSU-type results from a file.
 // This is meant to be used to load data from results files of different variants/versions of the OSU benchmark
-func (r *Results) LoadResultsWithPrefix(testPrefix string) map[string]*Data {
-	res := make(map[string]*Data)
+func (r *Data) LoadResultsWithPrefix(testPrefix string) map[string]*RawData {
+	res := make(map[string]*RawData)
 	for benchName, f := range r.osuResultFiles {
 		if strings.HasPrefix(benchName, testPrefix) {
 			if testPrefix == "osu" && strings.HasPrefix(benchName, "osu_noncontig_mem") {
@@ -88,17 +181,17 @@ func (r *Results) LoadResultsWithPrefix(testPrefix string) map[string]*Data {
 			}
 			text := string(content)
 			lines := strings.Split(text, "\n")
-			d := new(Data)
+			d := new(RawData)
 			d.Text = lines
 			benchKey := testPrefix + "_" + subBenchmark
 			res[benchKey] = d
 
 			// We also store the results in the result object
 			if r.OsuData == nil {
-				r.OsuData = make(map[string]*Data)
+				r.OsuData = make(map[string]*RawData)
 			}
 			if r.OsuData[benchKey] == nil {
-				d := new(Data)
+				d := new(RawData)
 				d.Text = lines
 				if subBenchmark == "latency" {
 					for _, line := range lines {
@@ -133,7 +226,85 @@ func (r *Results) LoadResultsWithPrefix(testPrefix string) map[string]*Data {
 	return res
 }
 
-func (r *Results) GetLatency() (float32, string, error) {
+func Get(dir string) (*Data, error) {
+	r := new(Data)
+	r.osuResultFiles = make(map[string]string)
+	r.smbResultFiles = make(map[string]string)
+	r.overlapResultFiles = make(map[string]string)
+	r.resultsDir = dir
+
+	if r.resultsDir == "" {
+		return nil, fmt.Errorf("undefined result directory")
+	}
+
+	labelFile := label.GetFilePath(r.resultsDir)
+	labels := make(map[string]string)
+	err := label.FromFile(labelFile, labels)
+	if err != nil {
+		return nil, fmt.Errorf("label.FromFile() failed: %w", err)
+	}
+
+	outputFiles, err := util.GetOutputFiles(dir)
+	if err != nil {
+		return nil, err
+	}
+
+	for hash, expLabel := range labels {
+		filePath := outputFiles[hash]
+		if filePath == "" {
+			return nil, fmt.Errorf("unable to find output file for %s", expLabel)
+		}
+
+		if strings.HasPrefix(expLabel, "osu") {
+			// OSU-type output file
+			r.osuResultFiles[expLabel] = filePath
+		}
+
+		if strings.HasPrefix(expLabel, "smb") {
+			// SMB-type output file
+			r.smbResultFiles[expLabel] = filePath
+		}
+
+		if strings.HasPrefix(expLabel, "overlap") {
+			// overlap-type output file
+			expLabel = strings.ReplaceAll(expLabel, "overlap_overlap_", "overlap_")
+			r.overlapResultFiles[expLabel] = filePath
+		}
+	}
+
+	r.OsuData = r.LoadResultsWithPrefix("osu")
+	r.OsuNonContigMemData = r.LoadResultsWithPrefix("osu_noncontig_mem")
+	if len(r.OsuNonContigMemData) == 0 {
+		return nil, fmt.Errorf("no OSU data for non-contiguous memory")
+	}
+
+	r.MpiOverhead, err = r.GetSMBOverlap()
+	if err != nil {
+		return nil, err
+	}
+	r.BwData = r.OsuData["bw"]
+	if r.BwData == nil {
+		return nil, fmt.Errorf("bandwidth data is missing")
+	}
+	r.Bandwidth, r.BandwidthUnit, err = GetBandwidth(r.BwData)
+	if err != nil {
+		return nil, err
+	}
+	r.Latency, r.LatencyUnit, err = r.GetLatency()
+	if err != nil {
+		return nil, err
+	}
+
+	r.OverlapData = r.GetOverlapData()
+	r.OverlapScore, r.OverlapDetails, err = ComputeOverlap(r.MpiOverhead, r.OverlapData)
+	if err != nil {
+		return nil, err
+	}
+
+	return r, nil
+}
+
+func (r *Data) GetLatency() (float32, string, error) {
 	unit := "Unknown"
 	size := -1.0
 	lat := -1.0
@@ -187,89 +358,6 @@ func (r *Results) GetLatency() (float32, string, error) {
 	return 0, unit, fmt.Errorf("unable to find result file for latency")
 }
 
-func (r *Results) GetSMBOverlap() (float32, error) {
-	f := r.smbResultFiles["smb_mpi_overhead"]
-	if f == "" {
-		return 0, fmt.Errorf("unable to get output file for SMB MPI overhead")
-	}
-
-	f = filepath.Join(r.resultsDir, f)
-	content, err := ioutil.ReadFile(f)
-	if err != nil {
-		return 0, err
-	}
-	lines := strings.Split(string(content), "\n")
-	if len(lines) != 4 {
-		return 0, fmt.Errorf("content of %s is not compliant with SMB mpi_overhead format (%d lines instead of 4)", f, len(lines))
-	}
-	targetLine := lines[2]
-	for {
-		// Cleanup the line to make parsing more reliable
-		if !strings.Contains(targetLine, "  ") {
-			break
-		}
-		targetLine = strings.ReplaceAll(targetLine, "  ", " ")
-	}
-	words := strings.Split(targetLine, " ")
-	if len(words) != 8 {
-		return 0, fmt.Errorf("invalid format: %s, %d elements instead of 8: %s", lines[2], len(words), words)
-	}
-	value, err := strconv.ParseFloat(words[6], 32)
-	if err != nil {
-		return 0, fmt.Errorf("unable to get actual data from %s: %w", words[6], err)
-	}
-	return float32(value), nil
-}
-
-func GetBandwidth(d *Data) (float64, string, error) {
-	if d == nil {
-		return 0, "", fmt.Errorf("undefined data")
-	}
-
-	unit := "Unknown"
-	header := d.Text[2]
-	header = util.CleanOSUline(header)
-	unit = strings.TrimPrefix(header, "# Size Bandwidth (")
-	unit = strings.TrimSuffix(unit, ")")
-
-	idx := len(d.Text) - 1
-	for {
-		if d.Text[idx] == "" {
-			idx--
-		} else {
-			break
-		}
-	}
-	if !strings.HasPrefix(d.Text[idx], "4194304") {
-		return -1, unit, fmt.Errorf("unexpected data, unable to find result for 4M messages: %s (idx: %d)", d.Text[idx], idx)
-	}
-	bw := 0.0
-	for i := 0; i <= 5; i++ {
-		line := d.Text[idx-i]
-		line = util.CleanOSUline(line)
-		tokens := strings.Split(line, " ")
-		if len(tokens) != 2 {
-			return -1, unit, fmt.Errorf("unexpected data, unable to find size and data: %s (idx: %d, len: %d)", line, idx, len(tokens))
-		}
-		tokens[1] = strings.TrimLeft(tokens[1], " ")
-		tokens[1] = strings.TrimLeft(tokens[1], "\t")
-		val, err := strconv.ParseFloat(tokens[1], 32)
-		if err != nil {
-			return -1, unit, fmt.Errorf("unexpected data, unable to parse data: %s (idx: %d)", d.Text[idx], idx)
-		}
-		if bw < val {
-			bw = val
-		}
-	}
-
-	if unit == "MB/s" {
-		bw = bw / 125
-		unit = "Gb/s"
-	}
-
-	return bw, unit, nil
-}
-
 func ComputeOverlap(smbMPIOverhead float32, overlapData map[string][]string) (float32, map[string]float32, error) {
 	numBenchs := len(overlapData)
 	skipped := 0
@@ -321,132 +409,4 @@ func ComputeOverlap(smbMPIOverhead float32, overlapData map[string][]string) (fl
 	numBenchs -= skipped
 	numBenchs += added
 	return finalOverlap / float32(numBenchs+1), overlapDetails, nil
-}
-
-func Get(dir string) (*Results, error) {
-	r := new(Results)
-	r.osuResultFiles = make(map[string]string)
-	r.smbResultFiles = make(map[string]string)
-	r.overlapResultFiles = make(map[string]string)
-	r.resultsDir = dir
-
-	if r.resultsDir == "" {
-		return nil, fmt.Errorf("undefined result directory")
-	}
-
-	labelFile := label.GetFilePath(r.resultsDir)
-	labels := make(map[string]string)
-	err := label.FromFile(labelFile, labels)
-	if err != nil {
-		return nil, fmt.Errorf("label.FromFile() failed: %w", err)
-	}
-
-	outputFiles, err := util.GetOutputFiles(dir)
-	if err != nil {
-		return nil, err
-	}
-
-	for hash, expLabel := range labels {
-		filePath := outputFiles[hash]
-		if filePath == "" {
-			return nil, fmt.Errorf("unable to find output file for %s", expLabel)
-		}
-
-		if strings.HasPrefix(expLabel, "osu") {
-			// OSU-type output file
-			r.osuResultFiles[expLabel] = filePath
-		}
-
-		if strings.HasPrefix(expLabel, "smb") {
-			// SMB-type output file
-			r.smbResultFiles[expLabel] = filePath
-		}
-
-		if strings.HasPrefix(expLabel, "overlap") {
-			// overlap-type output file
-			expLabel = strings.ReplaceAll(expLabel, "overlap_overlap_", "overlap_")
-			r.overlapResultFiles[expLabel] = filePath
-		}
-	}
-
-	return r, nil
-}
-
-func ComputeScore(dataDir string) (*score.Metrics, error) {
-	data, err := Get(dataDir)
-	if err != nil {
-		return nil, err
-	}
-
-	if data == nil {
-		return nil, fmt.Errorf("unable to load results")
-	}
-
-	osuData := data.LoadResultsWithPrefix("osu")
-	mpiOverhead, err := data.GetSMBOverlap()
-	if err != nil {
-		return nil, err
-	}
-	bwData := osuData["bw"]
-	if bwData == nil {
-		return nil, fmt.Errorf("bandwidth data is missing")
-	}
-	bandwidth, bandwidthUnit, err := GetBandwidth(bwData)
-	if err != nil {
-		return nil, err
-	}
-	latency, latencyUnit, err := data.GetLatency()
-	if err != nil {
-		return nil, err
-	}
-
-	metrics := new(score.Metrics)
-	metrics.Bandwidth = bandwidth
-	metrics.BandwidthUnit = bandwidthUnit
-	metrics.Latency = float64(latency)
-	metrics.LatencyUnit = latencyUnit
-	metrics.MpiOverlap = float32(mpiOverhead)
-	metrics.OverlapData = data.GetOverlapData()
-	metrics.OverlapScore, metrics.OverlapDetails, err = ComputeOverlap(metrics.MpiOverlap, metrics.OverlapData)
-	if err != nil {
-		return nil, err
-	}
-
-	if bandwidthUnit != "Gb/s" {
-		return nil, fmt.Errorf("unsupported unit for bandwidth (%s)", bandwidthUnit)
-	}
-	if latencyUnit != "us" {
-		return nil, fmt.Errorf("unsupported unit for latency (%s)", latencyUnit)
-	}
-
-	metrics.Score = metrics.Compute()
-	return metrics, nil
-}
-
-func String(dataDir string) (string, error) {
-	metrics, err := ComputeScore(dataDir)
-	if err != nil {
-		return "", err
-	}
-
-	return metrics.ToString(), nil
-
-}
-
-func Create(outputDir string, dataDir string) error {
-	filePath := filepath.Join(outputDir, FileName)
-	content, err := String(dataDir)
-	if err != nil {
-		return err
-	}
-	err = ioutil.WriteFile(filePath, []byte(content), FilePermission)
-	if err != nil {
-		return err
-	}
-	return nil
-}
-
-func Save(path string, s *score.Metrics) error {
-	content := s.ToString()
-	return ioutil.WriteFile(path, []byte(content), FilePermission)
 }
