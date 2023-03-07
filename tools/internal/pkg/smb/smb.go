@@ -64,8 +64,10 @@ func getSubBenchmarks(cfg *benchmark.Config, wp *workspace.Config) map[string]ap
 	smbDir := strings.TrimPrefix(cfg.URL, "file://")
 
 	mpiOverheadInfo := app.Info{
-		Name:    mpiOverheadID,
-		URL:     "file:///" + filepath.Join(smbDir, "src", mpiOverheadID),
+		Name: mpiOverheadID,
+		Source: app.SourceCode{
+			URL: "file:///" + filepath.Join(smbDir, "src", mpiOverheadID),
+		},
 		BinName: mpiOverheadBinName,
 		BinPath: filepath.Join(wp.InstallDir, mpiOverheadID, mpiOverheadID, mpiOverheadBinName),
 		BinArgs: []string{"--msgsize", fmt.Sprintf("%d", defaultMsgSize)},
@@ -74,15 +76,19 @@ func getSubBenchmarks(cfg *benchmark.Config, wp *workspace.Config) map[string]ap
 
 	msgrateInfo := app.Info{
 		Name: "msgrate",
-		URL:  "file:///" + filepath.Join(smbDir, "src", msgrateID),
+		Source: app.SourceCode{
+			URL: "file:///" + filepath.Join(smbDir, "src", msgrateID),
+		},
 		BinName: msgrateBinName,
 		BinPath: filepath.Join(wp.InstallDir, msgrateID, msgrateID, msgrateBinName),
 	}
 	m["msgrate"] = msgrateInfo
 
 	rmaMtMpiInfo := app.Info{
-		Name:    rmaMTmpiID,
-		URL:     "file:///" + filepath.Join(smbDir, "src", rmaMTmpiID),
+		Name: rmaMTmpiID,
+		Source: app.SourceCode{
+			URL: "file:///" + filepath.Join(smbDir, "src", rmaMTmpiID),
+		},
 		BinName: rmaMTmpiBinName,
 		BinPath: filepath.Join(wp.InstallDir, rmaMTmpiID, rmaMTmpiID, rmaMTmpiBinName),
 	}
