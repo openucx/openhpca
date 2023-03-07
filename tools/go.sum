@@ -26,7 +26,6 @@ github.com/golang/freetype v0.0.0-20170609003504-e2365dfdc4a0/go.mod h1:E/TSTwGw
 github.com/gvallee/go_benchmark v1.0.0 h1:twXGV8e339EyfEa60yRMms2KO2n5mueVAxabgThHJGA=
 github.com/gvallee/go_benchmark v1.0.0/go.mod h1:7BPmE7UODZIuQ4IK8xyNydKatbE5Ibl9fryRAMbH0io=
 github.com/gvallee/go_exec v0.0.3/go.mod h1:b8ZYmmYCaHo/g92ZHvYK8LnTp06sdTU3u2CjisIyA9w=
-github.com/gvallee/go_exec v1.0.1/go.mod h1:s9fSkVniLYlQUZb99zuioVH45nkvnYxw6vmGEaZCUPk=
 github.com/gvallee/go_exec v1.1.0 h1:3xhwLIcxY4VNGGPL5YZYxnWeTgLYU0PSOEMcO0gfi+Q=
 github.com/gvallee/go_exec v1.1.0/go.mod h1:s9fSkVniLYlQUZb99zuioVH45nkvnYxw6vmGEaZCUPk=
 github.com/gvallee/go_hpc_jobmgr v1.4.0/go.mod h1:gsikmgiQ+su5Cbaj48ErVtXyyTxXSiJf8r6CEUiN2wI=
@@ -35,7 +34,6 @@ github.com/gvallee/go_hpc_jobmgr v1.4.1/go.mod h1:gsikmgiQ+su5Cbaj48ErVtXyyTxXSi
 github.com/gvallee/go_osu v1.8.2 h1:QFr+zzzWx8eSLuyTQHzcCZXyOO7T9x8msq1rHf+18y0=
 github.com/gvallee/go_osu v1.8.2/go.mod h1:MWDdnxDuRK73XptsTl3TRy3mcUepFVu2weEobf4E25I=
 github.com/gvallee/go_software_build v0.0.17/go.mod h1:xpG+JoRV2XgxWOWmwuySzdKs2+jhWIeLu3MtTrWfQ2Y=
-github.com/gvallee/go_software_build v1.0.0/go.mod h1:Wk1dQ3fx2ZYB7t6HF43zC5hRuLXnPZLzHeLkAxd/svo=
 github.com/gvallee/go_software_build v1.2.9 h1:ijPsEGjzzK7qziWzQYu/ywfkWhOeZEWiXJDNV0TBUoU=
 github.com/gvallee/go_software_build v1.2.9/go.mod h1:snyPEMYqvTHDHjx0K5hVVXFBiQlmbXh3Bxqr4FV5f0Q=
 github.com/gvallee/go_util v1.0.0/go.mod h1:fTexpwdH/n05Ziu0TXJIQsr7E+46QpBxNdeOOsyC0/s=
@@ -49,8 +47,8 @@ github.com/gvallee/go_workspace v1.2.2/go.mod h1:JLxSZ95SAms0MbV+KMXL+V7UY14YxJs
 github.com/gvallee/kv v1.0.0 h1:QE3Ua8JewroqJqc+J9RWtL7KUu7rQmfLfxlBVY5t1ko=
 github.com/gvallee/kv v1.0.0/go.mod h1:sfSclfFfLV+Y+9e9FayIbBUOtvbt1779S6q52bSSU5E=
 github.com/gvallee/syserror v1.0.0/go.mod h1:UtEvDMlsf6YpA29eU+JlpINYz/bLqfBEJ8wmpoJIzs4=
-github.com/gvallee/validation_tool v1.3.2 h1:1/WxyAjTjV60r4ulo8+GhRj/ZSlgp5bugzMYp/Vw05w=
-github.com/gvallee/validation_tool v1.3.2/go.mod h1:WXAFZmOsowrDFzrwo2xG+4jFfzHoTK7vd6mEyt8y5Vc=
+github.com/gvallee/validation_tool v1.3.3 h1:y9ojFaphx4maJkvwgoWQCyZzzL/4Ghk4VfbAe3cpNwg=
+github.com/gvallee/validation_tool v1.3.3/go.mod h1:o4ENp0Pp9A+mGS5UfTU6XdLkGhMsULPFCcsxl9O7Hd4=
 github.com/jung-kurt/gofpdf v1.0.0/go.mod h1:7Id9E/uU8ce6rXgefFLlgrJj/GYY22cpxn+r32jIOes=
 github.com/jung-kurt/gofpdf v1.0.3-0.20190309125859-24315acbbda5/go.mod h1:7Id9E/uU8ce6rXgefFLlgrJj/GYY22cpxn+r32jIOes=
 github.com/mohae/deepcopy v0.0.0-20170929034955-c48cc78d4826 h1:RWengNIwukTxcDr9M+97sNutRR1RKhG96O6jWumTTnw=
