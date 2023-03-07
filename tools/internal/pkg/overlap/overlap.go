@@ -80,8 +80,10 @@ func GetSubBenchmarks(cfg *benchmark.Config, wp *workspace.Config) map[string]ap
 	installDir := filepath.Join(wp.InstallDir, "overlap")
 
 	overlapIallgatherInfo := app.Info{
-		Name:    overlapIallgatherID,
-		URL:     "file:///" + filepath.Join(overlapDir, overlapDir, overlapIallgatherID),
+		Name: overlapIallgatherID,
+		Source: app.SourceCode{
+			URL: "file:///" + filepath.Join(overlapDir, overlapDir, overlapIallgatherID),
+		},
 		BinName: overlapIallgatherBinName,
 		BinPath: filepath.Join(installDir, "overlap", overlapIallgatherID),
 		BinArgs: nil,
@@ -89,8 +91,10 @@ func GetSubBenchmarks(cfg *benchmark.Config, wp *workspace.Config) map[string]ap
 	m[overlapIallgatherID] = overlapIallgatherInfo
 
 	overlapIallgathervInfo := app.Info{
-		Name:    overlapIallgathervID,
-		URL:     "file:///" + filepath.Join(overlapDir, overlapDir, overlapIallgathervID),
+		Name: overlapIallgathervID,
+		Source: app.SourceCode{
+			URL: "file:///" + filepath.Join(overlapDir, overlapDir, overlapIallgathervID),
+		},
 		BinName: overlapIallgathervBinName,
 		BinPath: filepath.Join(installDir, "overlap", overlapIallgathervID),
 		BinArgs: nil,
@@ -98,8 +102,10 @@ func GetSubBenchmarks(cfg *benchmark.Config, wp *workspace.Config) map[string]ap
 	m[overlapIallgathervID] = overlapIallgathervInfo
 
 	overlapIallreduceInfo := app.Info{
-		Name:    overlapIallreduceID,
-		URL:     "file:///" + filepath.Join(overlapDir, overlapDir, overlapIallreduceID),
+		Name: overlapIallreduceID,
+		Source: app.SourceCode{
+			URL: "file:///" + filepath.Join(overlapDir, overlapDir, overlapIallreduceID),
+		},
 		BinName: overlapIallreduceBinName,
 		BinPath: filepath.Join(installDir, "overlap", overlapIallreduceID),
 		BinArgs: nil,
@@ -107,8 +113,10 @@ func GetSubBenchmarks(cfg *benchmark.Config, wp *workspace.Config) map[string]ap
 	m[overlapIallreduceID] = overlapIallreduceInfo
 
 	overlapIreduceInfo := app.Info{
-		Name:    overlapIreduceID,
-		URL:     "file:///" + filepath.Join(overlapDir, overlapDir, overlapIreduceID),
+		Name: overlapIreduceID,
+		Source: app.SourceCode{
+			URL: "file:///" + filepath.Join(overlapDir, overlapDir, overlapIreduceID),
+		},
 		BinName: overlapIreduceBinName,
 		BinPath: filepath.Join(installDir, "overlap", overlapIreduceID),
 		BinArgs: nil,
@@ -116,8 +124,10 @@ func GetSubBenchmarks(cfg *benchmark.Config, wp *workspace.Config) map[string]ap
 	m[overlapIreduceID] = overlapIreduceInfo
 
 	overlapIalltoallInfo := app.Info{
-		Name:    overlapIalltoallID,
-		URL:     "file:///" + filepath.Join(overlapDir, overlapDir, overlapIalltoallID),
+		Name: overlapIalltoallID,
+		Source: app.SourceCode{
+			URL: "file:///" + filepath.Join(overlapDir, overlapDir, overlapIalltoallID),
+		},
 		BinName: overlapIalltoallBinName,
 		BinPath: filepath.Join(installDir, "overlap", overlapIalltoallID),
 		BinArgs: nil,
@@ -125,8 +135,10 @@ func GetSubBenchmarks(cfg *benchmark.Config, wp *workspace.Config) map[string]ap
 	m[overlapIalltoallID] = overlapIalltoallInfo
 
 	overlapIalltoallvInfo := app.Info{
-		Name:    overlapIalltoallvID,
-		URL:     "file:///" + filepath.Join(overlapDir, overlapDir, overlapIalltoallvID),
+		Name: overlapIalltoallvID,
+		Source: app.SourceCode{
+			URL: "file:///" + filepath.Join(overlapDir, overlapDir, overlapIalltoallvID),
+		},
 		BinName: overlapIalltoallvID,
 		BinPath: filepath.Join(installDir, "overlap", overlapIalltoallvID),
 		BinArgs: nil,
@@ -134,8 +146,10 @@ func GetSubBenchmarks(cfg *benchmark.Config, wp *workspace.Config) map[string]ap
 	m[overlapIalltoallvID] = overlapIalltoallvInfo
 
 	overlapIbarrierInfo := app.Info{
-		Name:    overlapIbarrierID,
-		URL:     "file:///" + filepath.Join(overlapDir, overlapDir, overlapIbarrierID),
+		Name: overlapIbarrierID,
+		Source: app.SourceCode{
+			URL: "file:///" + filepath.Join(overlapDir, overlapDir, overlapIbarrierID),
+		},
 		BinName: overlapIbarrierID,
 		BinPath: filepath.Join(installDir, "overlap", overlapIbarrierID),
 		BinArgs: nil,
@@ -143,8 +157,10 @@ func GetSubBenchmarks(cfg *benchmark.Config, wp *workspace.Config) map[string]ap
 	m[overlapIbarrierID] = overlapIbarrierInfo
 
 	overlapIbcast := app.Info{
-		Name:    overlapIbcastID,
-		URL:     "file:///" + filepath.Join(overlapDir, overlapDir, overlapIbcastID),
+		Name: overlapIbcastID,
+		Source: app.SourceCode{
+			URL: "file:///" + filepath.Join(overlapDir, overlapDir, overlapIbcastID),
+		},
 		BinName: overlapIbcastID,
 		BinPath: filepath.Join(installDir, "overlap", overlapIbcastID),
 		BinArgs: nil,
@@ -152,8 +168,10 @@ func GetSubBenchmarks(cfg *benchmark.Config, wp *workspace.Config) map[string]ap
 	m[overlapIbcastID] = overlapIbcast
 
 	overlapIgatherInfo := app.Info{
-		Name:    overlapIgatherID,
-		URL:     "file:///" + filepath.Join(overlapDir, overlapDir, overlapIgatherID),
+		Name: overlapIgatherID,
+		Source: app.SourceCode{
+			URL: "file:///" + filepath.Join(overlapDir, overlapDir, overlapIgatherID),
+		},
 		BinName: overlapIgatherBinName,
 		BinPath: filepath.Join(installDir, "overlap", overlapIgatherID),
 		BinArgs: nil,
@@ -161,8 +179,10 @@ func GetSubBenchmarks(cfg *benchmark.Config, wp *workspace.Config) map[string]ap
 	m[overlapIgatherID] = overlapIgatherInfo
 
 	overlapIgathervInfo := app.Info{
-		Name:    overlapIgathervID,
-		URL:     "file:///" + filepath.Join(overlapDir, overlapDir, overlapIgathervID),
+		Name: overlapIgathervID,
+		Source: app.SourceCode{
+			URL: "file:///" + filepath.Join(overlapDir, overlapDir, overlapIgathervID),
+		},
 		BinName: overlapIgathervBinName,
 		BinPath: filepath.Join(installDir, "overlap", overlapIgathervID),
 		BinArgs: nil,
@@ -190,7 +210,7 @@ func Compile(cfg *benchmark.Config, wp *workspace.Config) (*benchmark.Install, e
 	b := new(builder.Builder)
 	b.Persistent = wp.InstallDir
 	b.App.Name = "overlap"
-	b.App.URL = cfg.URL
+	b.App.Source.URL = cfg.URL
 
 	if wp.ScratchDir == "" || wp.InstallDir == "" || wp.BuildDir == "" || wp.SrcDir == "" {
 		return nil, fmt.Errorf("invalid workspace")
