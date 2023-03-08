@@ -1,0 +1,44 @@
+{
+    "benchmarks": [
+        {
+            "name": "iallgather",
+            "max_num_elts": 1000000
+        },
+        {
+            "name": "iallgatherv",
+            "max_num_elts": 1000000
+        },
+        {
+            "name": "iallreduce",
+            "max_num_elts": 1000000
+        },
+        {
+            "name": "ialltoall",
+            "max_num_elts": 1000000
+        },
+        {
+            "name": "ialltoallv",
+            "max_num_elts": 1000000
+        },
+        {
+            "name": "ibarrier",
+            "max_num_elts": 10000000
+        },
+        {
+            "name": "ibcast",
+            "max_num_elts": 10000000
+        },
+        {
+            "name": "igather",
+            "max_num_elts": 1000000
+        },
+        {
+            "name": "igatherv",
+            "max_num_elts": 1000000
+        },
+        {
+            "name": "ireduce",
+            "max_num_elts": 1000000
+        }
+    ]
+}

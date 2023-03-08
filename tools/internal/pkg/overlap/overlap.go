@@ -7,7 +7,9 @@
 package overlap
 
 import (
+	"encoding/json"
 	"fmt"
+	"io/ioutil"
 	"log"
 	"os"
 	"path/filepath"
@@ -22,8 +24,21 @@ import (
 	"github.com/openucx/openhpca/tools/internal/pkg/util"
 )
 
+type Benchmark struct {
+	Name       string `json:"name"`
+	MaxNumElts int    `json:"max_num_elts"`
+}
+
+type Benchmarks struct {
+	Benchmarks []Benchmark
+}
+
 // Config represents the configuration of the overlap suite
 type Config struct {
+	Benchs *Benchmarks
+
+	MaxNumEltsLookupTable map[string]int
+
 	URL string
 }
 
@@ -53,6 +68,8 @@ const (
 	overlapIgatherBinName     = "overlap_igather"
 	overlapIgathervID         = "overlap_igatherv"
 	overlapIgathervBinName    = "overlap_igatherv"
+
+	MaxNumEltsEnvVar = "OPENHPCA_OVERLAP_MAX_NUM_ELTS"
 )
 
 var RequiredBenchmarks = []string{overlapIallreduceID, overlapIreduceID, overlapIallgatherID, overlapIallgathervID,
@@ -268,4 +285,32 @@ func DetectInstall(cfg *benchmark.Config, wp *workspace.Config) *benchmark.Insta
 // Display shows the current overlap benchmark suite configuration
 func Display(cfg *benchmark.Config) {
 	fmt.Printf("\toverlap benchmark suite URL: %s\n", cfg.URL)
+}
+
+func (c *Config) LoadConfig(configFilePath string) error {
+	f, err := os.Open(configFilePath)
+	if err != nil {
+		return err
+	}
+	defer f.Close()
+
+	content, err := ioutil.ReadAll(f)
+	if err != nil {
+		return err
+	}
+
+	c.Benchs = new(Benchmarks)
+	err = json.Unmarshal(content, &c.Benchs)
+	if err != nil {
+		return err
+	}
+
+	// Create the lookup tables based on the data from the config file
+	if c.MaxNumEltsLookupTable == nil {
+		c.MaxNumEltsLookupTable = make(map[string]int)
+	}
+	for _, b := range c.Benchs.Benchmarks {
+		c.MaxNumEltsLookupTable[b.Name] = b.MaxNumElts
+	}
+	return nil
 }

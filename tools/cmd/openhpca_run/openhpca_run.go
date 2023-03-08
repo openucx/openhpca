@@ -15,10 +15,12 @@ import (
 	"os"
 	"path/filepath"
 	"runtime"
+	"strconv"
 	"time"
 
 	"github.com/gvallee/go_benchmark/pkg/benchmark"
 	"github.com/gvallee/go_hpc_jobmgr/pkg/implem"
+	"github.com/gvallee/go_hpc_jobmgr/pkg/mpi"
 	"github.com/gvallee/go_software_build/pkg/app"
 	"github.com/gvallee/go_util/pkg/util"
 	"github.com/gvallee/validation_tool/pkg/experiments"
@@ -192,6 +194,7 @@ func main() {
 	osuNonContigMemSelectFlag := flag.Bool("osu-noncontigmem", false, "Explicitly select OSU for non-contiguous memory for execution. Only selected benchmarks will be executed")
 	smbSelectFlag := flag.Bool("smb", false, "Explicitly select SMB for execution. Only selected benchmarks will be executed")
 	overlapSelectFlag := flag.Bool("overlap", false, "Explicitly select the overlap benchmark suite for execution. Only selected benchmarks will be executed")
+	overlapConfigFilePathFlag := flag.String("overlap-config", "", "Path to the overlap configuration file. An example is available there: 'etc/examples/overlap_conf.json'")
 
 	flag.Parse()
 
@@ -289,6 +292,22 @@ func main() {
 		}
 	}
 
+	overlapConfig := new(overlap.Config)
+	if *overlapConfigFilePathFlag != "" {
+		err := overlapConfig.LoadConfig(*overlapConfigFilePathFlag)
+		if err != nil {
+			fmt.Printf("ERROR: unable to load overlap configuration: %s\n", err)
+			os.Exit(1)
+		}
+	}
+
+	// Detect the MPI implementation so we can properly customize the environment
+	localMPI, err := mpi.DetectFromDir(cfg.WP.MpiDir)
+	if err != nil {
+		fmt.Printf("unable to detect the MPI implementation installed in %s: %s\n", cfg.WP.MpiDir, err)
+		os.Exit(1)
+	}
+
 	for benchmarkName, installedBenchmark := range benchmarksToRun {
 		for _, subBenchmark := range installedBenchmark.SubBenchmarks {
 			e := new(experiments.Experiment)
@@ -316,9 +335,19 @@ func main() {
 
 			// Make sure to set special environment variables
 			// todo: find a better way to abtract this, i.e., make sure it is set correctly for all MPI implementations
-			overlapNumElts := os.Getenv("OPENHPCA_OVERLAP_MAX_NUM_ELTS")
+			// Data from the overlap configuration file always prevail on the environment variable from the calling
+			// process
+			overlapNumElts := os.Getenv(overlap.MaxNumEltsEnvVar)
+			if overlapConfig.MaxNumEltsLookupTable != nil {
+				overlapNumElts = strconv.Itoa(overlapConfig.MaxNumEltsLookupTable[subBenchmark.BinName])
+			}
 			if overlapNumElts != "" && benchmarkName == "overlap" {
-				e.MpirunArgs = append(e.MpirunArgs, "-x OPENHPCA_OVERLAP_MAX_NUM_ELTS="+overlapNumElts)
+				if localMPI.ID == implem.OMPI {
+					e.MpirunArgs = append(e.MpirunArgs, "-x "+overlap.MaxNumEltsEnvVar+"="+overlapNumElts)
+				}
+				if localMPI.ID == implem.MPICH || localMPI.ID == implem.MVAPICH2 {
+					e.MpirunArgs = append(e.MpirunArgs, "-genv "+overlap.MaxNumEltsEnvVar+"="+overlapNumElts)
+				}
 			}
 
 			exps.List = append(exps.List, e)
